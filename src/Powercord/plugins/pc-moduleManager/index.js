@@ -1,11 +1,11 @@
 const { existsSync } = require('fs');
 const { writeFile, readFile } = require('fs').promises;
-const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { PopoutWindow } = require('powercord/components');
-const { inject, uninject } = require('powercord/injector');
-const { findInReactTree } = require('powercord/util');
-const { Plugin } = require('powercord/entities');
-const { SpecialChannels: { CSS_SNIPPETS } } = require('powercord/constants');
+const { React, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { PopoutWindow } = require('powerCord/components');
+const { inject, uninject } = require('powerCord/injector');
+const { findInReactTree } = require('powerCord/util');
+const { Plugin } = require('powerCord/entities');
+const { SpecialChannels: { CSS_SNIPPETS } } = require('powerCord/constants');
 const { join } = require('path');
 
 const commands = require('./commands');
@@ -20,29 +20,29 @@ const SnippetButton = require('./components/SnippetButton');
 // @todo: give a look to why quickcss.css file shits itself
 module.exports = class ModuleManager extends Plugin {
   async startPlugin () {
-    powercord.api.i18n.loadAllStrings(i18n);
-    Object.values(commands).forEach(cmd => powercord.api.commands.registerCommand(cmd));
+    powerCord.api.i18n.loadAllStrings(i18n);
+    Object.values(commands).forEach(cmd => powerCord.api.commands.registerCommand(cmd));
 
-    powercord.api.labs.registerExperiment({
+    powerCord.api.labs.registerExperiment({
       id: 'pc-moduleManager-themes2',
       name: 'New themes features',
       date: 1587857509321,
       description: 'New Theme management UI & settings',
       callback: () => {
         // We're supposed to do it properly but reload > all
-        setImmediate(() => powercord.pluginManager.remount(this.entityID));
+        setImmediate(() => powerCord.pluginManager.remount(this.entityID));
         // And we wrap it in setImmediate to not break the labs UI
       }
     });
 
-    powercord.api.labs.registerExperiment({
+    powerCord.api.labs.registerExperiment({
       id: 'pc-moduleManager-deeplinks',
       name: 'Deeplinks',
       date: 1590242558077,
-      description: 'Makes some powercord.dev links trigger in-app navigation, as well as some potential embedding if applicable',
+      description: 'Makes some powerCord.dev links trigger in-app navigation, as well as some potential embedding if applicable',
       callback: () => {
         // We're supposed to do it properly but reload > all
-        setImmediate(() => powercord.pluginManager.remount(this.entityID));
+        setImmediate(() => powerCord.pluginManager.remount(this.entityID));
         // And we wrap it in setImmediate to not break the labs UI
       }
     });
@@ -52,12 +52,12 @@ module.exports = class ModuleManager extends Plugin {
     this._loadQuickCSS();
     this._injectSnippets();
     this.loadStylesheet('scss/style.scss');
-    powercord.api.settings.registerSettings('pc-moduleManager-plugins', {
+    powerCord.api.settings.registerSettings('pc-moduleManager-plugins', {
       category: this.entityID,
       label: () => Messages.POWERCORD_PLUGINS,
       render: Plugins
     });
-    powercord.api.settings.registerSettings('pc-moduleManager-themes', {
+    powerCord.api.settings.registerSettings('pc-moduleManager-themes', {
       category: this.entityID,
       label: () => Messages.POWERCORD_THEMES,
       render: (props) => React.createElement(Themes, {
@@ -66,21 +66,21 @@ module.exports = class ModuleManager extends Plugin {
       })
     });
 
-    if (powercord.api.labs.isExperimentEnabled('pc-moduleManager-deeplinks')) {
+    if (powerCord.api.labs.isExperimentEnabled('pc-moduleManager-deeplinks')) {
       deeplinks();
     }
   }
 
   pluginWillUnload () {
-    document.querySelector('#powercord-quickcss').remove();
-    powercord.api.settings.unregisterSettings('pc-moduleManager-plugins');
-    powercord.api.settings.unregisterSettings('pc-moduleManager-themes');
-    powercord.api.labs.unregisterExperiment('pc-moduleManager-themes2');
-    powercord.api.labs.unregisterExperiment('pc-moduleManager-deeplinks');
-    Object.values(commands).forEach(cmd => powercord.api.commands.unregisterCommand(cmd.command));
+    document.querySelector('#powerCord-quickcss').remove();
+    powerCord.api.settings.unregisterSettings('pc-moduleManager-plugins');
+    powerCord.api.settings.unregisterSettings('pc-moduleManager-themes');
+    powerCord.api.labs.unregisterExperiment('pc-moduleManager-themes2');
+    powerCord.api.labs.unregisterExperiment('pc-moduleManager-deeplinks');
+    Object.values(commands).forEach(cmd => powerCord.api.commands.unregisterCommand(cmd.command));
     uninject('pc-moduleManager-snippets');
 
-    document.querySelectorAll('.powercord-snippet-apply').forEach(e => e.style.display = 'none');
+    document.querySelectorAll('.powerCord-snippet-apply').forEach(e => e.style.display = 'none');
   }
 
   async _injectSnippets () {
@@ -134,9 +134,9 @@ module.exports = class ModuleManager extends Plugin {
   }
 
   async _fetchEntities (type) {
-    powercord.api.notices.closeToast('missing-entities-notify');
+    powerCord.api.notices.closeToast('missing-entities-notify');
 
-    const entityManager = powercord[type === 'plugins' ? 'pluginManager' : 'styleManager'];
+    const entityManager = powerCord[type === 'plugins' ? 'pluginManager' : 'styleManager'];
     const missingEntities = await type === 'plugins' ? entityManager.startPlugins(true) : entityManager.loadThemes(true);
     const entity = missingEntities.length === 1 ? type.slice(0, -1) : type;
     const subjectiveEntity = `${entity} ${entity === type ? 'were' : 'was'}`;
@@ -166,12 +166,12 @@ module.exports = class ModuleManager extends Plugin {
       };
     }
 
-    powercord.api.notices.sendToast('missing-entities-notify', props);
+    powerCord.api.notices.sendToast('missing-entities-notify', props);
   }
 
   async _loadQuickCSS () {
     this._quickCSSElement = document.createElement('style');
-    this._quickCSSElement.id = 'powercord-quickcss';
+    this._quickCSSElement.id = 'powerCord-quickcss';
     document.head.appendChild(this._quickCSSElement);
     if (existsSync(this._quickCSSFile)) {
       this._quickCSS = await readFile(this._quickCSSFile, 'utf8');

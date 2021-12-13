@@ -1,5 +1,5 @@
-const { React, i18n: { Messages } } = require('powercord/webpack');
-const { FormTitle, Icons: { Keyboard, PersonShield, Copy, ImportExport } } = require('powercord/components');
+const { React, i18n: { Messages } } = require('powerCord/webpack');
+const { FormTitle, Icons: { Keyboard, PersonShield, Copy, ImportExport } } = require('powerCord/components');
 
 const perms = {
   keypresses: {
@@ -21,7 +21,7 @@ const perms = {
 };
 
 module.exports = ({ permissions, svgSize }) => (
-  <div className='powercord-product-permissions'>
+  <div className='powerCord-product-permissions'>
     <FormTitle>{Messages.PERMISSIONS}</FormTitle>
     {Object.keys(perms).map(perm => permissions.includes(perm) &&
       <div className='item'>

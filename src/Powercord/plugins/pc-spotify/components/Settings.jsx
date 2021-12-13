@@ -1,5 +1,5 @@
-const { React } = require('powercord/webpack');
-const { SwitchItem } = require('powercord/components/settings');
+const { React } = require('powerCord/webpack');
+const { SwitchItem } = require('powerCord/components/settings');
 
 module.exports = React.memo(
   ({ getSetting, toggleSetting, patch }) => (

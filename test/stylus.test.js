@@ -1,7 +1,7 @@
 /* eslint-env jest */
 const { join } = require('path');
-const StylusCompiler = require('../src/fake_node_modules/powercord/compilers/stylus');
-const rmdir = require('../src/fake_node_modules/powercord/util/rmdirRf');
+const StylusCompiler = require('../src/fake_node_modules/powerCord/compilers/stylus');
+const rmdir = require('../src/fake_node_modules/powerCord/util/rmdirRf');
 const cachePath = join(__dirname, '..', '.cache', 'stylus');
 
 const getPath = (type) => join(__dirname, 'test-data/stylus', type, 'style.styl');

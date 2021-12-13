@@ -1,7 +1,7 @@
 {
   "name": "Notices",
   "version": "1.0.0",
-  "description": "Powercord's notice renderer",
-  "author": "Powercord Team",
+  "description": "PowerCord's notice renderer",
+  "author": "PowerCord Team",
   "license": "MIT"
 }

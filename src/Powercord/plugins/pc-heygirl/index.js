@@ -1,6 +1,6 @@
 // idea based on http://heygirl.io/ (+used their images)
 
-const { Plugin } = require('powercord/entities');
+const { Plugin } = require('powerCord/entities');
 
 module.exports = class HeyGirl extends Plugin {
   constructor () {
@@ -19,7 +19,7 @@ module.exports = class HeyGirl extends Plugin {
   }
 
   startPlugin () {
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'heygirl',
       description: 'Replaces every image with a random image of Ryan Gosling',
       usage: '{c}',
@@ -28,7 +28,7 @@ module.exports = class HeyGirl extends Plugin {
   }
 
   pluginWillUnload () {
-    powercord.api.commands.unregisterCommand('heygirl');
+    powerCord.api.commands.unregisterCommand('heygirl');
   }
 
   getRandomURL () {

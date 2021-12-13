@@ -1,7 +1,7 @@
 const { shell } = require('electron');
-const { React, Flux, getModule, getModuleByDisplayName, contextMenu, i18n: { Messages } } = require('powercord/webpack');
-const { AsyncComponent, Icon, Icons: { FontAwesome } } = require('powercord/components');
-const { open: openModal } = require('powercord/modal');
+const { React, Flux, getModule, getModuleByDisplayName, contextMenu, i18n: { Messages } } = require('powerCord/webpack');
+const { AsyncComponent, Icon, Icons: { FontAwesome } } = require('powerCord/components');
+const { open: openModal } = require('powerCord/modal');
 
 const { SPOTIFY_DEFAULT_IMAGE } = require('../constants');
 const SpotifyAPI = require('../SpotifyAPI');
@@ -37,7 +37,7 @@ class Modal extends React.PureComponent {
 
     return (
       <div
-        className={[ 'powercord-spotify', (this.state.hover || this.state.seeking) && 'hover' ].filter(Boolean).join(' ')}
+        className={[ 'powerCord-spotify', (this.state.hover || this.state.seeking) && 'hover' ].filter(Boolean).join(' ')}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
       >
@@ -151,7 +151,7 @@ class Modal extends React.PureComponent {
       return null;
     }
 
-    const hasCoolFeatures = powercord.account && powercord.account.accounts.spotify;
+    const hasCoolFeatures = powerCord.account && powerCord.account.accounts.spotify;
     return (
       <div className='spotify-extra-controls'>
         {hasCoolFeatures && this.renderAddToLibrary()}
@@ -266,9 +266,9 @@ class Modal extends React.PureComponent {
 }
 
 module.exports = Flux.connectStores(
-  [ playerStore, powercord.api.settings.store ],
+  [ playerStore, powerCord.api.settings.store ],
   (props) => ({
     ...playerStore.getStore(),
-    ...powercord.api.settings._fluxProps(props.entityID)
+    ...powerCord.api.settings._fluxProps(props.entityID)
   })
 )(Modal);

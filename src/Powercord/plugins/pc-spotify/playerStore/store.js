@@ -1,4 +1,4 @@
-const { Flux, FluxDispatcher } = require('powercord/webpack');
+const { Flux, FluxDispatcher } = require('powerCord/webpack');
 const { FluxActions } = require('../constants');
 
 const LibraryState = Object.freeze({

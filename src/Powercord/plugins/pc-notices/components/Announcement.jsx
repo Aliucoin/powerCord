@@ -1,5 +1,5 @@
-const { React, getModule } = require('powercord/webpack');
-const { Clickable } = require('powercord/components');
+const { React, getModule } = require('powerCord/webpack');
+const { Clickable } = require('powerCord/components');
 
 let classesCache = null;
 
@@ -41,7 +41,7 @@ class Announcement extends React.PureComponent {
   render () {
     const { types, button, dismiss, notice } = this.state;
 
-    return <div className={`powercord-notice ${notice} ${(types[this.props.color] || types.blurple)}`} id={this.props.id}>
+    return <div className={`powerCord-notice ${notice} ${(types[this.props.color] || types.blurple)}`} id={this.props.id}>
       {this.props.message}
       <Clickable className={dismiss} onClick={() => this.handleClick(this.props.onClose)}/>
       {this.props.button && <button className={button} onClick={() => this.handleClick(this.props.button.onClick)}>
@@ -51,7 +51,7 @@ class Announcement extends React.PureComponent {
   }
 
   handleClick (func) {
-    powercord.api.notices.closeAnnouncement(this.props.id);
+    powerCord.api.notices.closeAnnouncement(this.props.id);
     if (func && typeof func === 'function') {
       func();
     }

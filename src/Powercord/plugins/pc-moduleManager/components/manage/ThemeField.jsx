@@ -1,8 +1,8 @@
 /* eslint-disable */
 // const { default: SystemFonts } = require('system-font-families');
-const { React, Flux, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powercord/webpack');
-const { TextInput, SwitchItem, ButtonItem, SelectInput, ColorPickerInput } = require('powercord/components/settings');
-const { TabBar, Divider, Button, AsyncComponent } = require('powercord/components');
+const { React, Flux, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powerCord/webpack');
+const { TextInput, SwitchItem, ButtonItem, SelectInput, ColorPickerInput } = require('powerCord/components/settings');
+const { TabBar, Divider, Button, AsyncComponent } = require('powerCord/components');
 
 const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/ig;
 
@@ -120,8 +120,8 @@ class ThemeField extends React.PureComponent {
 }
 
 module.exports = Flux.connectStores(
-  [ powercord.api.settings.store ],
+  [ powerCord.api.settings.store ],
   ({ theme }) => ({
-    ...powercord.api.settings._fluxProps(`theme-${theme}`)
+    ...powerCord.api.settings._fluxProps(`theme-${theme}`)
   })
 )(ThemeField);

@@ -5,12 +5,12 @@ module.exports = {
   executor (args) {
     let result;
 
-    if (powercord.pluginManager.plugins.has(args[0])) {
-      if (powercord.pluginManager.isEnabled(args[0])) {
+    if (powerCord.pluginManager.plugins.has(args[0])) {
+      if (powerCord.pluginManager.isEnabled(args[0])) {
         result = `->> ERROR: Tried to load an already loaded plugin!
             (${args[0]})`;
       } else {
-        powercord.pluginManager.enable(args[0]);
+        powerCord.pluginManager.enable(args[0]);
         result = `+>> SUCCESS: Plugin loaded!
             (${args[0]})`;
       }
@@ -25,9 +25,9 @@ module.exports = {
     };
   },
   autocomplete (args) {
-    const plugins = powercord.pluginManager.getPlugins()
+    const plugins = powerCord.pluginManager.getPlugins()
       .sort((a, b) => a - b)
-      .map(plugin => powercord.pluginManager.plugins.get(plugin));
+      .map(plugin => powerCord.pluginManager.plugins.get(plugin));
 
     if (args.length > 1) {
       return false;
@@ -40,7 +40,7 @@ module.exports = {
           command: plugin.entityID,
           description: plugin.manifest.description
         })),
-      header: 'powercord plugin list'
+      header: 'powerCord plugin list'
     };
   }
 };

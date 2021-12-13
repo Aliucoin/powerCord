@@ -1,6 +1,6 @@
-const { React, getModuleByDisplayName, modal, i18n: { Messages } } = require('powercord/webpack');
-const { AsyncComponent } = require('powercord/components');
-const { open: openModal } = require('powercord/modal');
+const { React, getModuleByDisplayName, modal, i18n: { Messages } } = require('powerCord/webpack');
+const { AsyncComponent } = require('powerCord/components');
+const { open: openModal } = require('powerCord/modal');
 
 const Alert = AsyncComponent.from(getModuleByDisplayName('Alert'));
 
@@ -19,7 +19,7 @@ module.exports = class ConnectedAccounts extends React.Component {
   }
 
   refreshAccounts () {
-    powercord.api.connections.fetchAccounts().then(accounts => {
+    powerCord.api.connections.fetchAccounts().then(accounts => {
       this.setState({ accounts });
       accountStore = accounts;
     });
@@ -27,7 +27,7 @@ module.exports = class ConnectedAccounts extends React.Component {
 
   handleDisconnect () {
     const _this = this;
-    const connection = powercord.api.connections.get(this.account.type);
+    const connection = powerCord.api.connections.get(this.account.type);
     openModal(() => React.createElement(Alert, {
       title: Messages.DISCONNECT_ACCOUNT_TITLE.format({ name: connection.name }),
       body: Messages.DISCONNECT_ACCOUNT_BODY,

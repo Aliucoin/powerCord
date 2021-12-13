@@ -1,5 +1,5 @@
-const { React } = require('powercord/webpack');
-const { formatTime } = require('powercord/util');
+const { React } = require('powerCord/webpack');
+const { formatTime } = require('powerCord/util');
 const SpotifyAPI = require('../SpotifyAPI');
 
 class SeekBar extends React.PureComponent {

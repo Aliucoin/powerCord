@@ -1,8 +1,8 @@
 const { join } = require('path');
 const { shell } = require('electron');
-const { React, getModule, contextMenu, i18n: { Messages } } = require('powercord/webpack');
-const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('powercord/components');
-const { TextInput } = require('powercord/components/settings');
+const { React, getModule, contextMenu, i18n: { Messages } } = require('powerCord/webpack');
+const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('powerCord/components');
+const { TextInput } = require('powerCord/components/settings');
 
 const { emptyStateImage } = getModule([ 'emptyStateImage', 'emptyStateSubtext' ], false);
 
@@ -17,8 +17,8 @@ class Base extends React.Component {
 
   render () {
     return (
-      <div className='powercord-entities-manage powercord-text'>
-        <div className='powercord-entities-manage-header'>
+      <div className='powerCord-entities-manage powerCord-text'>
+        <div className='powerCord-entities-manage-header'>
           {this.renderHeader()}
           {this.renderButtons()}
         </div>
@@ -37,7 +37,7 @@ class Base extends React.Component {
   renderButtons () {
     return (
       <div className='buttons'>
-        {powercord.api.labs.isExperimentEnabled('pc-moduleManager-store')
+        {powerCord.api.labs.isExperimentEnabled('pc-moduleManager-store')
           ? <Button onClick={() => this.goToStore()}>{Messages[`POWERCORD_${this.state.key}_EXPLORE`]}</Button>
           : <Tooltip text={Messages.COMING_SOON}>
             <Button disabled>{Messages[`POWERCORD_${this.state.key}_EXPLORE`]}</Button>
@@ -50,7 +50,7 @@ class Base extends React.Component {
   renderBody () {
     const items = this.getItems();
     return (
-      <div className='powercord-entities-manage-items'>
+      <div className='powerCord-entities-manage-items'>
         {this.renderSearch()}
         {items.length === 0
           ? <div className='empty'>
@@ -65,7 +65,7 @@ class Base extends React.Component {
 
   renderSearch () {
     return (
-      <div className='powercord-entities-manage-search'>
+      <div className='powerCord-entities-manage-search'>
         <TextInput
           value={this.state.search}
           onChange={search => this.setState({ search })}
@@ -109,7 +109,7 @@ class Base extends React.Component {
     const { popLayer } = await getModule([ 'popLayer' ]);
     const { transitionTo } = await getModule([ 'transitionTo' ]);
     popLayer();
-    transitionTo(`/_powercord/store/${this.constructor.name.toLowerCase()}`);
+    transitionTo(`/_powerCord/store/${this.constructor.name.toLowerCase()}`);
   }
 
   fetchMissing () {

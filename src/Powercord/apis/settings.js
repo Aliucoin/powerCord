@@ -1,5 +1,5 @@
-const { Flux } = require('powercord/webpack');
-const { API } = require('powercord/entities');
+const { Flux } = require('powerCord/webpack');
+const { API } = require('powerCord/entities');
 
 const store = require('./settingsStore/store');
 const actions = require('./settingsStore/actions');
@@ -22,7 +22,7 @@ const actions = require('./settingsStore/actions');
  */
 
 /**
- * Powercord Settings API
+ * PowerCord Settings API
  * @property {Flux.Store} store Flux store
  * @property {Object.<String, SettingsTab>} tabs Settings tab
  */

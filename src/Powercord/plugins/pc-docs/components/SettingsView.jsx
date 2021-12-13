@@ -1,5 +1,5 @@
-const { React, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powercord/webpack');
-const { AsyncComponent, Clickable, Tooltip, Icons: { ExternalLink, Pin, Unpin, Close } } = require('powercord/components');
+const { React, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powerCord/webpack');
+const { AsyncComponent, Clickable, Tooltip, Icons: { ExternalLink, Pin, Unpin, Close } } = require('powerCord/components');
 
 module.exports = AsyncComponent.from((async () => {
   const StandardSidebarView = await getModuleByDisplayName('StandardSidebarView');
@@ -8,7 +8,7 @@ module.exports = AsyncComponent.from((async () => {
   class DocsSidebarView extends StandardSidebarView {
     render () {
       const res = super.render();
-      res.props.className += ' powercord-documentation';
+      res.props.className += ' powerCord-documentation';
       return res;
     }
 
@@ -22,7 +22,7 @@ module.exports = AsyncComponent.from((async () => {
         <Tooltip text={Messages.POPOUT_PLAYER} position='bottom'>
           <Clickable
             onClick={this.props.onPopout}
-            className='powercord-docs-button'
+            className='powerCord-docs-button'
           >
             <ExternalLink/>
           </Clickable>
@@ -44,7 +44,7 @@ module.exports = AsyncComponent.from((async () => {
       if (this.props.popout) {
         return (
           <>
-            <div className='powercord-docs-titlebar'>
+            <div className='powerCord-docs-titlebar'>
               <Tooltip
                 text={this.props.windowOnTop ? Messages.POPOUT_REMOVE_FROM_TOP : Messages.POPOUT_STAY_ON_TOP}
                 position='left'

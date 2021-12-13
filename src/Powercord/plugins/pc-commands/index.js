@@ -1,6 +1,6 @@
-const { Plugin } = require('powercord/entities');
-const { getModule } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
+const { Plugin } = require('powerCord/entities');
+const { getModule } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
 
 const commands = require('./commands');
 const monkeypatchMessages = require('./monkeypatchMessages.js');
@@ -8,7 +8,7 @@ const injectAutocomplete = require('./injectAutocomplete.js');
 
 module.exports = class Commands extends Plugin {
   async startPlugin () {
-    Object.values(commands).forEach(command => powercord.api.commands.registerCommand(command));
+    Object.values(commands).forEach(command => powerCord.api.commands.registerCommand(command));
 
     monkeypatchMessages.call(this);
     injectAutocomplete.call(this);
@@ -16,12 +16,12 @@ module.exports = class Commands extends Plugin {
     const slowmodeStore = await getModule([ 'getSlowmodeCooldownGuess' ]);
     const chatRestrictions = await getModule([ 'applyChatRestrictions' ]);
     inject('pc-commands-slowmode', chatRestrictions, 'applyChatRestrictions', (args) => {
-      const currentPrefix = powercord.api.commands.prefix;
+      const currentPrefix = powerCord.api.commands.prefix;
       const [ , , content, , channel ] = args;
 
       if (channel && channel.getGuildId() && slowmodeStore.getSlowmodeCooldownGuess(channel.id) > 0) {
         const [ cmd, ...cmdArgs ] = content.slice(currentPrefix.length).split(' ');
-        const currentCommand = powercord.api.commands.find(c => [
+        const currentCommand = powerCord.api.commands.find(c => [
           c.command.toLowerCase(), ...(c.aliases?.map(alias => alias.toLowerCase()) || [])
         ].includes(cmd));
 
@@ -38,7 +38,7 @@ module.exports = class Commands extends Plugin {
   }
 
   pluginWillUnload () {
-    Object.values(commands).forEach(command => powercord.api.commands.unregisterCommand(command.command));
+    Object.values(commands).forEach(command => powerCord.api.commands.unregisterCommand(command.command));
     uninject('pc-commands-textarea');
     uninject('pc-commands-plain-autocomplete');
     uninject('pc-commands-slate-autocomplete');

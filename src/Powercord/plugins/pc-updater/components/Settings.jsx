@@ -1,9 +1,9 @@
-const { React, getModule, i18n: { Messages, _chosenLocale: currentLocale } } = require('powercord/webpack');
-const { Button, FormNotice, FormTitle, Tooltip, Icons: { FontAwesome } } = require('powercord/components');
-const { SwitchItem, TextInput, Category, ButtonItem } = require('powercord/components/settings');
-const { open: openModal, close: closeModal } = require('powercord/modal');
-const { Confirm } = require('powercord/components/modal');
-const { REPO_URL, CACHE_FOLDER } = require('powercord/constants');
+const { React, getModule, i18n: { Messages, _chosenLocale: currentLocale } } = require('powerCord/webpack');
+const { Button, FormNotice, FormTitle, Tooltip, Icons: { FontAwesome } } = require('powerCord/components');
+const { SwitchItem, TextInput, Category, ButtonItem } = require('powerCord/components/settings');
+const { open: openModal, close: closeModal } = require('powerCord/modal');
+const { Confirm } = require('powerCord/components/modal');
+const { REPO_URL, CACHE_FOLDER } = require('powerCord/constants');
 const { clipboard } = require('electron');
 const { readdirSync, existsSync, lstatSync } = require('fs');
 
@@ -13,7 +13,7 @@ const Update = require('./Update');
 module.exports = class UpdaterSettings extends React.PureComponent {
   constructor () {
     super();
-    this.plugin = powercord.pluginManager.get('pc-updater');
+    this.plugin = powerCord.pluginManager.get('pc-updater');
     this.state = {
       opened: false,
       copied: false
@@ -61,7 +61,7 @@ module.exports = class UpdaterSettings extends React.PureComponent {
       title = Messages.POWERCORD_UPDATES_UP_TO_DATE;
     }
 
-    return <div className='powercord-updater powercord-text'>
+    return <div className='powerCord-updater powerCord-text'>
       {awaitingReload
         ? this.renderReload()
         : isUnsupported && this.renderUnsupported()}
@@ -83,15 +83,15 @@ module.exports = class UpdaterSettings extends React.PureComponent {
         <div className="about">
           <div>
             <span>{Messages.POWERCORD_UPDATES_UPSTREAM}</span>
-            <span>{powercord.gitInfos.upstream.replace(REPO_URL, Messages.POWERCORD_UPDATES_UPSTREAM_OFFICIAL)}</span>
+            <span>{powerCord.gitInfos.upstream.replace(REPO_URL, Messages.POWERCORD_UPDATES_UPSTREAM_OFFICIAL)}</span>
           </div>
           <div>
             <span>{Messages.POWERCORD_UPDATES_REVISION}</span>
-            <span>{powercord.gitInfos.revision.substring(0, 7)}</span>
+            <span>{powerCord.gitInfos.revision.substring(0, 7)}</span>
           </div>
           <div>
             <span>{Messages.POWERCORD_UPDATES_BRANCH}</span>
-            <span>{powercord.gitInfos.branch}</span>
+            <span>{powerCord.gitInfos.branch}</span>
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@ module.exports = class UpdaterSettings extends React.PureComponent {
           </div>
         </div>)}
       </Category>}
-      <FormTitle className='powercord-updater-ft'>{Messages.OPTIONS}</FormTitle>
+      <FormTitle className='powerCord-updater-ft'>{Messages.OPTIONS}</FormTitle>
       {!disabled && <>
         <SwitchItem
           value={this.props.getSetting('automatic', false)}
@@ -202,11 +202,11 @@ module.exports = class UpdaterSettings extends React.PureComponent {
         </ButtonItem>
         {/* <ButtonItem
           note={Messages.POWERCORD_UPDATES_OPTS_RELEASE_DESC}
-          button={powercord.gitInfos.branch === 'v2'
+          button={powerCord.gitInfos.branch === 'v2'
             ? Messages.POWERCORD_UPDATES_OPTS_RELEASE_DEVELOP_BTN
             : Messages.POWERCORD_UPDATES_OPTS_RELEASE_STABLE_BTN}
           onClick={() => this.askChangeChannel(
-            () => this.plugin.changeBranch(powercord.gitInfos.branch === 'v2' ? 'v2-dev' : 'v2')
+            () => this.plugin.changeBranch(powerCord.gitInfos.branch === 'v2' ? 'v2-dev' : 'v2')
           )}
         >
           {Messages.POWERCORD_UPDATES_OPTS_RELEASE}
@@ -306,22 +306,22 @@ module.exports = class UpdaterSettings extends React.PureComponent {
       onConfirm={callback}
       onCancel={closeModal}
     >
-      <div className='powercord-text'>{content}</div>
+      <div className='powerCord-text'>{content}</div>
     </Confirm>);
   }
 
   // --- DEBUG STUFF (Intentionally left english-only)
   renderDebugInfo () {
     const { getRegisteredExperiments, getExperimentOverrides } = getModule([ 'initialize', 'getExperimentOverrides' ], false);
-    const { apiManager: { apis }, api: { commands: { commands }, settings: { store: settingsStore } } } = powercord;
+    const { apiManager: { apis }, api: { commands: { commands }, settings: { store: settingsStore } } } = powerCord;
     const superProperties = getModule([ 'getSuperPropertiesBase64' ], false).getSuperProperties();
-    const unauthorizedPlugins = Array.from(powercord.pluginManager.plugins.values()).filter(plugin =>
+    const unauthorizedPlugins = Array.from(powerCord.pluginManager.plugins.values()).filter(plugin =>
       plugin.__shortCircuit).map(plugin => plugin.manifest.name);
-    const plugins = powercord.pluginManager.getPlugins().filter(plugin =>
-      !powercord.pluginManager.get(plugin).isInternal && powercord.pluginManager.isEnabled(plugin)
+    const plugins = powerCord.pluginManager.getPlugins().filter(plugin =>
+      !powerCord.pluginManager.get(plugin).isInternal && powerCord.pluginManager.isEnabled(plugin)
     );
 
-    const enabledLabs = powercord.api.labs.experiments.filter(e => powercord.api.labs.isExperimentEnabled(e.id));
+    const enabledLabs = powerCord.api.labs.experiments.filter(e => powerCord.api.labs.isExperimentEnabled(e.id));
     const experimentOverrides = Object.keys(getExperimentOverrides()).length;
     const availableExperiments = Object.keys(getRegisteredExperiments()).length;
 
@@ -377,42 +377,42 @@ module.exports = class UpdaterSettings extends React.PureComponent {
             )}
           </div>
 
-          <b>Powercord </b>
+          <b>PowerCord </b>
           <div className='row'>
             <div className='column'>Commands:&#10;{Object.keys(commands).length}</div>
             <div className='column'>Settings:&#10;{Object.keys(settingsStore.getAllSettings()).length}</div>
-            <div className='column'>Plugins:&#10;{powercord.pluginManager.getPlugins()
-              .filter(plugin => powercord.pluginManager.isEnabled(plugin)).length} / {powercord.pluginManager.plugins.size}
+            <div className='column'>Plugins:&#10;{powerCord.pluginManager.getPlugins()
+              .filter(plugin => powerCord.pluginManager.isEnabled(plugin)).length} / {powerCord.pluginManager.plugins.size}
             </div>
-            <div className='column'>Themes:&#10;{powercord.styleManager.getThemes()
-              .filter(theme => powercord.styleManager.isEnabled(theme)).length} / {powercord.styleManager.themes.size}
+            <div className='column'>Themes:&#10;{powerCord.styleManager.getThemes()
+              .filter(theme => powerCord.styleManager.isEnabled(theme)).length} / {powerCord.styleManager.themes.size}
             </div>
-            <div className='column'>Labs:&#10;{enabledLabs.length} / {powercord.api.labs.experiments.length}
+            <div className='column'>Labs:&#10;{enabledLabs.length} / {powerCord.api.labs.experiments.length}
             </div>
-            <div className='column'>{`Settings Sync:\n${powercord.settings.get('settingsSync', false)}`}</div>
+            <div className='column'>{`Settings Sync:\n${powerCord.settings.get('settingsSync', false)}`}</div>
             <div className='column'>Cached Files:&#10;{cachedFiles}</div>
-            <div className='column'>{`Account:\n${!!powercord.account}`}</div>
+            <div className='column'>{`Account:\n${!!powerCord.account}`}</div>
             <div className='column'>APIs:&#10;{apis.length}</div>
           </div>
 
           <b>Git </b>
           <div className='row'>
-            <div className='column'>Upstream:&#10;{powercord.gitInfos.upstream.replace(REPO_URL, 'Official')}</div>
+            <div className='column'>Upstream:&#10;{powerCord.gitInfos.upstream.replace(REPO_URL, 'Official')}</div>
             <div className='column'>Revision:&#10;
               <a
-                href={`https://github.com/${powercord.gitInfos.upstream}/commit/${powercord.gitInfos.revision}`}
+                href={`https://github.com/${powerCord.gitInfos.upstream}/commit/${powerCord.gitInfos.revision}`}
                 target='_blank'
               >
-                [{powercord.gitInfos.revision.substring(0, 7)}]
+                [{powerCord.gitInfos.revision.substring(0, 7)}]
               </a>
             </div>
-            <div className='column'>Branch:&#10;{powercord.gitInfos.branch}</div>
-            <div className='column'>{`Latest:\n${!this.props.getSetting('updates', []).find(update => update.id === 'powercord')}`}</div>
+            <div className='column'>Branch:&#10;{powerCord.gitInfos.branch}</div>
+            <div className='column'>{`Latest:\n${!this.props.getSetting('updates', []).find(update => update.id === 'powerCord')}`}</div>
           </div>
 
           <b>Listings </b>
           <div className='row'>
-            {createPathReveal('Powercord Path', powercord.basePath)}
+            {createPathReveal('PowerCord Path', powerCord.basePath)}
             {createPathReveal('Discord Path', discordPath)}
             <div className='full-column'>Experiments:&#10;{experimentOverrides > 0 ? Object.keys(getExperimentOverrides()).join(', ') : 'n/a'}</div>
             <div className='full-column'>Labs:&#10;

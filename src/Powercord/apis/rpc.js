@@ -1,4 +1,4 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 /**
  * @typedef DiscordRpcEvent

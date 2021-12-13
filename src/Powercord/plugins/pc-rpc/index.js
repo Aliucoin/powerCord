@@ -1,7 +1,7 @@
-const { Plugin } = require('powercord/entities');
-const { getModule } = require('powercord/webpack');
-const { WEBSITE } = require('powercord/constants');
-const { inject, uninject } = require('powercord/injector');
+const { Plugin } = require('powerCord/entities');
+const { getModule } = require('powerCord/webpack');
+const { WEBSITE } = require('powerCord/constants');
+const { inject, uninject } = require('powerCord/injector');
 
 module.exports = class RPC extends Plugin {
   async startPlugin () {
@@ -15,9 +15,9 @@ module.exports = class RPC extends Plugin {
     this._boundAddEvent = this._addEvent.bind(this);
     this._boundRemoveEvent = this._removeEvent.bind(this);
 
-    powercord.api.rpc.registerScope('POWERCORD_PRIVATE', w => w === WEBSITE);
-    powercord.api.rpc.on('eventAdded', this._boundAddEvent);
-    powercord.api.rpc.on('eventRemoved', this._boundRemoveEvent);
+    powerCord.api.rpc.registerScope('POWERCORD_PRIVATE', w => w === WEBSITE);
+    powerCord.api.rpc.on('eventAdded', this._boundAddEvent);
+    powerCord.api.rpc.on('eventRemoved', this._boundRemoveEvent);
   }
 
   pluginWillUnload () {
@@ -27,24 +27,24 @@ module.exports = class RPC extends Plugin {
     uninject('pc-rpc-ws');
     uninject('pc-rpc-ws-promise');
 
-    powercord.rpcServer.removeAllListeners('request');
-    powercord.rpcServer.on('request', this._originalHandler);
+    powerCord.rpcServer.removeAllListeners('request');
+    powerCord.rpcServer.on('request', this._originalHandler);
 
-    powercord.api.rpc.unregisterScope('POWERCORD_PRIVATE');
-    powercord.api.rpc.off('eventAdded', this._boundAddEvent);
-    powercord.api.rpc.off('eventRemoved', this._boundRemoveEvent);
+    powerCord.api.rpc.unregisterScope('POWERCORD_PRIVATE');
+    powerCord.api.rpc.off('eventAdded', this._boundAddEvent);
+    powerCord.api.rpc.off('eventRemoved', this._boundRemoveEvent);
   }
 
   _patchHTTPServer () {
-    [ this._originalHandler ] = powercord.rpcServer.listeners('request');
-    powercord.rpcServer.removeAllListeners('request');
-    powercord.rpcServer.on('request', (req, res) => {
-      if (req.url === '/powercord') {
+    [ this._originalHandler ] = powerCord.rpcServer.listeners('request');
+    powerCord.rpcServer.removeAllListeners('request');
+    powerCord.rpcServer.on('request', (req, res) => {
+      if (req.url === '/powerCord') {
         const data = JSON.stringify({
           code: 69,
-          powercord: powercord.gitInfos,
-          plugins: [ ...powercord.pluginManager.plugins.values() ].filter(p => !p.isInternal).map(p => p.entityID),
-          themes: [ ...powercord.styleManager.themes.values() ].filter(t => t.isTheme).map(t => t.entityID)
+          powerCord: powerCord.gitInfos,
+          plugins: [ ...powerCord.pluginManager.plugins.values() ].filter(p => !p.isInternal).map(p => p.entityID),
+          themes: [ ...powerCord.styleManager.themes.values() ].filter(t => t.isTheme).map(t => t.entityID)
         });
 
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -64,19 +64,19 @@ module.exports = class RPC extends Plugin {
     const websocketHandler = await getModule([ 'validateSocketClient' ]);
 
     inject('pc-rpc-ws', websocketHandler, 'validateSocketClient', args => {
-      if (args[2] === 'powercord') {
+      if (args[2] === 'powerCord') {
         args[2] = void 0;
-        args[3] = 'powercord';
+        args[3] = 'powerCord';
       }
       return args;
     }, true);
 
     inject('pc-rpc-ws-promise', websocketHandler, 'validateSocketClient', (args, res) => {
-      if (args[3] === 'powercord') {
+      if (args[3] === 'powerCord') {
         res.catch(() => void 0); // Shut
         args[0].authorization.scopes = [
           'POWERCORD',
-          ...Object.keys(powercord.api.rpc.scopes).filter(s => powercord.api.rpc.scopes[s](args[1]))
+          ...Object.keys(powerCord.api.rpc.scopes).filter(s => powerCord.api.rpc.scopes[s](args[1]))
         ];
         return Promise.resolve(null);
       }
@@ -85,7 +85,7 @@ module.exports = class RPC extends Plugin {
   }
 
   _addEvent (event) {
-    this.handlers[event] = powercord.rpc.api.events[event];
+    this.handlers[event] = powerCord.rpc.api.events[event];
   }
 
   _removeEvent (event) {

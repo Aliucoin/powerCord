@@ -1,7 +1,7 @@
-const { Plugin } = require('powercord/entities');
-const { React, getModule, spotify, spotifySocket } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
-const { waitFor, getOwnerInstance, findInTree, sleep } = require('powercord/util');
+const { Plugin } = require('powerCord/entities');
+const { React, getModule, spotify, spotifySocket } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
+const { waitFor, getOwnerInstance, findInTree, sleep } = require('powerCord/util');
 const playerStoreActions = require('./playerStore/actions');
 const playerStore = require('./playerStore/store');
 const songsStoreActions = require('./songsStore/actions');
@@ -32,7 +32,7 @@ class Spotify extends Plugin {
   }
 
   startPlugin () {
-    powercord.api.i18n.loadAllStrings(i18n);
+    powerCord.api.i18n.loadAllStrings(i18n);
     this.loadStylesheet('style.scss');
     this._injectSocket();
     this._injectModal();
@@ -46,7 +46,7 @@ class Spotify extends Plugin {
     playerStoreActions.fetchDevices()
       .catch((e) => this.error('Failed to fetch devices', e));
 
-    powercord.api.settings.registerSettings('pc-spotify', {
+    powerCord.api.settings.registerSettings('pc-spotify', {
       category: this.entityID,
       label: 'Spotify',
       render: (props) =>
@@ -56,7 +56,7 @@ class Spotify extends Plugin {
         })
     });
 
-    Object.values(commands).forEach(cmd => powercord.api.commands.registerCommand(cmd));
+    Object.values(commands).forEach(cmd => powerCord.api.commands.registerCommand(cmd));
   }
 
   pluginWillUnload () {
@@ -64,8 +64,8 @@ class Spotify extends Plugin {
     uninject('pc-spotify-modal');
     // this._applySocketChanges();
     this._patchAutoPause(true);
-    Object.values(commands).forEach(cmd => powercord.api.commands.unregisterCommand(cmd.command));
-    powercord.api.settings.unregisterSettings('pc-spotify');
+    Object.values(commands).forEach(cmd => powerCord.api.commands.unregisterCommand(cmd.command));
+    powerCord.api.settings.unregisterSettings('pc-spotify');
     spotifySocket.getActiveSocketAndDevice()?.socket.socket.close();
     songsStoreActions.purgeSongs();
 
@@ -184,7 +184,7 @@ class Spotify extends Plugin {
       if (this._libraryTimeout) {
         clearTimeout(this._libraryTimeout);
       }
-      if (!state.item.is_local && powercord.account && powercord.account.accounts.spotify) {
+      if (!state.item.is_local && powerCord.account && powerCord.account.accounts.spotify) {
         this._libraryTimeout = setTimeout(() => {
           SpotifyAPI.checkLibrary(state.item.id).then(r => playerStoreActions.updateCurrentLibraryState(
             r.body[0]

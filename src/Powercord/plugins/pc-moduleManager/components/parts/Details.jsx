@@ -1,13 +1,13 @@
-const { React, i18n: { Messages } } = require('powercord/webpack');
-const { open: openModal } = require('powercord/modal');
-const { Clickable, Tooltip, Icons: { Receipt, Person, Tag, Chemistry, Scale, Info } } = require('powercord/components');
+const { React, i18n: { Messages } } = require('powerCord/webpack');
+const { open: openModal } = require('powerCord/modal');
+const { Clickable, Tooltip, Icons: { Receipt, Person, Tag, Chemistry, Scale, Info } } = require('powerCord/components');
 
 const LicenseModal = require('../License');
 const licenses = require('../../licenses');
 
 module.exports = React.memo(
   ({ author, version, description, license, svgSize }) => (
-    <div className='powercord-product-details'>
+    <div className='powerCord-product-details'>
       <div className='description'>
         <Tooltip text={Messages.DESCRIPTION} position='top'>
           <Receipt width={svgSize} height={svgSize}/>

@@ -1,7 +1,7 @@
 /* eslint-env jest */
 const { join } = require('path');
-const JsxCompiler = require('../src/fake_node_modules/powercord/compilers/jsx');
-const rmdir = require('../src/fake_node_modules/powercord/util/rmdirRf');
+const JsxCompiler = require('../src/fake_node_modules/powerCord/compilers/jsx');
+const rmdir = require('../src/fake_node_modules/powerCord/util/rmdirRf');
 const cachePath = join(__dirname, '..', '.cache', 'jsx');
 
 describe('JSX Compilation', () => {

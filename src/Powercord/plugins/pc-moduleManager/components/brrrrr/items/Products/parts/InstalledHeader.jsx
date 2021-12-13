@@ -1,9 +1,9 @@
-const { React, i18n: { Messages } } = require('powercord/webpack');
-const { Tooltip, Switch } = require('powercord/components');
+const { React, i18n: { Messages } } = require('powerCord/webpack');
+const { Tooltip, Switch } = require('powerCord/components');
 
 // @todo: merge with Product/
 module.exports = ({ name, enabled, onDisable, onEnable }) =>
-  <div className='powercord-plugin-header'>
+  <div className='powerCord-plugin-header'>
     <h4>{name}</h4>
     <Tooltip text={enabled ? Messages.DISABLE : Messages.ENABLE} position='top'>
       <div>

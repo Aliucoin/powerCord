@@ -1,8 +1,8 @@
 const { parse } = require('url');
 const { format } = require('util');
 const { resolve } = require('path');
-const { get } = require('powercord/http');
-const { React } = require('powercord/webpack');
+const { get } = require('powerCord/http');
+const { React } = require('powerCord/webpack');
 
 const RE_INVARIANT_URL = /https?:\/\/reactjs\.org\/docs\/error-decoder\.html\?invariant=([0-9]+)(?:[^ ])+/;
 
@@ -63,7 +63,7 @@ class ErrorBoundary extends React.PureComponent {
   render () {
     return this.state.crashed
       ? (
-        <div className='powercord-text powercord-settings-error'>
+        <div className='powerCord-text powerCord-settings-error'>
           <h2>Huh, that's odd</h2>
           <div>An error occurred while rendering settings panel.</div>
           <code>{this.state.errorStack}</code>

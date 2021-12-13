@@ -1,16 +1,16 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { getModule } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
+const { getModule } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
 
 module.exports = async () => {
   const GuildFolder = await getModule(m => m.default && (
     (m.default.type?.render?.toString().includes('defaultFolderName')) ||
-    (m.default.type?.__powercordOriginal_render?.toString().includes('defaultFolderName'))
+    (m.default.type?.__powerCordOriginal_render?.toString().includes('defaultFolderName'))
   ), false);
 
   inject('pc-utilitycls-folders', GuildFolder.default.type, 'render', (args, res) => {

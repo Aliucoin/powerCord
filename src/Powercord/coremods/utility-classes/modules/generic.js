@@ -1,21 +1,21 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { ipcRenderer } = require('electron');
 
 module.exports = async () => {
-  document.body.classList.add('powercord');
+  document.body.classList.add('powerCord');
   if (window.__OVERLAY__) {
     document.body.classList.add('overlay');
   }
 
-  if (powercord.settings.get('transparentWindow')) {
+  if (powerCord.settings.get('transparentWindow')) {
     document.body.classList.add('transparent');
   }
-  if (powercord.settings.get('experimentalWebPlatform')) {
+  if (powerCord.settings.get('experimentalWebPlatform')) {
     document.body.classList.add('experimental-web-features');
   }
   const date = new Date();

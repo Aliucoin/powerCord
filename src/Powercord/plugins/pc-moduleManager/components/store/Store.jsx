@@ -1,5 +1,5 @@
-const { React, Flux, getModule, getModuleByDisplayName } = require('powercord/webpack');
-const { Tooltip, Clickable, HeaderBar, AsyncComponent, Icons: { Plugin: PluginIcon, Theme, CloudUpload, Certificate, Server } } = require('powercord/components');
+const { React, Flux, getModule, getModuleByDisplayName } = require('powerCord/webpack');
+const { Tooltip, Clickable, HeaderBar, AsyncComponent, Icons: { Plugin: PluginIcon, Theme, CloudUpload, Certificate, Server } } = require('powerCord/components');
 
 const Product = require('../brrrrr/items/Products/Product');
 const VerticalScroller = AsyncComponent.from(getModuleByDisplayName('VerticalScroller'));
@@ -10,7 +10,7 @@ const SearchBox = AsyncComponent.from((async () => {
    * const instance = new GuildDiscoverySearch({});
    * return (props) => {
    *   const res = instance.renderSearch().props.children({});
-   *   res.props.className += ' powercord-store-search';
+   *   res.props.className += ' powerCord-store-search';
    *   [ res.props.children.props.children ] = res.props.children.props.children;
    *   Object.assign(res.props.children.props.children.props.children[0].props, props);
    *   if (props.focused && props.searchTerm.length > 0) {
@@ -47,7 +47,7 @@ class Store extends React.Component {
   }
 
   doSearch () {
-    const input = document.querySelector('.powercord-store-search input');
+    const input = document.querySelector('.powerCord-store-search input');
     if (input) {
       input.blur();
     }
@@ -55,7 +55,7 @@ class Store extends React.Component {
   }
 
   clearSearch () {
-    const input = document.querySelector('.powercord-store-search input');
+    const input = document.querySelector('.powerCord-store-search input');
     if (input) {
       input.blur();
     }
@@ -86,7 +86,7 @@ class Store extends React.Component {
     /* eslint-disable no-unreachable */
     // noinspection UnreachableCodeJS
     const { headerBar, store } = classes;
-    return <div className='powercord-text powercord-store'>
+    return <div className='powerCord-text powerCord-store'>
       <HeaderBar transparent={false} toolbar={this.renderToolbar()}>
         <div className={headerBar.iconWrapper}>
           {this.state.type === 'plugins'
@@ -96,8 +96,8 @@ class Store extends React.Component {
         <HeaderBar.Title>Browse {this.state.type[0].toUpperCase() + this.state.type.slice(1)}</HeaderBar.Title>
       </HeaderBar>
       <img className={classes.background} alt='background' src={this.props.images.background}/>
-      <VerticalScroller outerClassName={[ store.container, 'powercord-store-container' ].join(' ')}>
-        <div className='powercord-store-body'>
+      <VerticalScroller outerClassName={[ store.container, 'powerCord-store-container' ].join(' ')}>
+        <div className='powerCord-store-body'>
           <SearchBox
             placeholder={`Search for ${this.state.word} ${this.state.type}...`}
             searchTerm={this.state.search}
@@ -119,7 +119,7 @@ class Store extends React.Component {
   renderToolbar () {
     const { topic, headerBar } = classes;
     /*
-     * if (!powercord.account) {
+     * if (!powerCord.account) {
      *  return null;
      * }
      */
@@ -146,7 +146,7 @@ class Store extends React.Component {
 
   renderFilters () {
     return <>
-      <div className='powercord-store-filters'>
+      <div className='powerCord-store-filters'>
         <div className='filter'>
           <div className='label'>Browsing:</div>
           <div className='value'>All {this.state.type}</div>
@@ -167,10 +167,10 @@ class Store extends React.Component {
   }
 
   renderList () {
-    const entityManager = powercord[this.state.type === 'plugins' ? 'pluginManager' : 'styleManager'];
+    const entityManager = powerCord[this.state.type === 'plugins' ? 'pluginManager' : 'styleManager'];
     // @todo: do it but it's not shit and uses new manifest format
     return <>
-      <div className={[ 'powercord-store-products', this.state.focused ? 'faded' : '' ].join(' ')}>
+      <div className={[ 'powerCord-store-products', this.state.focused ? 'faded' : '' ].join(' ')}>
         {[ ...entityManager[this.state.type].values() ].map(entity => <Product product={entity} type={this.state.type}/>)}
       </div>
     </>;

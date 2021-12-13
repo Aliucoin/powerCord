@@ -1,7 +1,7 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 /**
- * @typedef PowercordKeybind
+ * @typedef PowerCordKeybind
  * @property {String} keybind Keybind accelerator
  * @property {Function} executor Executor
  * @property {Boolean} isGlobal Whether the keybind should be usable when Discord is not focused or not
@@ -9,8 +9,8 @@ const { API } = require('powercord/entities');
  */
 
 /**
- * Powercord Keybinds API
- * @property {Object.<String, PowercordKeybind>} keybinds Keybinds
+ * PowerCord Keybinds API
+ * @property {Object.<String, PowerCordKeybind>} keybinds Keybinds
  */
 class KeybindsAPI extends API {
   constructor () {
@@ -22,7 +22,7 @@ class KeybindsAPI extends API {
   /**
    * Registers a keybind
    * @param {String} id Keybind ID
-   * @param {PowercordKeybind} keybind Keybind
+   * @param {PowerCordKeybind} keybind Keybind
    */
   registerKeybind (id, keybind) {
     throw new Error('Keybinds API is currently not working');

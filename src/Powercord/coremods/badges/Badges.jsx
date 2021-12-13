@@ -1,23 +1,23 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { shell: { openExternal } } = require('electron');
-const { open: openModal } = require('powercord/modal');
-const { gotoOrJoinServer } = require('powercord/util');
-const { Clickable, Tooltip, Icons: { badges: BadgeIcons } } = require('powercord/components');
-const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { WEBSITE, I18N_WEBSITE, DISCORD_INVITE, REPO_URL } = require('powercord/constants');
+const { open: openModal } = require('powerCord/modal');
+const { gotoOrJoinServer } = require('powerCord/util');
+const { Clickable, Tooltip, Icons: { badges: BadgeIcons } } = require('powerCord/components');
+const { React, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { WEBSITE, I18N_WEBSITE, DISCORD_INVITE, REPO_URL } = require('powerCord/constants');
 const DonateModal = require('./DonateModal');
 
 const Base = React.memo(({ color, tooltip, tooltipPosition, onClick, className, children }) => {
   const { profileBadge22 } = getModule([ 'profileBadge22' ], false);
   return (
-    <Clickable onClick={onClick || (() => void 0)} className='powercord-badge-wrapper'>
+    <Clickable onClick={onClick || (() => void 0)} className='powerCord-badge-wrapper'>
       <Tooltip text={tooltip} position={tooltipPosition || 'top' } spacing={24}>
-        <div className={`${profileBadge22} powercord-badge ${className}`} style={{ color: `#${color || '7289da'}` }}>
+        <div className={`${profileBadge22} powerCord-badge ${className}`} style={{ color: `#${color || '7289da'}` }}>
           {children}
         </div>
       </Tooltip>
@@ -29,7 +29,7 @@ const Custom = React.memo(({ name, icon, tooltipPosition }) => (
   <Base
     tooltipPosition={tooltipPosition}
     onClick={() => openModal(DonateModal)}
-    className='powercord-badge-cutie'
+    className='powerCord-badge-cutie'
     tooltip={name}
   >
     <img src={icon} alt='Custom badge'/>
@@ -39,7 +39,7 @@ const Custom = React.memo(({ name, icon, tooltipPosition }) => (
 const Developer = React.memo(({ color }) => (
   <Base
     onClick={() => openExternal(`${WEBSITE}/contributors`)}
-    className='powercord-badge-developer'
+    className='powerCord-badge-developer'
     tooltip={Messages.POWERCORD_BADGES_DEVELOPER}
     color={color}
   >
@@ -50,7 +50,7 @@ const Developer = React.memo(({ color }) => (
 const Staff = React.memo(({ color }) => (
   <Base
     onClick={() => gotoOrJoinServer(DISCORD_INVITE)}
-    className='powercord-badge-staff'
+    className='powerCord-badge-staff'
     tooltip={Messages.POWERCORD_BADGES_STAFF}
     color={color}
   >
@@ -61,7 +61,7 @@ const Staff = React.memo(({ color }) => (
 const Support = React.memo(({ color }) => (
   <Base
     onClick={() => gotoOrJoinServer(DISCORD_INVITE)}
-    className='powercord-badge-support'
+    className='powerCord-badge-support'
     tooltip={Messages.POWERCORD_BADGES_SUPPORT}
     color={color}
   >
@@ -72,7 +72,7 @@ const Support = React.memo(({ color }) => (
 const Contributor = React.memo(({ color }) => (
   <Base
     onClick={() => openExternal(`${WEBSITE}/contributors`)}
-    className='powercord-badge-contributor'
+    className='powerCord-badge-contributor'
     tooltip={Messages.POWERCORD_BADGES_CONTRIBUTOR}
     color={color}
   >
@@ -83,7 +83,7 @@ const Contributor = React.memo(({ color }) => (
 const Translator = React.memo(({ color }) => ( // @todo: flag
   <Base
     onClick={() => openExternal(I18N_WEBSITE)}
-    className='powercord-badge-translator'
+    className='powerCord-badge-translator'
     tooltip={Messages.POWERCORD_BADGES_TRANSLATOR}
     color={color}
   >
@@ -94,7 +94,7 @@ const Translator = React.memo(({ color }) => ( // @todo: flag
 const BugHunter = React.memo(({ color }) => (
   <Base
     onClick={() => openExternal(`https://github.com/${REPO_URL}/issues?q=label:bug`)}
-    className='powercord-badge-hunter'
+    className='powerCord-badge-hunter'
     tooltip={Messages.POWERCORD_BADGES_HUNTER}
     color={color}
   >
@@ -104,7 +104,7 @@ const BugHunter = React.memo(({ color }) => (
 
 const EarlyUser = React.memo(({ color }) => (
   <Base
-    className='powercord-badge-early'
+    className='powerCord-badge-early'
     tooltip={Messages.POWERCORD_BADGES_EARLY}
     color={color}
   >

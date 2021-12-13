@@ -1,7 +1,7 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 /**
- * @typedef PowercordExperiment
+ * @typedef PowerCordExperiment
  * @property {String} id
  * @property {String} name
  * @property {Number} date
@@ -10,7 +10,7 @@ const { API } = require('powercord/entities');
  */
 
 /**
- * @property {PowercordExperiment[]} experiments
+ * @property {PowerCordExperiment[]} experiments
  */
 class LabsAPI extends API {
   constructor () {
@@ -21,7 +21,7 @@ class LabsAPI extends API {
 
   /**
    * Registers an experiment
-   * @param {PowercordExperiment} experiment
+   * @param {PowerCordExperiment} experiment
    */
   registerExperiment (experiment) {
     this.experiments.push(experiment);
@@ -52,8 +52,8 @@ class LabsAPI extends API {
     if (!experiment) {
       throw new Error(`Tried to enable a non-registered experiment "${experimentId}"`);
     }
-    powercord.settings.set('labs', [
-      ...powercord.settings.get('labs', []),
+    powerCord.settings.set('labs', [
+      ...powerCord.settings.get('labs', []),
       experimentId
     ]);
     if (experiment.callback) {
@@ -70,7 +70,7 @@ class LabsAPI extends API {
     if (!experiment) {
       throw new Error(`Tried to enable a non-registered experiment "${experimentId}"`);
     }
-    powercord.settings.set('labs', powercord.settings.get('labs', []).filter(e => e !== experimentId));
+    powerCord.settings.set('labs', powerCord.settings.get('labs', []).filter(e => e !== experimentId));
     if (experiment.callback) {
       experiment.callback(false);
     }

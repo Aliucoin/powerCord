@@ -1,17 +1,17 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { webFrame } = require('electron');
-const { getModule } = require('powercord/webpack');
+const { getModule } = require('powerCord/webpack');
 
 async function inject () {
   window.__$$DoNotTrackCache = {};
-  const Analytics = await window.$PowercordWebpack.getModule([ 'getSuperPropertiesBase64' ]);
-  const Reporter = await window.$PowercordWebpack.getModule([ 'submitLiveCrashReport' ]);
-  const AnalyticsMaker = await window.$PowercordWebpack.getModule([ 'analyticsTrackingStoreMaker' ]);
+  const Analytics = await window.$PowerCordWebpack.getModule([ 'getSuperPropertiesBase64' ]);
+  const Reporter = await window.$PowerCordWebpack.getModule([ 'submitLiveCrashReport' ]);
+  const AnalyticsMaker = await window.$PowerCordWebpack.getModule([ 'analyticsTrackingStoreMaker' ]);
 
   window.__$$DoNotTrackCache.oldTrack = Analytics.track;
   window.__$$DoNotTrackCache.oldSubmitLiveCrashReport = Reporter.submitLiveCrashReport;
@@ -38,9 +38,9 @@ async function inject () {
 }
 
 function uninject () {
-  const Analytics = window.$PowercordWebpack.getModule([ 'getSuperPropertiesBase64' ], false);
-  const Reporter = window.$PowercordWebpack.getModule([ 'submitLiveCrashReport' ], false);
-  const AnalyticsMaker = window.$PowercordWebpack.getModule([ 'analyticsTrackingStoreMaker' ], false);
+  const Analytics = window.$PowerCordWebpack.getModule([ 'getSuperPropertiesBase64' ], false);
+  const Reporter = window.$PowerCordWebpack.getModule([ 'submitLiveCrashReport' ], false);
+  const AnalyticsMaker = window.$PowerCordWebpack.getModule([ 'analyticsTrackingStoreMaker' ], false);
 
   Analytics.track = window.__$$DoNotTrackCache.oldTrack;
   Reporter.submitLiveCrashReport = window.__$$DoNotTrackCache.oldSubmitLiveCrashReport;

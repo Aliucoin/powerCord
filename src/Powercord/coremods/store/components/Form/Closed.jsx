@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule, getModuleByDisplayName } = require('powercord/webpack');
-const { DISCORD_INVITE, SpecialChannels: { SUPPORT_MISC } } = require('powercord/constants');
-const { gotoOrJoinServer } = require('powercord/util');
+const { React, getModule, getModuleByDisplayName } = require('powerCord/webpack');
+const { DISCORD_INVITE, SpecialChannels: { SUPPORT_MISC } } = require('powerCord/constants');
+const { gotoOrJoinServer } = require('powerCord/util');
 
 const Banned = React.memo(
   () => {
@@ -15,11 +15,11 @@ const Banned = React.memo(
     const { ageGatedImage } = getModule([ 'ageGatedImage' ], false);
 
     return (
-      <div className={`powercord-store ${pageWrapper}`}>
+      <div className={`powerCord-store ${pageWrapper}`}>
         <GatedContent
           imageClassName={ageGatedImage}
           title={'Sorry not sorry, you\'ve been banned'}
-          description={'Powercord Staff banned you from submitting this form due to abuse. To appeal the ban, please join our support server, and ask for help in #misc-support.'}
+          description={'PowerCord Staff banned you from submitting this form due to abuse. To appeal the ban, please join our support server, and ask for help in #misc-support.'}
           onAgree={() => window.history.back()}
           onDisagree={() => gotoOrJoinServer(DISCORD_INVITE, SUPPORT_MISC)}
           disagreement='Support Server'
@@ -37,7 +37,7 @@ const Unavailable = React.memo(
     const { ageGatedImage } = getModule([ 'ageGatedImage' ], false);
 
     return (
-      <div className={`powercord-store ${pageWrapper}`}>
+      <div className={`powerCord-store ${pageWrapper}`}>
         <GatedContent
           imageClassName={ageGatedImage}
           title={'We\'re not accepting submissions at this time'}

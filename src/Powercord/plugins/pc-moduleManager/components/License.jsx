@@ -1,6 +1,6 @@
-const { React, getModuleByDisplayName, i18n: { Messages } } = require('powercord/webpack');
-const { Card, AsyncComponent } = require('powercord/components');
-const { Modal } = require('powercord/components/modal');
+const { React, getModuleByDisplayName, i18n: { Messages } } = require('powerCord/webpack');
+const { Card, AsyncComponent } = require('powerCord/components');
+const { Modal } = require('powerCord/components/modal');
 
 const FormTitle = AsyncComponent.from(getModuleByDisplayName('FormTitle'));
 
@@ -12,19 +12,19 @@ module.exports = ({ spdx, license: { name, url, permissions, conditions, limitat
   };
 
   return (
-    <Modal className='powercord-product-license-modal'>
+    <Modal className='powerCord-product-license-modal'>
       <Modal.Header>
         <FormTitle tag='h4'>{name}</FormTitle>
       </Modal.Header>
       <Modal.Content>
-        <p className='powercord-product-license-modal-desc'>{Messages[`POWERCORD_PLUGINS_LICENSE_DESC_${spdx}`]}</p>
-        <Card className='powercord-product-license-modal-card'>
+        <p className='powerCord-product-license-modal-desc'>{Messages[`POWERCORD_PLUGINS_LICENSE_DESC_${spdx}`]}</p>
+        <Card className='powerCord-product-license-modal-card'>
           {Messages.POWERCORD_PLUGINS_LICENSE_DISCLAIMER.format({ url })}
         </Card>
         {[ 'permissions', 'limitations', 'conditions' ].map(type =>
-          <div key={type} className={`powercord-product-license-modal-data ${type}`}>
+          <div key={type} className={`powerCord-product-license-modal-data ${type}`}>
             <FormTitle tag='h4'>{Messages[`POWERCORD_PLUGINS_LICENSE_${type.toUpperCase()}`]}</FormTitle>
-            {data[type].map(perm => <div key={perm} className='powercord-product-license-modal-entry'>
+            {data[type].map(perm => <div key={perm} className='powerCord-product-license-modal-entry'>
               <span>{Messages[`POWERCORD_PLUGINS_LICENSE_${perm}_NAME`]}</span>
               <div>{perm === 'PATENT_USE'
                 ? type === 'permissions'

@@ -1,4 +1,4 @@
-const { React, getModule } = require('powercord/webpack');
+const { React, getModule } = require('powerCord/webpack');
 
 const Header = require('./parts/Product/Header');
 const Preview = require('./parts/Product/Preview');
@@ -14,9 +14,9 @@ module.exports = class Product extends React.Component {
   render () {
     // @todo: proper data structure
     const { product: { manifest } } = this.props;
-    return <div className='powercord-product'>
+    return <div className='powerCord-product'>
       <div className={classes.card}>
-        <div className='powercord-product-abandonware'>Discontinued</div>
+        <div className='powerCord-product-abandonware'>Discontinued</div>
         {(1 !== 2) && <Preview previews={[
           'https://i.serux.pro/e3c67734c8.jpg',
           'https://i.serux.pro/3356e6506c.jpg',
@@ -26,7 +26,7 @@ module.exports = class Product extends React.Component {
         ]}/>}
         <Header name={manifest.name} verified={true}/>
         {/* @todo metadata */}
-        <div className='powercord-product-description'>{manifest.description}</div>
+        <div className='powerCord-product-description'>{manifest.description}</div>
         {(manifest.permissions || []).length > 0 && <Permissions svgSize={18} permissions={manifest.permissions}/>}
         <Rating up={1337} down={69} self={null} onVote={(type) => console.log(type)}/>
         {(manifest.tags || true) && <Tags tags={manifest.tags || [ 'test', 'tags', 'yes' ]}/>}

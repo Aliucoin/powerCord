@@ -1,15 +1,15 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { join } = require('path');
-const { inject, uninject } = require('powercord/injector');
-const { React, getModule, getModuleByDisplayName, FluxDispatcher, constants: { Permissions }, i18n: { Messages } } = require('powercord/webpack');
-const { Icons: { Plugin: PluginIcon, Theme } } = require('powercord/components');
-const { SpecialChannels: { STORE_PLUGINS, STORE_THEMES } } = require('powercord/constants');
-const { forceUpdateElement } = require('powercord/util');
+const { inject, uninject } = require('powerCord/injector');
+const { React, getModule, getModuleByDisplayName, FluxDispatcher, constants: { Permissions }, i18n: { Messages } } = require('powerCord/webpack');
+const { Icons: { Plugin: PluginIcon, Theme } } = require('powerCord/components');
+const { SpecialChannels: { STORE_PLUGINS, STORE_THEMES } } = require('powerCord/constants');
+const { forceUpdateElement } = require('powerCord/util');
 const { loadStyle, unloadStyle } = require('../util');
 
 const Sidebar = require('./components/Sidebar');
@@ -31,12 +31,12 @@ async function injectChannels () {
       [STORE_PLUGINS]: {
         icon: PluginIcon,
         name: Messages.POWERCORD_PLUGINS,
-        route: '/_powercord/store/plugins'
+        route: '/_powerCord/store/plugins'
       },
       [STORE_THEMES]: {
         icon: Theme,
         name: Messages.POWERCORD_THEMES,
-        route: '/_powercord/store/themes'
+        route: '/_powerCord/store/themes'
       }
     };
 
@@ -68,7 +68,7 @@ async function injectChannels () {
 function _init () {
   injectChannels();
 
-  powercord.api.router.registerRoute({
+  powerCord.api.router.registerRoute({
     path: '/store',
     render: Store,
     sidebar: Sidebar
@@ -76,7 +76,7 @@ function _init () {
 }
 
 function _shut () {
-  powercord.api.router.unregisterRoute('/store');
+  powerCord.api.router.unregisterRoute('/store');
   uninject('pc-store-channels-perms');
   uninject('pc-store-channels-props');
 
@@ -88,21 +88,21 @@ function _shut () {
 
 module.exports = function () {
   const styleId = loadStyle(join(__dirname, 'style/style.scss'));
-  powercord.api.labs.registerExperiment({
+  powerCord.api.labs.registerExperiment({
     id: 'pc-moduleManager-store',
-    name: 'Powercord Store',
+    name: 'PowerCord Store',
     date: 1571961600000,
-    description: 'Powercord Plugin and Theme store',
+    description: 'PowerCord Plugin and Theme store',
     callback: (enabled) => enabled ? _init() : _shut()
   });
 
-  if (powercord.api.labs.isExperimentEnabled('pc-moduleManager-store')) {
+  if (powerCord.api.labs.isExperimentEnabled('pc-moduleManager-store')) {
     _init();
   }
 
   return () => {
     unloadStyle(styleId);
-    powercord.api.labs.unregisterExperiment('pc-moduleManager-store');
+    powerCord.api.labs.unregisterExperiment('pc-moduleManager-store');
     _shut();
   };
 };

@@ -4,7 +4,7 @@ module.exports = {
   description: 'Prints out a list of currently installed plugins.',
   usage: '{c}',
   executor () {
-    const plugins = powercord.pluginManager.getPlugins();
+    const plugins = powerCord.pluginManager.getPlugins();
     const result = {
       type: 'rich',
       title: `List of Installed Plugins (${plugins.length})`,

@@ -6,7 +6,7 @@
   padding-top: 2px;
 }
 
-.powercord-codeblock-lang {
+.powerCord-codeblock-lang {
   color: var(--text-normal);
   border-bottom: 1px solid var(--background-modifier-accent);
   padding: 0 5px;
@@ -16,28 +16,28 @@
   font-weight: bold;
 }
 
-.powercord-codeblock-table {
+.powerCord-codeblock-table {
   border-collapse: collapse;
 }
 
-.powercord-codeblock-table tr {
+.powerCord-codeblock-table tr {
   height: 19px;
   width: 100%;
 }
 
-.powercord-codeblock-table td:first-child {
+.powerCord-codeblock-table td:first-child {
   border-right: 1px solid var(--background-modifier-accent);
   padding-left: 5px;
   padding-right: 8px;
   user-select: none;
 }
 
-.powercord-codeblock-table td:last-child {
+.powerCord-codeblock-table td:last-child {
   padding-left: 8px;
   word-break: break-all;
 }
 
-.powercord-codeblock-copy-btn {
+.powerCord-codeblock-copy-btn {
   color: var(--text-normal);
   border-radius: 4px;
 
@@ -57,12 +57,12 @@
   transition: .3s;
 }
 
-.powercord-codeblock-copy-btn.copied {
+.powerCord-codeblock-copy-btn.copied {
   color: #fff;
   background-color: #43b581;
   opacity: 1;
 }
 
-.hljs:hover .powercord-codeblock-copy-btn {
+.hljs:hover .powerCord-codeblock-copy-btn {
   opacity: 1;
 }

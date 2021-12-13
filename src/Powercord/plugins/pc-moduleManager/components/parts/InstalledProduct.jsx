@@ -1,12 +1,12 @@
-const { React, i18n: { Messages } } = require('powercord/webpack');
-const { Card, Tooltip, Switch } = require('powercord/components');
+const { React, i18n: { Messages } } = require('powerCord/webpack');
+const { Card, Tooltip, Switch } = require('powerCord/components');
 
 const BaseProduct = require('./BaseProduct');
 
 class InstalledProduct extends BaseProduct {
   render () {
     return (
-      <Card className='powercord-product'>
+      <Card className='powerCord-product'>
         {this.renderHeader()}
         {this.renderDetails()}
         {this.renderPermissions()}
@@ -17,7 +17,7 @@ class InstalledProduct extends BaseProduct {
 
   renderHeader () {
     return (
-      <div className='powercord-product-header'>
+      <div className='powerCord-product-header'>
         <h4>{this.props.product.name}</h4>
         <Tooltip text={this.props.isEnabled ? Messages.DISABLE : Messages.ENABLE} position='top'>
           <div>

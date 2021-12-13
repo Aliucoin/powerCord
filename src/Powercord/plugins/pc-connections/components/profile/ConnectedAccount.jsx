@@ -1,5 +1,5 @@
-const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { Icons: { ExternalLink } } = require('powercord/components');
+const { React, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { Icons: { ExternalLink } } = require('powerCord/components');
 
 const Verified = require('../Verified');
 
@@ -12,7 +12,7 @@ module.exports = class ConnectedAccount extends React.Component {
   constructor (props) {
     super(props);
 
-    this.connection = powercord.api.connections.get(props.account.type);
+    this.connection = powerCord.api.connections.get(props.account.type);
   }
 
   render () {

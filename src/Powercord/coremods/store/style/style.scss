@@ -1,24 +1,24 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 // trying keep this a plain .css
 // would be ideal for performances
 
 // Store header
-.powercord-store .searchHeader-2I26nG {
+.powerCord-store .searchHeader-2I26nG {
   height: 200px;
 }
 
-.powercord-store .headerImage-3X1tyY {
+.powerCord-store .headerImage-3X1tyY {
   height: 100%;
   object-fit: cover;
 }
 
 // Suggestions specific
-.powercord-store-suggestion {
+.powerCord-store-suggestion {
   height: 100%;
   padding: 16px;
   display: flex;
@@ -26,49 +26,49 @@
   overflow: hidden;
 }
 
-.powercord-store-suggestion .title-OqQvkN + div {
+.powerCord-store-suggestion .title-OqQvkN + div {
   height: 20px;
   display: flex;
   margin: 2px 0;
 }
 
-.powercord-store-suggestion .replyAvatar-1K9Wmr {
+.powerCord-store-suggestion .replyAvatar-1K9Wmr {
   margin: 0 .3rem;
 }
 
-.powercord-store-suggestion .description-2QALGo {
+.powerCord-store-suggestion .description-2QALGo {
   flex: initial;
   -webkit-line-clamp: 11;
 }
 
-.powercord-store-suggestion .memberInfo-3r4FKx {
+.powerCord-store-suggestion .memberInfo-3r4FKx {
   margin-top: auto;
 }
 
 // Form-specific
-.powercord-store .gatedContent-3-B7qB > .flex-1xMQg5 {
+.powerCord-store .gatedContent-3-B7qB > .flex-1xMQg5 {
   flex-direction: row-reverse;
 }
 
-.powercord-store-form {
+.powerCord-store-form {
   min-height: calc(100% - 50px);
   display: flex;
 }
 
-.powercord-store-form .measurement-DMxQp7 {
+.powerCord-store-form .measurement-DMxQp7 {
   flex: 1;
 }
 
-.powercord-store-form .measurement-DMxQp7 > div {
+.powerCord-store-form .measurement-DMxQp7 > div {
   height: 100% !important;
 }
 
-.powercord-store .powercord-store-success {
+.powerCord-store .powerCord-store-success {
   width: 160px;
   height: 260px;
   background-image: url('/assets/dc7e9e55b3a6d39d24acdd650ecc2ef3.svg')
 }
 
-.powercord-store-success ~ .description-2ydcYn svg {
+.powerCord-store-success ~ .description-2ydcYn svg {
   margin-bottom: -2px;
 }

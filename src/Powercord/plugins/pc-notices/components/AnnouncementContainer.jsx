@@ -1,4 +1,4 @@
-const { React } = require('powercord/webpack');
+const { React } = require('powerCord/webpack');
 const Announcement = require('./Announcement');
 
 class AnnouncementContainer extends React.PureComponent {
@@ -9,19 +9,19 @@ class AnnouncementContainer extends React.PureComponent {
   }
 
   componentDidMount () {
-    powercord.api.notices.on('announcementAdded', this._handler);
-    powercord.api.notices.on('announcementClosed', this._handler);
+    powerCord.api.notices.on('announcementAdded', this._handler);
+    powerCord.api.notices.on('announcementClosed', this._handler);
   }
 
   componentWillUnmount () {
-    powercord.api.notices.off('announcementAdded', this._handler);
-    powercord.api.notices.off('announcementClosed', this._handler);
+    powerCord.api.notices.off('announcementAdded', this._handler);
+    powerCord.api.notices.off('announcementClosed', this._handler);
   }
 
   render () {
-    const aId = Object.keys(powercord.api.notices.announcements).pop();
+    const aId = Object.keys(powerCord.api.notices.announcements).pop();
     return aId
-      ? <Announcement id={aId} {...powercord.api.notices.announcements[aId]}/>
+      ? <Announcement id={aId} {...powerCord.api.notices.announcements[aId]}/>
       : null;
   }
 }

@@ -5,15 +5,15 @@ module.exports = {
   executor (args) {
     let result;
 
-    if (powercord.pluginManager.plugins.has(args[0])) {
+    if (powerCord.pluginManager.plugins.has(args[0])) {
       if (args[0] === 'pc-commands') {
         result = `->> ERROR: You cannot unload this plugin as it depends on delivering these commands!
             (Tried to unload ${args[0]})`;
-      } else if (!powercord.pluginManager.isEnabled(args[0])) {
+      } else if (!powerCord.pluginManager.isEnabled(args[0])) {
         result = `->> ERROR: Tried to unload a non-loaded plugin!
             (${args[0]})`;
       } else {
-        powercord.pluginManager.disable(args[0]);
+        powerCord.pluginManager.disable(args[0]);
         result = `+>> SUCCESS: Plugin unloaded!
             (${args[0]})`;
       }
@@ -29,9 +29,9 @@ module.exports = {
   },
 
   autocomplete (args) {
-    const plugins = powercord.pluginManager.getPlugins()
+    const plugins = powerCord.pluginManager.getPlugins()
       .sort((a, b) => a - b)
-      .map(plugin => powercord.pluginManager.plugins.get(plugin));
+      .map(plugin => powerCord.pluginManager.plugins.get(plugin));
 
     if (args.length > 1) {
       return false;
@@ -45,7 +45,7 @@ module.exports = {
           command: plugin.entityID,
           description: plugin.manifest.description
         })),
-      header: 'powercord plugin list'
+      header: 'powerCord plugin list'
     };
   }
 };

@@ -1,4 +1,4 @@
-const { FluxDispatcher } = require('powercord/webpack');
+const { FluxDispatcher } = require('powerCord/webpack');
 const { FluxActions } = require('../constants');
 const SpotifyAPI = require('../SpotifyAPI');
 
@@ -72,7 +72,7 @@ module.exports = {
             uri: playlist.uri,
             name: playlist.name,
             icon: playlist.images[0] ? playlist.images[0].url : null,
-            editable: playlist.owner.display_name === powercord.account.accounts.spotify || playlist.collaborative,
+            editable: playlist.owner.display_name === powerCord.account.accounts.spotify || playlist.collaborative,
             tracksLoaded: false
           }
         ])

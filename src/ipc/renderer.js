@@ -6,7 +6,7 @@ if (!ipcRenderer) {
   throw new Error('Don\'t require stuff you shouldn\'t silly.');
 }
 
-global.PowercordNative = {
+global.PowerCordNative = {
   /**
    * Open DevTools for the current window
    * @param {object} opts Options to pass to Electron
@@ -43,16 +43,16 @@ global.PowercordNative = {
 if (!window.__SPLASH__) {
   window.require = function (mdl) {
     switch (mdl) {
-      case 'powercord/compilers':
-      case 'powercord/components':
-      case 'powercord/components/settings':
-      case 'powercord/http':
-      case 'powercord/injector':
-      case 'powercord/util':
-      case 'powercord/webpack':
-      case 'powercord/constants':
-      case 'powercord/modal':
-      case 'powercord':
+      case 'powerCord/compilers':
+      case 'powerCord/components':
+      case 'powerCord/components/settings':
+      case 'powerCord/http':
+      case 'powerCord/injector':
+      case 'powerCord/util':
+      case 'powerCord/webpack':
+      case 'powerCord/constants':
+      case 'powerCord/modal':
+      case 'powerCord':
       case 'electron':
         return require(mdl);
       default:

@@ -1,5 +1,5 @@
-const { React, getModule, constants: { Routes } } = require('powercord/webpack');
-const { Tooltip, Clickable, Divider, Icons: { Discord, Gear } } = require('powercord/components');
+const { React, getModule, constants: { Routes } } = require('powerCord/webpack');
+const { Tooltip, Clickable, Divider, Icons: { Discord, Gear } } = require('powerCord/components');
 
 const Details = require('./Details');
 const Permissions = require('./Permissions');
@@ -43,7 +43,7 @@ class BaseProduct extends React.PureComponent {
     return (
       <>
         <Divider/>
-        <div className='powercord-product-footer'>
+        <div className='powerCord-product-footer'>
           {this.props.product.discord && // @todo: i18n
           <Tooltip text='Go to their Discord support server'>
             <Clickable onClick={() => this.goToDiscord(this.props.product.discord)}>

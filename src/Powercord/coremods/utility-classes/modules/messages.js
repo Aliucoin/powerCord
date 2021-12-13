@@ -1,16 +1,16 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { findInReactTree } = require('powercord/util');
-const { getModule } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
+const { findInReactTree } = require('powerCord/util');
+const { getModule } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
 
 module.exports = async () => {
   const userStore = await getModule([ 'getCurrentUser', 'getUser' ]);
-  const Message = await getModule(m => (m.__powercordOriginal_default || m.default)?.toString().includes('childrenRepliedMessage'));
+  const Message = await getModule(m => (m.__powerCordOriginal_default || m.default)?.toString().includes('childrenRepliedMessage'));
   inject('pc-utilitycls-messages', Message, 'default', (_, res) => {
     const msg = findInReactTree(res, n => n.message);
     if (!msg) {

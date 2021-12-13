@@ -1,5 +1,5 @@
-const { React, getModuleByDisplayName } = require('powercord/webpack');
-const { AsyncComponent, Button, Tooltip, Clickable, Icons: { FontAwesome } } = require('powercord/components');
+const { React, getModuleByDisplayName } = require('powerCord/webpack');
+const { AsyncComponent, Button, Tooltip, Clickable, Icons: { FontAwesome } } = require('powerCord/components');
 
 const Progress = AsyncComponent.from(getModuleByDisplayName('Progress'));
 
@@ -15,7 +15,7 @@ class Toast extends React.PureComponent {
 
   componentDidMount () {
     if (this.props.timeout && !isNaN(this.props.timeout)) {
-      const timeout = setTimeout(() => powercord.api.notices.closeToast(this.props.id), this.props.timeout);
+      const timeout = setTimeout(() => powerCord.api.notices.closeToast(this.props.id), this.props.timeout);
       this.setState({ timeout });
 
       let timeLeft = this.props.timeout;
@@ -31,7 +31,7 @@ class Toast extends React.PureComponent {
     return (
       <div
         id={this.props.id}
-        className={[ 'powercord-toast', this.props.leaving ? 'leaving' : '', this.props.className ].filter(Boolean).join(' ')}
+        className={[ 'powerCord-toast', this.props.leaving ? 'leaving' : '', this.props.className ].filter(Boolean).join(' ')}
         data-toast-type={this.props.type || 'info'}
         style={this.props.style}
       >
@@ -76,7 +76,7 @@ class Toast extends React.PureComponent {
         className='dismiss'
         onClick={() => {
           clearTimeout(this.state.timeout);
-          powercord.api.notices.closeToast(this.props.id);
+          powerCord.api.notices.closeToast(this.props.id);
         }}
       >
         <div className='fal fa-times fa-fw'/>
@@ -120,7 +120,7 @@ class Toast extends React.PureComponent {
             }
 
             clearTimeout(this.state.timeout);
-            return powercord.api.notices.closeToast(this.props.id);
+            return powerCord.api.notices.closeToast(this.props.id);
           }}
         >
           {button.text}

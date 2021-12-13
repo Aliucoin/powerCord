@@ -6,10 +6,10 @@ module.exports = {
   description: 'Like the current playing song',
   category: 'Spotify',
   async executor () {
-    if (!powercord.account || !powercord.account.accounts.spotify) {
+    if (!powerCord.account || !powerCord.account.accounts.spotify) {
       return {
         send: false,
-        result: 'You need a Powercord account and connected Spotify account to use this feature!'
+        result: 'You need a PowerCord account and connected Spotify account to use this feature!'
       };
     }
     const currentTrack = playerStore.getCurrentTrack();

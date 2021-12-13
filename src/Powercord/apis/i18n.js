@@ -1,5 +1,5 @@
-const { getModule, i18n } = require('powercord/webpack');
-const { API } = require('powercord/entities');
+const { getModule, i18n } = require('powerCord/webpack');
+const { API } = require('powerCord/entities');
 const strings = require('../../../i18n');
 const overrides = require('../../../i18n/overrides');
 
@@ -18,14 +18,14 @@ module.exports = class I18nAPI extends API {
       module.addChangeListener(() => {
         if (module.locale !== this.locale) {
           this.locale = module.locale;
-          i18n.loadPromise.then(() => this.addPowercordStrings());
+          i18n.loadPromise.then(() => this.addPowerCordStrings());
         }
       });
-      this.addPowercordStrings();
+      this.addPowerCordStrings();
     });
   }
 
-  addPowercordStrings () {
+  addPowerCordStrings () {
     const i18nContextProvider = i18n._provider?._context || i18n._proxyContext;
 
     Object.assign(i18nContextProvider.messages, this.messages[this.locale]);
@@ -46,6 +46,6 @@ module.exports = class I18nAPI extends API {
       };
     }
 
-    this.addPowercordStrings();
+    this.addPowerCordStrings();
   }
 };

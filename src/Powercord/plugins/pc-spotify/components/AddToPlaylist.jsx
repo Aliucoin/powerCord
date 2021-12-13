@@ -1,7 +1,7 @@
-const { React, Flux, i18n: { Messages } } = require('powercord/webpack');
-const { FormTitle, Button, Divider, Spinner, Card, Tooltip } = require('powercord/components');
-const { Modal, Confirm } = require('powercord/components/modal');
-const { open: openModal, close: closeModal } = require('powercord/modal');
+const { React, Flux, i18n: { Messages } } = require('powerCord/webpack');
+const { FormTitle, Button, Divider, Spinner, Card, Tooltip } = require('powerCord/components');
+const { Modal, Confirm } = require('powerCord/components/modal');
+const { open: openModal, close: closeModal } = require('powerCord/modal');
 
 const { SPOTIFY_DEFAULT_IMAGE } = require('../constants');
 const songsStore = require('../songsStore/store');
@@ -17,7 +17,7 @@ class AddToPlaylist extends React.PureComponent {
 
   render () {
     return (
-      <Modal className='powercord-text spotify-add-to-playlist' size={Modal.Sizes.MEDIUM}>
+      <Modal className='powerCord-text spotify-add-to-playlist' size={Modal.Sizes.MEDIUM}>
         <Modal.Header>
           <FormTitle tag='h4'>Add to Playlist</FormTitle>
           <Modal.CloseButton onClick={() => closeModal()}/>
@@ -103,7 +103,7 @@ class AddToPlaylist extends React.PureComponent {
           }}
           onCancel={closeModal}
         >
-          <div className='powercord-text'>
+          <div className='powerCord-text'>
             This item is already in this playlist. Do you want to add it anyway?
           </div>
         </Confirm>

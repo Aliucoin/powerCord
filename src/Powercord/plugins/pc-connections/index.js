@@ -1,7 +1,7 @@
-const { Plugin } = require('powercord/entities');
-const { React, getModule } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
-const { WEBSITE } = require('powercord/constants');
+const { Plugin } = require('powerCord/entities');
+const { React, getModule } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
+const { WEBSITE } = require('powerCord/constants');
 
 const SettingsConnections = require('./components/settings/ConnectedAccounts');
 const ProfileConnections = require('./components/profile/ConnectedAccounts');
@@ -10,7 +10,7 @@ module.exports = class Connections extends Plugin {
   constructor () {
     super();
 
-    this.baseUrl = powercord.settings.get('backendURL', WEBSITE);
+    this.baseUrl = powerCord.settings.get('backendURL', WEBSITE);
   }
 
   async startPlugin () {

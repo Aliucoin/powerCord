@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { spawnSync } = require('child_process');

@@ -1,14 +1,14 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { shell: { openExternal } } = require('electron');
-const { React, getModule } = require('powercord/webpack');
-const { Clickable, ErrorState } = require('powercord/components');
-const { WEBSITE } = require('powercord/constants');
-const { get } = require('powercord/http');
+const { React, getModule } = require('powerCord/webpack');
+const { Clickable, ErrorState } = require('powerCord/components');
+const { WEBSITE } = require('powerCord/constants');
+const { get } = require('powerCord/http');
 
 const StoreWrapper = require('./StoreWrapper');
 const CardsContainer = require('./CardsContainer');
@@ -34,7 +34,7 @@ module.exports = React.memo(
       [ suggestions, search ]
     );
     React.useEffect(() => {
-      const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+      const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
       get(`${baseUrl}/api/v2/store/suggestions`).then(res => {
         if (!res.ok) {
           return setSuggestions({ state: States.ERRORED });
@@ -56,18 +56,18 @@ module.exports = React.memo(
         footerText={'You have a great idea that isn\'t listed here?'}
         footerLink={'Suggest it!'}
         // @todo: dynamic link
-        footerAction={() => openExternal('https://github.com/powercord-community/suggestions/issues/new?assignees=&labels=pending+review&template=plugin_request.md&title=')}
+        footerAction={() => openExternal('https://github.com/powerCord-community/suggestions/issues/new?assignees=&labels=pending+review&template=plugin_request.md&title=')}
         noFooter={filteredSuggestions && filteredSuggestions.length === 0}
       >
         {suggestions.state === States.ERRORED && <ErrorState>Failed to load suggestions.</ErrorState>}
         <div className={`${size16} ${marginBottom20}`}>
-          Suggestions listed here are from submissions on our <a href='https://github.com/powercord-community/suggestions' target='_blank'>suggestions repository</a>.
+          Suggestions listed here are from submissions on our <a href='https://github.com/powerCord-community/suggestions' target='_blank'>suggestions repository</a>.
           If you really like an idea, click on it to see the original issue on GitHub and add a 👍 reaction! (You'll need a GitHub account).
         </div>
         <CardsContainer loading={suggestions.state !== States.LOADED}>
           {filteredSuggestions && filteredSuggestions.map(s => (
-            <Clickable key={s.id} className={card} onClick={() => openExternal(`https://github.com/powercord-community/suggestions/issues/${s.id}`)}>
-              <div className='powercord-store-suggestion'>
+            <Clickable key={s.id} className={card} onClick={() => openExternal(`https://github.com/powerCord-community/suggestions/issues/${s.id}`)}>
+              <div className='powerCord-store-suggestion'>
                 <div className={title}>
                   <div className={`${colorHeaderPrimary} ${size16} ${guildName}`}>{s.title}</div>
                 </div>

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { join } = require('path');
@@ -21,18 +21,18 @@ if (process.platform === 'win32') { // Should be the only possible case, but we 
     require.cache[autoStartScript].exports.update = async (callback) => {
       const appDir = await injector.getAppDir();
 
-      console.log('[Powercord] Checking for host updates...');
+      console.log('[PowerCord] Checking for host updates...');
 
       if (!existsSync(appDir)) {
-        console.log('[Powercord] Host update is available! Injecting into new version...');
+        console.log('[PowerCord] Host update is available! Injecting into new version...');
         return inject(injector).then(() => {
-          console.log('[Powercord] Successfully injected into new version!');
+          console.log('[PowerCord] Successfully injected into new version!');
 
           update(callback);
         });
       }
 
-      console.log(`[Powercord] Host "${buildInfo.version}" is already injected with Powercord.`);
+      console.log(`[PowerCord] Host "${buildInfo.version}" is already injected with PowerCord.`);
     };
   } else {
     const hostUpdaterScript = join(require.main.filename, '..', 'hostUpdater.js');
@@ -40,9 +40,9 @@ if (process.platform === 'win32') { // Should be the only possible case, but we 
 
     // Old Updater Injection
     require.cache[hostUpdaterScript].exports.quitAndInstall = () => {
-      console.log('[Powercord] Host update is available! Injecting into new version...');
+      console.log('[PowerCord] Host update is available! Injecting into new version...');
       inject(injector).then(() => {
-        console.log('[Powercord] Successfully injected into new version!');
+        console.log('[PowerCord] Successfully injected into new version!');
 
         quitAndInstall.call({ updateVersion: require.cache[hostUpdaterScript].exports.updateVersion });
       });

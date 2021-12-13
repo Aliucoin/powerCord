@@ -5,7 +5,7 @@
 @import '../../../../../node_modules/codemirror/addon/lint/lint';
 @import '../../../../../node_modules/codemirror/addon/hint/show-hint';
 
-.powercord-quickcss {
+.powerCord-quickcss {
   --editor-height: 350px;
   color: var(--text-normal);
   height: var(--editor-height);
@@ -228,7 +228,7 @@
   }
 }
 
-.theme-light .powercord-quickcss .CodeMirror {
+.theme-light .powerCord-quickcss .CodeMirror {
   font-weight: 500;
 
   // @formatter:off
@@ -244,7 +244,7 @@
   // @formatter:on
 }
 
-.powercord-quickcss.popout {
+.powerCord-quickcss.popout {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -254,11 +254,11 @@
     box-sizing: border-box;
   }
 
-  .powercord-quickcss-header {
+  .powerCord-quickcss-header {
     -webkit-app-region: drag;
   }
 
-  .powercord-quickcss-editor {
+  .powerCord-quickcss-editor {
     flex: 1;
   }
 }

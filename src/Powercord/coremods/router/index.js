@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { inject, uninject } = require('powercord/injector');
-const { React, getModule, getAllModules, getModuleByDisplayName } = require('powercord/webpack');
-const { findInTree, findInReactTree, getOwnerInstance, waitFor } = require('powercord/util');
+const { inject, uninject } = require('powerCord/injector');
+const { React, getModule, getAllModules, getModuleByDisplayName } = require('powerCord/webpack');
+const { findInTree, findInReactTree, getOwnerInstance, waitFor } = require('powerCord/util');
 
 async function injectRouter () {
   const { container } = await getModule([ 'container', 'downloadProgressCircle' ]);
@@ -14,12 +14,12 @@ async function injectRouter () {
   inject('pc-router-routes', RouteRenderer.props.children, 'type', (_, res) => {
     const { children: routes } = findInReactTree(res, m => Array.isArray(m.children) && m.children.length > 5);
     routes.push(
-      ...powercord.api.router.routes.map(route => ({
+      ...powerCord.api.router.routes.map(route => ({
         ...routes[0],
         props: {
           // @todo: Error boundary (?)
           render: () => React.createElement(route.render),
-          path: `/_powercord${route.path}`
+          path: `/_powerCord${route.path}`
         }
       }))
     );
@@ -35,7 +35,7 @@ async function injectViews () {
     const routes = findInTree(res, n => Array.isArray(n) && n[0] && n[0].key && n[0].props.path && n[0].props.render);
 
     routes[routes.length - 1].props.path = [
-      ...new Set(routes[routes.length - 1].props.path.concat(powercord.api.router.routes.map(route => `/_powercord${route.path}`)))
+      ...new Set(routes[routes.length - 1].props.path.concat(powerCord.api.router.routes.map(route => `/_powerCord${route.path}`)))
     ];
     return res;
   });
@@ -47,9 +47,9 @@ async function injectSidebar () {
   inject('pc-router-sidebar', instance.props.children, 'type', (_, res) => {
     const content = findInReactTree(res, n => n.props?.className?.startsWith('content-'));
     const className = content?.props?.children[0]?.props?.className;
-    if (className && className.startsWith('sidebar-') && window.location.pathname.startsWith('/_powercord')) {
+    if (className && className.startsWith('sidebar-') && window.location.pathname.startsWith('/_powerCord')) {
       const rawPath = window.location.pathname.substring(11);
-      const route = powercord.api.router.routes.find(rte => rawPath.startsWith(rte.path));
+      const route = powerCord.api.router.routes.find(rte => rawPath.startsWith(rte.path));
       if (route && route.sidebar) {
         content.props.children[0].props.children[0] = React.createElement(route.sidebar);
       } else {
@@ -78,12 +78,12 @@ module.exports = async function () {
   await injectViews();
   await injectSidebar();
 
-  powercord.api.router.on('routeAdded', forceRouterUpdate);
-  powercord.api.router.on('routeRemoved', forceRouterUpdate);
+  powerCord.api.router.on('routeAdded', forceRouterUpdate);
+  powerCord.api.router.on('routeRemoved', forceRouterUpdate);
 
   return () => {
-    powercord.api.router.off('routeAdded', forceRouterUpdate);
-    powercord.api.router.off('routeRemoved', forceRouterUpdate);
+    powerCord.api.router.off('routeAdded', forceRouterUpdate);
+    powerCord.api.router.off('routeRemoved', forceRouterUpdate);
     uninject('pc-router-routes');
     uninject('pc-router-views');
     uninject('pc-router-sidebar');

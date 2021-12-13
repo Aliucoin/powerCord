@@ -1,5 +1,5 @@
-const { React, Flux, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powercord/webpack');
-const { TabBar, Divider, Button, AsyncComponent } = require('powercord/components');
+const { React, Flux, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powerCord/webpack');
+const { TabBar, Divider, Button, AsyncComponent } = require('powerCord/components');
 
 const InstalledProduct = require('../parts/InstalledProduct');
 const ThemeField = require('./ThemeField');
@@ -11,7 +11,7 @@ class ThemeSettings extends React.PureComponent {
     super(props);
     this.state = {
       errors: {},
-      theme: powercord.styleManager.get(props.theme),
+      theme: powerCord.styleManager.get(props.theme),
       tab: 'SETTINGS'
     };
 
@@ -33,8 +33,8 @@ class ThemeSettings extends React.PureComponent {
     }
 
     return (
-      <div className='powercord-entities-manage powercord-text'>
-        <div className='powercord-entities-manage-header'>
+      <div className='powerCord-entities-manage powerCord-text'>
+        <div className='powerCord-entities-manage-header'>
           <span>{name}</span>
           <div className='buttons'>
             <Button onClick={() => this.props.onClose()}>Save & Quit</Button>
@@ -51,7 +51,7 @@ class ThemeSettings extends React.PureComponent {
   renderTopPills () {
     const { topPill, item } = getModule([ 'topPill' ], false);
     return (
-      <div className='powercord-entities-manage-tabs'>
+      <div className='powerCord-entities-manage-tabs'>
         <TabBar
           selectedItem={this.state.tab}
           onItemSelect={tab => this.setState({ tab })}
@@ -75,7 +75,7 @@ class ThemeSettings extends React.PureComponent {
   renderSettingsGroup (groupName, options) {
     console.log(options);
     return (
-      <div className='powercord-entities-settings-group' key={groupName}>
+      <div className='powerCord-entities-settings-group' key={groupName}>
         <FormTitle tag='h2'>{groupName}</FormTitle>
         {options.map(opt => (
           <ThemeField
@@ -156,8 +156,8 @@ class ThemeSettings extends React.PureComponent {
 }
 
 module.exports = Flux.connectStores(
-  [ powercord.api.settings.store ],
+  [ powerCord.api.settings.store ],
   ({ theme }) => ({
-    ...powercord.api.settings._fluxProps(`theme-${theme}`)
+    ...powerCord.api.settings._fluxProps(`theme-${theme}`)
   })
 )(ThemeSettings);

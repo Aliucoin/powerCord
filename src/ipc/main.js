@@ -58,7 +58,7 @@ function compileSass (_, file) {
   });
 }
 
-ipcMain.on('POWERCORD_GET_PRELOAD', e => e.returnValue = e.sender._powercordPreload);
+ipcMain.on('POWERCORD_GET_PRELOAD', e => e.returnValue = e.sender._powerCordPreload);
 ipcMain.handle('POWERCORD_OPEN_DEVTOOLS', openDevTools);
 ipcMain.handle('POWERCORD_CLOSE_DEVTOOLS', closeDevTools);
 ipcMain.handle('POWERCORD_CACHE_CLEAR', clearCache);

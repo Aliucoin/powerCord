@@ -1,17 +1,17 @@
-const { getModule, getModuleByDisplayName, messages, constants: discordConsts } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
-const { Plugin } = require('powercord/entities');
+const { getModule, getModuleByDisplayName, messages, constants: discordConsts } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
+const { Plugin } = require('powerCord/entities');
 
 const DocsLayer = require('./components/DocsLayer');
 
 module.exports = class Documentation extends Plugin {
   startPlugin () {
     this.loadStylesheet('scss/style.scss');
-    powercord.api.labs.registerExperiment({
+    powerCord.api.labs.registerExperiment({
       id: 'pc-docs',
       name: 'Documentation',
       date: 1572393600000,
-      description: 'Powercord documentation for making plugin and themes',
+      description: 'PowerCord documentation for making plugin and themes',
       callback: enabled => {
         if (enabled) {
           this.addDocsItems();
@@ -21,14 +21,14 @@ module.exports = class Documentation extends Plugin {
       }
     });
 
-    if (powercord.api.labs.isExperimentEnabled('pc-docs')) {
+    if (powerCord.api.labs.isExperimentEnabled('pc-docs')) {
       this.addDocsItems();
     }
   }
 
   pluginWillUnload () {
     uninject('pc-docs-tab');
-    powercord.api.labs.unregisterExperiment('pc-docs');
+    powerCord.api.labs.unregisterExperiment('pc-docs');
   }
 
   async addDocsItems () {
@@ -45,7 +45,7 @@ module.exports = class Documentation extends Plugin {
               await this._ensureHighlight();
               setImmediate(() => pushLayer(DocsLayer));
             },
-            label: 'Powercord Docs'
+            label: 'PowerCord Docs'
           }
         );
       }

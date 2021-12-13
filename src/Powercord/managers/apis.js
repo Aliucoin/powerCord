@@ -11,22 +11,22 @@ module.exports = class APIManager {
     try {
       const APIClass = require(join(this.apiDir, api));
       api = api.replace(/\.js$/, '');
-      powercord.api[api] = new APIClass();
+      powerCord.api[api] = new APIClass();
       this.apis.push(api);
     } catch (e) {
-      console.error('%c[Powercord:API]', 'color: #7289da', `An error occurred while initializing "${api}"!`, e);
+      console.error('%c[PowerCord:API]', 'color: #7289da', `An error occurred while initializing "${api}"!`, e);
     }
   }
 
   async load () {
     for (const api of this.apis) {
-      await powercord.api[api]._load();
+      await powerCord.api[api]._load();
     }
   }
 
   async unload () {
     for (const api of this.apis) {
-      await powercord.api[api]._unload();
+      await powerCord.api[api]._unload();
     }
   }
 

@@ -10,23 +10,23 @@ module.exports = {
       const getPropLength = (command) => command.command.length;
 
       const longestCommandName = getPropLength(
-        powercord.api.commands.sort((a, b) => getPropLength(b) - getPropLength(a))[0]
+        powerCord.api.commands.sort((a, b) => getPropLength(b) - getPropLength(a))[0]
       );
 
       result = {
         type: 'rich',
         title: 'List of Commands',
-        description: powercord.api.commands
+        description: powerCord.api.commands
           .map(({ command, description }) =>
             `\`${command.padEnd((longestCommandName * 2) - command.length, ' \u200b')} |\` \u200b \u200b*${description}*`
           )
           .join('\n'),
         footer: {
-          text: `Run ${powercord.api.commands.prefix}help <commandName> for more information regarding a specific command.`
+          text: `Run ${powerCord.api.commands.prefix}help <commandName> for more information regarding a specific command.`
         }
       };
     } else {
-      const command = powercord.api.commands.find(c => [ c.command, ...(c.aliases || []) ].includes(commandName));
+      const command = powerCord.api.commands.find(c => [ c.command, ...(c.aliases || []) ].includes(commandName));
       if (!command) {
         result = `Command \`${commandName}\` not found.`;
       } else {
@@ -36,7 +36,7 @@ module.exports = {
           description: command.description,
           fields: [ {
             name: 'Usage',
-            value: `\`${command.usage.replace('{c}', powercord.api.commands.prefix + command.command)}\n\``,
+            value: `\`${command.usage.replace('{c}', powerCord.api.commands.prefix + command.command)}\n\``,
             inline: false
           } ],
           footer: {
@@ -57,12 +57,12 @@ module.exports = {
     }
 
     return {
-      commands: powercord.api.commands.filter(command =>
+      commands: powerCord.api.commands.filter(command =>
         [ command.command, ...(command.aliases || []) ].some(commandName =>
           commandName.includes(args[0])
         )
       ),
-      header: 'powercord command list'
+      header: 'powerCord command list'
     };
   }
 };

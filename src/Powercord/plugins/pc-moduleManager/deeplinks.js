@@ -3,7 +3,7 @@ module.exports = function () {
   /*
    * Consider moving this to pc-router?
    *
-   * Base URL: powercord.dev/l/
+   * Base URL: powerCord.dev/l/
    * Opening the link in a web browser should trigger RPC event "DEEPLINK" with the full link to handle
    *
    * - Go to settings:                                settings

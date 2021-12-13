@@ -1,6 +1,6 @@
 const { existsSync, lstatSync } = require('fs');
-const { React, getModule } = require('powercord/webpack');
-const { SwitchItem, TextInput, Category } = require('powercord/components/settings');
+const { React, getModule } = require('powerCord/webpack');
+const { SwitchItem, TextInput, Category } = require('powerCord/components/settings');
 
 let getGuild, getFlattenedGuilds;
 

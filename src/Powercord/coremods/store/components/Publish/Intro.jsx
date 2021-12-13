@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule } = require('powercord/webpack');
+const { React, getModule } = require('powerCord/webpack');
 
 module.exports = React.memo(
   () => {
@@ -24,7 +24,7 @@ module.exports = React.memo(
           to our store.
         </p>
         <div className={marginBottom20}>
-          <div className={`${size20} ${marginBottom8}`}>Comply with our <a href='https://powercord.dev/guidelines' target='_blank'>guidelines</a></div>
+          <div className={`${size20} ${marginBottom8}`}>Comply with our <a href='https://powerCord.dev/guidelines' target='_blank'>guidelines</a></div>
           <div className={size16}>These guidelines ensure no malicious plugins or memory eaters enter our store.</div>
         </div>
         <div className={marginBottom20}>
@@ -34,7 +34,7 @@ module.exports = React.memo(
         <div className={marginBottom20}>
           <div className={`${size20} ${marginBottom8}`}>Be licensed under an <a href='https://opensource.org/licenses' target='_blank'>OSI approved license</a></div>
           <div className={size16}><b>Plugin developers, heads up</b>: you cannot license your plugin under the GPL-3.0 or the AGPL-3.0, except if you write a linking exception clause.</div>
-          <div className={size16}>Those licenses requires reciprocal licensing on linked works, and neither Powercord or Discord is GPL-compatible. In short, applying this license without linking exception clauses forbids the users to use your plugin.</div>
+          <div className={size16}>Those licenses requires reciprocal licensing on linked works, and neither PowerCord or Discord is GPL-compatible. In short, applying this license without linking exception clauses forbids the users to use your plugin.</div>
           <div className={size16}>Be careful when choosing your license, and use a license that doesn't have this reciprocal linking clause.</div>
         </div>
       </>

@@ -1,20 +1,20 @@
-const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { Icons: { FontAwesome } } = require('powercord/components');
-const { open: openModal, close: closeModal } = require('powercord/modal');
-const { TextInput, SwitchItem, ButtonItem, Category } = require('powercord/components/settings');
-const { Confirm } = require('powercord/components/modal');
-const { WEBSITE, CACHE_FOLDER } = require('powercord/constants');
-const { rmdirRf } = require('powercord/util');
+const { React, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { Icons: { FontAwesome } } = require('powerCord/components');
+const { open: openModal, close: closeModal } = require('powerCord/modal');
+const { TextInput, SwitchItem, ButtonItem, Category } = require('powerCord/components/settings');
+const { Confirm } = require('powerCord/components/modal');
+const { WEBSITE, CACHE_FOLDER } = require('powerCord/constants');
+const { rmdirRf } = require('powerCord/util');
 
 const PassphraseModal = require('./PassphraseModal.jsx');
-const Account = require('./PowercordAccount');
+const Account = require('./PowerCordAccount');
 
 module.exports = class GeneralSettings extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       discordCleared: false,
-      powercordCleared: false
+      powerCordCleared: false
     };
   }
 
@@ -31,7 +31,7 @@ module.exports = class GeneralSettings extends React.Component {
           defaultValue={getSetting('prefix', '.')}
           onChange={p => updateSetting('prefix', !p ? '.' : p.replace(/\s+(?=\S)|(?<=\s)\s+/g, '').toLowerCase())}
           onBlur={({ target }) => target.value = getSetting('prefix', '.')}
-          error={getSetting('prefix', '.') === '/' ? 'Prefix should not be set to `/` as it is already in use by Discord and may disable Powercord autocompletions.' : ''}
+          error={getSetting('prefix', '.') === '/' ? 'Prefix should not be set to `/` as it is already in use by Discord and may disable PowerCord autocompletions.' : ''}
         >
           {Messages.POWERCORD_COMMAND_PREFIX}
         </TextInput>
@@ -62,13 +62,13 @@ module.exports = class GeneralSettings extends React.Component {
           >
             {Messages.POWERCORD_SETTINGS_DEBUG_LOGS}
           </SwitchItem>
-          {powercord.api.labs.isExperimentEnabled('pc-sdk')
+          {powerCord.api.labs.isExperimentEnabled('pc-sdk')
             ? <SwitchItem
-              note={'Powercord\'s SDK is a toolkit made to make plugin and theme developer\'s life easier. Once enabled, you can access it through the icon at the top right hand corner of Discord.'}
+              note={'PowerCord\'s SDK is a toolkit made to make plugin and theme developer\'s life easier. Once enabled, you can access it through the icon at the top right hand corner of Discord.'}
               value={getSetting('sdkEnabled', false)}
               onChange={() => toggleSetting('sdkEnabled')}
             >
-              Enable Powercord SDK
+              Enable PowerCord SDK
             </SwitchItem>
             : <SwitchItem
               note={Messages.POWERCORD_SETTINGS_OVERLAY_DESC}
@@ -129,9 +129,9 @@ module.exports = class GeneralSettings extends React.Component {
         </Category>
         <ButtonItem
           note={Messages.POWERCORD_SETTINGS_CACHE_POWERCORD_DESC}
-          button={this.state.powercordCleared ? Messages.POWERCORD_SETTINGS_CACHE_CLEARED : Messages.POWERCORD_SETTINGS_CACHE_POWERCORD}
-          success={this.state.powercordCleared}
-          onClick={() => this.clearPowercordCache()}
+          button={this.state.powerCordCleared ? Messages.POWERCORD_SETTINGS_CACHE_CLEARED : Messages.POWERCORD_SETTINGS_CACHE_POWERCORD}
+          success={this.state.powerCordCleared}
+          onClick={() => this.clearPowerCordCache()}
         >
           {Messages.POWERCORD_SETTINGS_CACHE_POWERCORD}
         </ButtonItem>
@@ -162,18 +162,18 @@ module.exports = class GeneralSettings extends React.Component {
 
   clearDiscordCache () {
     this.setState({ discordCleared: true });
-    PowercordNative.clearCache().then(() => {
+    PowerCordNative.clearCache().then(() => {
       setTimeout(() => {
         this.setState({ discordCleared: false });
       }, 2500);
     });
   }
 
-  clearPowercordCache () {
-    this.setState({ powercordCleared: true });
+  clearPowerCordCache () {
+    this.setState({ powerCordCleared: true });
     rmdirRf(CACHE_FOLDER).then(() => {
       setTimeout(() => {
-        this.setState({ powercordCleared: false });
+        this.setState({ powerCordCleared: false });
       }, 2500);
     });
   }
@@ -187,7 +187,7 @@ module.exports = class GeneralSettings extends React.Component {
       onConfirm={() => DiscordNative.app.relaunch()}
       onCancel={closeModal}
     >
-      <div className='powercord-text'>
+      <div className='powerCord-text'>
         {Messages.POWERCORD_SETTINGS_RESTART}
       </div>
     </Confirm>);

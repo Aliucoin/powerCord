@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 require('./elevate');
@@ -22,7 +22,7 @@ try {
     console.log('It seems like your platform is not supported yet.', '\n');
     console.log('Feel free to open an issue about it, so we can add support for it!');
     console.log(`Make sure to mention the platform you are on is "${process.platform}" in your issue ticket.`);
-    console.log('https://github.com/powercord-org/powercord/issues/new/choose');
+    console.log('https://github.com/powerCord-org/powerCord/issues/new/choose');
     process.exit(process.argv.includes('--no-exit-codes') ? 0 : 1);
   }
 }
@@ -52,7 +52,7 @@ try {
   if (e.code === 'EACCES') {
     // todo: this was linux only (?) so I assume this is now safe to delete
     console.log(process.argv[2] === 'inject' ? BasicMessages.PLUG_FAILED : BasicMessages.UNPLUG_FAILED, '\n');
-    console.log('Powercord wasn\'t able to inject itself due to missing permissions.', '\n');
+    console.log('PowerCord wasn\'t able to inject itself due to missing permissions.', '\n');
     console.log('Try again with elevated permissions.');
   } else {
     console.error('fucky wucky', e);

@@ -1,8 +1,8 @@
 const { join, dirname } = require('path');
 const { format: formatUrl } = require('url');
 const { remote: { BrowserWindow } } = require('electron');
-const { React } = require('powercord/webpack');
-const { Flex, Button } = require('powercord/components');
+const { React } = require('powerCord/webpack');
+const { Flex, Button } = require('powerCord/components');
 
 const SplashStages = Object.freeze({
   CHECKING_FOR_UPDATES: 'CHECKING_FOR_UPDATES',
@@ -106,7 +106,7 @@ class SplashScreen extends React.PureComponent {
       }
     };
 
-    // this._window = PowercordNative.openBrowserWindow(windowSettings);
+    // this._window = PowerCordNative.openBrowserWindow(windowSettings);
     this._window = new BrowserWindow(windowSettings);
     this._window.loadURL(splashIndex);
     this._window.webContents.openDevTools({ mode: 'detach' });

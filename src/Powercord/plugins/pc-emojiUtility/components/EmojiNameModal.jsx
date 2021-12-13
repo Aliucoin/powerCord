@@ -1,8 +1,8 @@
-const { React } = require('powercord/webpack');
-const { Confirm } = require('powercord/components/modal');
-const { TextInput } = require('powercord/components/settings');
+const { React } = require('powerCord/webpack');
+const { Confirm } = require('powerCord/components/modal');
+const { TextInput } = require('powerCord/components/settings');
 
-const { close: closeModal } = require('powercord/modal');
+const { close: closeModal } = require('powerCord/modal');
 
 module.exports = class EmojiNameModal extends React.Component {
   constructor () {
@@ -23,7 +23,7 @@ module.exports = class EmojiNameModal extends React.Component {
         onConfirm={() => this.props.onConfirm(this.state.emojiName)}
         onCancel={() => closeModal()}
       >
-        <div className='powercord-emojiName-modal'>
+        <div className='powerCord-emojiName-modal'>
           <TextInput
             defaultValue={this.state.emojiName}
             onChange={emojiName => this.setState({ emojiName })}

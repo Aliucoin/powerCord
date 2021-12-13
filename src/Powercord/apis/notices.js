@@ -1,7 +1,7 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 /**
- * @typedef PowercordToast
+ * @typedef PowerCordToast
  * @property {String} header
  * @property {String} content
  * @property {ToastButton[]|void} buttons
@@ -20,7 +20,7 @@ const { API } = require('powercord/entities');
  */
 
 /**
- * @typedef PowercordAnnouncement
+ * @typedef PowerCordAnnouncement
  * @property {String} message
  * @property {String|void} color
  * @property {function|void} onClose
@@ -30,8 +30,8 @@ const { API } = require('powercord/entities');
  */
 
 /**
- * @property {Object.<String, PowercordToast>} toasts
- * @property {Object.<String, PowercordAnnouncement>} announcements
+ * @property {Object.<String, PowerCordToast>} toasts
+ * @property {Object.<String, PowerCordAnnouncement>} announcements
  */
 module.exports = class NoticesAPI extends API {
   constructor () {
@@ -44,7 +44,7 @@ module.exports = class NoticesAPI extends API {
   /**
    * Sends an announcement to the user (banner at the top of the client)
    * @param {String} id Announcement ID
-   * @param {PowercordAnnouncement} props Announcement
+   * @param {PowerCordAnnouncement} props Announcement
    * @emits NoticesAPI#announcementAdded
    */
   sendAnnouncement (id, props) {
@@ -73,7 +73,7 @@ module.exports = class NoticesAPI extends API {
   /**
    * Sends a toast to the user
    * @param {String} id Toast ID
-   * @param {PowercordToast} props Toast
+   * @param {PowerCordToast} props Toast
    * @emits NoticesAPI#toastAdded
    */
   sendToast (id, props) {

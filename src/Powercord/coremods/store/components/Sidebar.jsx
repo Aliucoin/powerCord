@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule } = require('powercord/webpack');
-const { Clickable, AdvancedScrollerThin, Icons } = require('powercord/components');
+const { React, getModule } = require('powerCord/webpack');
+const { Clickable, AdvancedScrollerThin, Icons } = require('powerCord/components');
 
 const Item = React.memo(
   ({ path, icon, children }) => {
@@ -15,7 +15,7 @@ const Item = React.memo(
     const { container, selected: selectedClass, clickable, wrappedLayout, layout, avatar, content } = getModule([ 'wrappedLayout' ], false);
 
     const loc = useLocation();
-    const fullPath = `/_powercord/store${path}`;
+    const fullPath = `/_powerCord/store${path}`;
     const selected = loc.pathname.startsWith(fullPath);
 
     return (
@@ -43,8 +43,8 @@ module.exports = React.memo(
     const sizes = getModule([ 'size24' ], false);
 
     return (
-      <AdvancedScrollerThin className='powercord-text'>
-        <h2 className={`${discoverHeader} ${sizes.size24}`}>Powercord Store</h2>
+      <AdvancedScrollerThin className='powerCord-text'>
+        <h2 className={`${discoverHeader} ${sizes.size24}`}>PowerCord Store</h2>
         <Item icon='Plugin' path='/plugins'>Plugins</Item>
         <Item icon='Theme' path='/themes'>Themes</Item>
         <Item icon='Bulb' path='/suggestions'>Suggestions</Item>

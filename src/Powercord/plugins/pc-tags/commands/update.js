@@ -1,4 +1,4 @@
-const getPrefix = () => powercord.api.commands.prefix;
+const getPrefix = () => powerCord.api.commands.prefix;
 
 module.exports = {
   command: 'update',

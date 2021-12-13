@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React } = require('powercord/webpack');
-const { TextInput, TextAreaInput, CheckboxInput } = require('powercord/components/settings');
+const { React } = require('powerCord/webpack');
+const { TextInput, TextAreaInput, CheckboxInput } = require('powerCord/components/settings');
 
 module.exports = React.memo(
   () => (

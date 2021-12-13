@@ -1,12 +1,12 @@
 const http = require('http');
 const { shell: { openExternal } } = require('electron');
-const { React, Flux, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { Spinner, Card, FormTitle } = require('powercord/components');
-const { WEBSITE } = require('powercord/constants');
+const { React, Flux, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { Spinner, Card, FormTitle } = require('powerCord/components');
+const { WEBSITE } = require('powerCord/constants');
 
 const LinkedAccounts = require('./LinkedAccounts.jsx');
 
-class PowercordAccount extends React.Component {
+class PowerCordAccount extends React.Component {
   constructor (props) {
     super(props);
 
@@ -24,7 +24,7 @@ class PowercordAccount extends React.Component {
       Component = () => <div>{Messages.NOTICE_STREAMER_MODE_TEXT}</div>;
     } else if (this.state.linking) {
       Component = () => <div className='linking'><Spinner type='pulsingEllipsis'/> {Messages.POWERCORD_LINKING_WAITING}</div>;
-    } else if (powercord.account) {
+    } else if (powerCord.account) {
       Component = () => <LinkedAccounts
         passphrase={this.props.passphrase.bind(this)}
         refresh={this.refresh.bind(this)}
@@ -37,7 +37,7 @@ class PowercordAccount extends React.Component {
       </div>;
     }
 
-    return <Card className='powercord-account powercord-text'>
+    return <Card className='powerCord-account powerCord-text'>
       <FormTitle>{Messages.POWERCORD_ACCOUNT}</FormTitle>
       <Component/>
     </Card>;
@@ -51,13 +51,13 @@ class PowercordAccount extends React.Component {
   }
 
   async refresh () {
-    await powercord.fetchAccount();
+    await powerCord.fetchAccount();
     this.props.onAccount();
   }
 
   async unlink () {
-    powercord.settings.set('powercordToken', null);
-    await powercord.fetchAccount();
+    powerCord.settings.set('powerCordToken', null);
+    await powerCord.fetchAccount();
     this.props.onAccount();
   }
 
@@ -73,8 +73,8 @@ class PowercordAccount extends React.Component {
           server.close();
 
           clearTimeout(this.state.timeout);
-          powercord.settings.set('powercordToken', req.url.replace(_url, ''));
-          await powercord.fetchAccount();
+          powerCord.settings.set('powerCordToken', req.url.replace(_url, ''));
+          await powerCord.fetchAccount();
           this.props.onAccount();
           return this.setState({
             linking: false,
@@ -92,13 +92,13 @@ class PowercordAccount extends React.Component {
           linking: false,
           server: null,
           message: Messages.POWERCORD_LINKING_ERRORED.format({
-            newIssueUrl: 'https://github.com/powercord-org/powercord/issues/new?labels=bug&template=bug_report.md&title=Error+while+linking+Powercord+account+to+Discord'
+            newIssueUrl: 'https://github.com/powerCord-org/powerCord/issues/new?labels=bug&template=bug_report.md&title=Error+while+linking+PowerCord+account+to+Discord'
           })
         });
         return console.error(err);
       }
 
-      const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+      const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
       openExternal(`${baseUrl}/api/v2/users/@me/link/legacy`);
 
       const timeout = setTimeout(() => {
@@ -122,4 +122,4 @@ class PowercordAccount extends React.Component {
 module.exports = Flux.connectStoresAsync(
   [ getModule([ 'enabled', 'hidePersonalInformation' ]) ],
   ([ settingsStore ]) => ({ streamerMode: settingsStore.getSettings() })
-)(PowercordAccount);
+)(PowerCordAccount);

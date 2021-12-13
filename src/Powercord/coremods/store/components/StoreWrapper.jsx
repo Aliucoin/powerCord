@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { Clickable, Button, AdvancedScrollerAuto, Icon } = require('powercord/components');
+const { React, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { Clickable, Button, AdvancedScrollerAuto, Icon } = require('powerCord/components');
 
 const SearchBar = React.memo(
   ({ placeholder, onSearch }) => {
@@ -65,7 +65,7 @@ module.exports = React.memo(
     } = getModule([ 'headerContentWrapper' ], false);
 
     return (
-      <div className={`powercord-store ${pageWrapper}`}>
+      <div className={`powerCord-store ${pageWrapper}`}>
         <AdvancedScrollerAuto className={scroller}>
           <div className={viewWrapper}>
             <div className={searchHeader}>

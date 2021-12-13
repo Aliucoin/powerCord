@@ -1,4 +1,4 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 module.exports = class ConnectionsAPI extends API {
   constructor () {

@@ -1,4 +1,4 @@
-const { Plugin } = require('powercord/entities');
+const { Plugin } = require('powerCord/entities');
 
 const {
   getModule,
@@ -11,19 +11,19 @@ const {
     EMOJI_RE,
     EMOJI_MAX_LENGTH
   }
-} = require('powercord/webpack');
+} = require('powerCord/webpack');
 
 /* const { CDN_HOST } = window.GLOBAL_ENV; */
 
-const { ContextMenu } = require('powercord/components');
-const { getOwnerInstance } = require('powercord/util');
-const { inject, uninject } = require('powercord/injector');
-const { open: openModal } = require('powercord/modal');
+const { ContextMenu } = require('powerCord/components');
+const { getOwnerInstance } = require('powerCord/util');
+const { inject, uninject } = require('powerCord/injector');
+const { open: openModal } = require('powerCord/modal');
 
 const { writeFile } = require('fs').promises;
 const { existsSync } = require('fs');
 
-const { get } = require('powercord/http');
+const { get } = require('powerCord/http');
 const { extname, resolve } = require('path');
 const { parse } = require('url');
 
@@ -530,13 +530,13 @@ module.exports = class EmojiUtility extends Plugin {
       return res;
     });
 
-    powercord.api.settings.registerSettings('pc-emojiUtility', {
+    powerCord.api.settings.registerSettings('pc-emojiUtility', {
       category: this.entityID,
       label: 'Emote Utility',
       render: Settings
     });
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'findemote',
       description: 'Find the server an emote is from',
       usage: '{c} [emote]',
@@ -576,7 +576,7 @@ module.exports = class EmojiUtility extends Plugin {
       }
     });
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'massemote',
       description: 'Send all emotes containing the specified name',
       usage: '{c} [emote name]',
@@ -615,7 +615,7 @@ module.exports = class EmojiUtility extends Plugin {
       }
     });
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'saveemote',
       description: 'Save emotes to a specified directory',
       usage: '{c} [emote]',
@@ -680,7 +680,7 @@ module.exports = class EmojiUtility extends Plugin {
       }
     });
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'cloneemote',
       description: 'Clone an emote to your own server',
       usage: '{c} [emote] [server]',
@@ -753,11 +753,11 @@ module.exports = class EmojiUtility extends Plugin {
   }
 
   pluginWillUnload () {
-    powercord.api.settings.unregisterSettings('pc-emojiUtility');
-    powercord.api.commands.unregisterCommand('cloneemote');
-    powercord.api.commands.unregisterCommand('findemote');
-    powercord.api.commands.unregisterCommand('massemote');
-    powercord.api.commands.unregisterCommand('saveemote');
+    powerCord.api.settings.unregisterSettings('pc-emojiUtility');
+    powerCord.api.commands.unregisterCommand('cloneemote');
+    powerCord.api.commands.unregisterCommand('findemote');
+    powerCord.api.commands.unregisterCommand('massemote');
+    powerCord.api.commands.unregisterCommand('saveemote');
     uninject('pc-emojiUtility-emojiContext');
     uninject('pc-emojiUtility-reactionContext');
     uninject('pc-emojiUtility-hideEmojisPicker');

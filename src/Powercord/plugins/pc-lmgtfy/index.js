@@ -1,4 +1,4 @@
-const { Plugin } = require('powercord/entities');
+const { Plugin } = require('powerCord/entities');
 
 const Constants = Object.freeze({
   SEARCH_ENGINES: {
@@ -25,13 +25,13 @@ const Settings = require('./Settings');
 
 module.exports = class LMGTFY extends Plugin {
   startPlugin () {
-    powercord.api.settings.registerSettings(this.entityID, {
+    powerCord.api.settings.registerSettings(this.entityID, {
       category: this.entityID,
       label: 'LMGTFY',
       render: Settings
     });
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'lmgtfy',
       description: 'Let me Google that for you...',
       usage: '{c} [--iie] [...search terms] <search engine> <search type>',
@@ -41,8 +41,8 @@ module.exports = class LMGTFY extends Plugin {
   }
 
   pluginWillUnload () {
-    powercord.api.settings.unregisterSettings(this.entityID);
-    powercord.api.commands.unregisterCommand('lmgtfy');
+    powerCord.api.settings.unregisterSettings(this.entityID);
+    powerCord.api.commands.unregisterCommand('lmgtfy');
   }
 
   handleCommand (args) {

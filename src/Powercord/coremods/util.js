@@ -1,18 +1,18 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { createElement } = require('powercord/util');
-const { resolveCompiler } = require('powercord/compilers');
+const { createElement } = require('powerCord/util');
+const { resolveCompiler } = require('powerCord/compilers');
 
 module.exports = {
   loadStyle (file) {
     const id = Math.random().toString(36).slice(2);
     const style = createElement('style', {
       id: `style-coremod-${id}`,
-      'data-powercord': true,
+      'data-powerCord': true,
       'data-coremod': true
     });
 

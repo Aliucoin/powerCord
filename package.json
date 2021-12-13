@@ -1,5 +1,5 @@
 {
-  "name": "powercord",
+  "name": "powerCord",
   "version": "2.0.0",
   "description": "A lightweight @discord client mod focused on simplicity and performance",
   "license": "SEE LICENSE IN LICENSE",
@@ -12,10 +12,10 @@
     "inject": "node injectors/index.js inject --no-exit-codes",
     "uninject": "node injectors/index.js uninject --no-exit-codes"
   },
-  "repository": "https://github.com/powercord-org/powercord.git",
+  "repository": "https://github.com/powerCord-org/powerCord.git",
   "author": "aetheryx",
   "bugs": {
-    "url": "https://github.com/powercord-org/powercord/issues"
+    "url": "https://github.com/powerCord-org/powerCord/issues"
   },
   "dependencies": {
     "codemirror": "^5.57.0",

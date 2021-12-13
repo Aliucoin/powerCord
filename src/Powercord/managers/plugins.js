@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const { readdirSync } = require('fs');
-const { rmdirRf } = require('powercord/util');
+const { rmdirRf } = require('powerCord/util');
 
 module.exports = class PluginManager {
   constructor () {
@@ -24,7 +24,7 @@ module.exports = class PluginManager {
   }
 
   isEnabled (plugin) {
-    return !powercord.settings.get('disabledPlugins', []).includes(plugin);
+    return !powerCord.settings.get('disabledPlugins', []).includes(plugin);
   }
 
   // Mount/load/enable/install shit
@@ -37,11 +37,11 @@ module.exports = class PluginManager {
         optionalDependencies: []
       }, require(resolve(this.pluginDir, pluginID, 'manifest.json')));
     } catch (e) {
-      return console.error('%c[Powercord]', 'color: #7289da', `Plugin ${pluginID} doesn't have a valid manifest - Skipping`);
+      return console.error('%c[PowerCord]', 'color: #7289da', `Plugin ${pluginID} doesn't have a valid manifest - Skipping`);
     }
 
     if (!this.manifestKeys.every(key => manifest.hasOwnProperty(key))) {
-      return console.error('%c[Powercord]', 'color: #7289da', `Plugin "${pluginID}" doesn't have a valid manifest - Skipping`);
+      return console.error('%c[PowerCord]', 'color: #7289da', `Plugin "${pluginID}" doesn't have a valid manifest - Skipping`);
     }
 
     try {
@@ -63,7 +63,7 @@ module.exports = class PluginManager {
 
       this.plugins.set(pluginID, new PluginClass());
     } catch (e) {
-      console.error('%c[Powercord:Plugin]', 'color: #7289da', `An error occurred while initializing "${pluginID}"!`, e);
+      console.error('%c[PowerCord:Plugin]', 'color: #7289da', `An error occurred while initializing "${pluginID}"!`, e);
     }
   }
 
@@ -101,7 +101,7 @@ module.exports = class PluginManager {
       throw new Error(`Tried to load a non installed plugin (${plugin})`);
     }
     if (plugin.ready) {
-      return console.error('%c[Powercord]', 'color: #7289da', `Tried to load an already loaded plugin (${pluginID})`);
+      return console.error('%c[PowerCord]', 'color: #7289da', `Tried to load an already loaded plugin (${pluginID})`);
     }
 
     plugin._load();
@@ -113,7 +113,7 @@ module.exports = class PluginManager {
       throw new Error(`Tried to unload a non installed plugin (${plugin})`);
     }
     if (!plugin.ready) {
-      return console.error('%c[Powercord]', 'color: #7289da', `Tried to unload a non loaded plugin (${plugin})`);
+      return console.error('%c[PowerCord]', 'color: #7289da', `Tried to unload a non loaded plugin (${plugin})`);
     }
 
     plugin._unload();
@@ -125,9 +125,9 @@ module.exports = class PluginManager {
       throw new Error(`Tried to enable a non installed plugin (${pluginID})`);
     }
 
-    powercord.settings.set(
+    powerCord.settings.set(
       'disabledPlugins',
-      powercord.settings.get('disabledPlugins', []).filter(p => p !== pluginID)
+      powerCord.settings.get('disabledPlugins', []).filter(p => p !== pluginID)
     );
 
     this.load(pluginID);
@@ -140,8 +140,8 @@ module.exports = class PluginManager {
       throw new Error(`Tried to disable a non installed plugin (${pluginID})`);
     }
 
-    powercord.settings.set('disabledPlugins', [
-      ...powercord.settings.get('disabledPlugins', []),
+    powerCord.settings.set('disabledPlugins', [
+      ...powerCord.settings.get('disabledPlugins', []),
       pluginID
     ]);
 
@@ -168,7 +168,7 @@ module.exports = class PluginManager {
     const isOverlay = (/overlay/).test(location.pathname);
     readdirSync(this.pluginDir).sort(this._sortPlugins).forEach(filename => !this.isInstalled(filename) && this.mount(filename));
     for (const plugin of [ ...this.plugins.values() ]) {
-      if (powercord.settings.get('disabledPlugins', []).includes(plugin.entityID)) {
+      if (powerCord.settings.get('disabledPlugins', []).includes(plugin.entityID)) {
         continue;
       }
       if (
@@ -193,7 +193,7 @@ module.exports = class PluginManager {
   }
 
   shutdownPlugins () {
-    return this._bulkUnload([ ...powercord.pluginManager.plugins.keys() ]);
+    return this._bulkUnload([ ...powerCord.pluginManager.plugins.keys() ]);
   }
 
   _sortPlugins (pluginA, pluginB) {

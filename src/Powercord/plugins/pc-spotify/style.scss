@@ -2,7 +2,7 @@
   --spotify-color: #1ed860;
 }
 
-.powercord-spotify {
+.powerCord-spotify {
   img {
     margin-bottom: -4px;
   }
@@ -160,8 +160,8 @@
   }
 }
 
-#powercord-spotify-menu {
-  .disabled-1WRMNA[id^='powercord-spotify-menu-devices--'], #powercord-spotify-menu-repeat + div [id*='-active'] {
+#powerCord-spotify-menu {
+  .disabled-1WRMNA[id^='powerCord-spotify-menu-devices--'], #powerCord-spotify-menu-repeat + div [id*='-active'] {
     color: var(--spotify-color) !important;
     opacity: 1 !important;
   }
@@ -176,7 +176,7 @@
 }
 
 .theme-dark {
-  .powercord-spotify img[src*='_global/favicon.png'], .spotify-add-to-playlist img[src*='_global/favicon.png'] {
+  .powerCord-spotify img[src*='_global/favicon.png'], .spotify-add-to-playlist img[src*='_global/favicon.png'] {
     filter: invert(1);
   }
 }

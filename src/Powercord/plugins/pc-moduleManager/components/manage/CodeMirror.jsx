@@ -1,4 +1,4 @@
-const { React } = require('powercord/webpack');
+const { React } = require('powerCord/webpack');
 const CodeMirror = require('codemirror');
 require('codemirror/mode/css/css');
 require('codemirror/addon/search/searchcursor');
@@ -26,7 +26,7 @@ class CodeMirrorComponent extends React.PureComponent {
   render () {
     return (
       <div
-        className='powercord-quickcss-codemirror'
+        className='powerCord-quickcss-codemirror'
         ref={this.cmRef}
         onKeyDown={e => {
           if (e.ctrlKey) {

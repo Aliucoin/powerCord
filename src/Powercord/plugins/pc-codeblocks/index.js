@@ -1,7 +1,7 @@
-const { Plugin } = require('powercord/entities');
-const { React, getModule, hljs, i18n: { Messages } } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
-const { getReactInstance } = require('powercord/util');
+const { Plugin } = require('powerCord/entities');
+const { React, getModule, hljs, i18n: { Messages } } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
+const { getReactInstance } = require('powerCord/util');
 const { clipboard } = require('electron');
 
 module.exports = class Codeblocks extends Plugin {
@@ -61,15 +61,15 @@ module.exports = class Codeblocks extends Plugin {
     }
 
     return React.createElement(React.Fragment, null,
-      lang && React.createElement('div', { className: 'powercord-codeblock-lang' }, lang.name),
-      React.createElement('table', { className: 'powercord-codeblock-table' },
+      lang && React.createElement('div', { className: 'powerCord-codeblock-lang' }, lang.name),
+      React.createElement('table', { className: 'powerCord-codeblock-table' },
         ...lines.map((line, i) => React.createElement('tr', null,
           React.createElement('td', null, i + 1),
           React.createElement('td', lang && dangerous ? { dangerouslySetInnerHTML: { __html: line } } : { children: line })
         ))
       ),
       React.createElement('button', {
-        className: 'powercord-codeblock-copy-btn',
+        className: 'powerCord-codeblock-copy-btn',
         onClick: this._onClickHandler
       }, Messages.COPY)
     );

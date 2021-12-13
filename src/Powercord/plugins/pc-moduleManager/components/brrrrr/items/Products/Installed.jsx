@@ -1,5 +1,5 @@
-const { React } = require('powercord/webpack');
-const { Card } = require('powercord/components');
+const { React } = require('powerCord/webpack');
+const { Card } = require('powerCord/components');
 
 const Header = require('./parts/InstalledHeader');
 const Container = require('./parts/InstalledDetails');
@@ -14,7 +14,7 @@ module.exports = class Installed extends React.Component {
       onEnable, onDisable, onInstall, onUninstall // Events
     } = this.props;
 
-    return <Card className='powercord-plugin'>
+    return <Card className='powerCord-plugin'>
       <Header
         name={manifest.name}
         enabled={enabled}

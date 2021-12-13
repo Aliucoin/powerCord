@@ -1,7 +1,7 @@
-const { React, getModule, constants: { SpotifyEndpoints }, i18n: { Messages } } = require('powercord/webpack');
-const { FormTitle, Button } = require('powercord/components');
-const { Modal } = require('powercord/components/modal');
-const { close: closeModal } = require('powercord/modal');
+const { React, getModule, constants: { SpotifyEndpoints }, i18n: { Messages } } = require('powerCord/webpack');
+const { FormTitle, Button } = require('powerCord/components');
+const { Modal } = require('powerCord/components/modal');
+const { close: closeModal } = require('powerCord/modal');
 
 module.exports = React.memo(
   () => {
@@ -9,7 +9,7 @@ module.exports = React.memo(
     const { marginBottom20 } = getModule([ 'marginBottom20' ], false);
 
     return (
-      <Modal className='powercord-text'>
+      <Modal className='powerCord-text'>
         <Modal.Header>
           <FormTitle tag='h4'>Spotify Premium Required</FormTitle>
           <Modal.CloseButton onClick={() => closeModal()}/>

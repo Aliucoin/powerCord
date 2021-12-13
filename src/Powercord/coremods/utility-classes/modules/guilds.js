@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
+const { React, getModule } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
 
 module.exports = async () => {
   const DragSourceConnectedGuild = await getModule([ 'LurkingGuild' ]);

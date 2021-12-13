@@ -1,19 +1,19 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 /**
- * @typedef PowercordRoute
+ * @typedef PowerCordRoute
  * @property {String} path Route path
  * @property {React.Component|function(): React.ReactNode} render Route renderer
  * @property {React.Component|function(): React.ReactNode|undefined} sidebar Sidebar renderer
  */
 
 /**
- * @typedef PowercordDeeplink
+ * @typedef PowerCordDeeplink
  */
 
 /**
- * Powercord custom router API
- * @property {PowercordRoute[]} routes Registered routes
+ * PowerCord custom router API
+ * @property {PowerCordRoute[]} routes Registered routes
  */
 class RouterAPI extends API {
   constructor () {
@@ -29,7 +29,7 @@ class RouterAPI extends API {
     return null;
     /*
      * const oldRoute = await DiscordNative.settings.get('_POWERCORD_ROUTE');
-     * if (oldRoute && this.routes.find(c => c.path === oldRoute.split('/_powercord')[1])) {
+     * if (oldRoute && this.routes.find(c => c.path === oldRoute.split('/_powerCord')[1])) {
      *   const router = await getModule([ 'replaceWith' ]);
      *   router.replaceWith(oldRoute);
      * }
@@ -39,7 +39,7 @@ class RouterAPI extends API {
 
   /**
    * Registers a route
-   * @param {PowercordRoute} route Route to register
+   * @param {PowerCordRoute} route Route to register
    * @emits RouterAPI#routeAdded
    */
   registerRoute (route) {

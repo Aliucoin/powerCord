@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React } = require('powercord/webpack');
-const { TextInput, TextAreaInput, CheckboxInput } = require('powercord/components/settings');
+const { React } = require('powerCord/webpack');
+const { TextInput, TextAreaInput, CheckboxInput } = require('powerCord/components/settings');
 
 module.exports = React.memo(
   () => (
@@ -13,7 +13,7 @@ module.exports = React.memo(
       <TextInput required>Product name</TextInput>
       <TextInput
         required
-        note={'In order for us to review your product you\'ll need to publish it to a GitHub repository. For plugins, once the review process is complete we\'ll ask you to publish it on the powercord-community GitHub org.'}
+        note={'In order for us to review your product you\'ll need to publish it to a GitHub repository. For plugins, once the review process is complete we\'ll ask you to publish it on the powerCord-community GitHub org.'}
         maxLength={256}
       >
         Repository URL
@@ -30,7 +30,7 @@ module.exports = React.memo(
       >
         Notes
       </TextAreaInput>
-      <CheckboxInput>My product complies with <a href='https://powercord.dev/guidelines' target='_blank'>Powercord's Community Guidelines</a></CheckboxInput>
+      <CheckboxInput>My product complies with <a href='https://powerCord.dev/guidelines' target='_blank'>PowerCord's Community Guidelines</a></CheckboxInput>
     </>
   )
 );

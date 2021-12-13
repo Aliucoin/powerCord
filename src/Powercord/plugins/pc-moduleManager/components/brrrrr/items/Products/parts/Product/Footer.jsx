@@ -1,8 +1,8 @@
-const { React } = require('powercord/webpack');
-const { Tooltip, Clickable, Icons: { GitHub, Gear, CloudDownload, ReportFlag } } = require('powercord/components');
+const { React } = require('powerCord/webpack');
+const { Tooltip, Clickable, Icons: { GitHub, Gear, CloudDownload, ReportFlag } } = require('powerCord/components');
 
 module.exports = ({ github, owner, isLoggedIn, onSettings, onReport, onInstall }) =>
-  <div className='powercord-product-footer'>
+  <div className='powerCord-product-footer'>
     <div className='buttons'>
       {(github || true) && <Tooltip text='View on GitHub' placement='top'>
         <a href={`https://github.com/${github}`} target='_blank' className='github'>

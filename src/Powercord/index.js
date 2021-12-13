@@ -1,10 +1,10 @@
 const { join } = require('path');
 const { shell: { openExternal } } = require('electron');
-const { get } = require('powercord/http');
-const { sleep } = require('powercord/util');
-const Webpack = require('powercord/webpack');
-const { WEBSITE } = require('powercord/constants');
-const { Updatable } = require('powercord/entities');
+const { get } = require('powerCord/http');
+const { sleep } = require('powerCord/util');
+const Webpack = require('powerCord/webpack');
+const { WEBSITE } = require('powerCord/constants');
+const { Updatable } = require('powerCord/entities');
 
 const { promisify } = require('util');
 const cp = require('child_process');
@@ -17,7 +17,7 @@ const modules = require('./modules');
 let coremods;
 
 /**
- * @typedef PowercordAPI
+ * @typedef PowerCordAPI
  * @property {CommandsAPI} commands
  * @property {SettingsAPI} settings
  * @property {NoticesAPI} notices
@@ -37,9 +37,9 @@ let coremods;
  */
 
 /**
- * Main Powercord class
- * @type {Powercord}
- * @property {PowercordAPI} api
+ * Main PowerCord class
+ * @type {PowerCord}
+ * @property {PowerCordAPI} api
  * @property {StyleManager} styleManager
  * @property {PluginManager} pluginManager
  * @property {APIManager} apiManager
@@ -47,9 +47,9 @@ let coremods;
  * @property {Object|null} account
  * @property {Boolean} initialized
  */
-class Powercord extends Updatable {
+class PowerCord extends Updatable {
   constructor () {
-    super(join(__dirname, '..', '..'), '', 'powercord');
+    super(join(__dirname, '..', '..'), '', 'powerCord');
 
     this.api = {};
     this.gitInfos = {
@@ -72,7 +72,7 @@ class Powercord extends Updatable {
     }
   }
 
-  // Powercord initialization
+  // PowerCord initialization
   async init () {
     const isOverlay = (/overlay/).test(location.pathname);
     if (isOverlay) { // eh
@@ -91,14 +91,14 @@ class Powercord extends Updatable {
 
     // Token manipulation stuff
     if (this.settings.get('hideToken', true)) {
-      const tokenModule = await require('powercord/webpack').getModule([ 'hideToken' ]);
+      const tokenModule = await require('powerCord/webpack').getModule([ 'hideToken' ]);
       tokenModule.hideToken = () => void 0;
       setImmediate(() => tokenModule.showToken()); // just to be sure
     }
 
     window.addEventListener('beforeunload', () => {
       if (this.account && this.settings.get('settingsSync', false)) {
-        powercord.api.settings.upload();
+        powerCord.api.settings.upload();
       }
     });
 
@@ -110,11 +110,11 @@ class Powercord extends Updatable {
     this.emit('loaded');
   }
 
-  // Powercord startup
+  // PowerCord startup
   async startup () {
     // APIs
     await this.apiManager.startAPIs();
-    this.settings = powercord.api.settings.buildCategoryObject('pc-general');
+    this.settings = powerCord.api.settings.buildCategoryObject('pc-general');
     this.emit('settingsReady');
 
     // Style Manager
@@ -128,7 +128,7 @@ class Powercord extends Updatable {
     this.initialized = true;
   }
 
-  // Powercord shutdown
+  // PowerCord shutdown
   async shutdown () {
     this.initialized = false;
     // Plugins
@@ -180,10 +180,10 @@ class Powercord extends Updatable {
     }
 
     this.isLinking = true;
-    const token = this.settings.get('powercordToken', null);
+    const token = this.settings.get('powerCordToken', null);
     if (token) {
       const baseUrl = this.settings.get('backendURL', WEBSITE);
-      console.debug('%c[Powercord]', 'color: #7289da', 'Logging in to your account...');
+      console.debug('%c[PowerCord]', 'color: #7289da', 'Logging in to your account...');
 
       const resp = await get(`${baseUrl}/api/v2/users/@me`)
         .set('Authorization', token)
@@ -191,9 +191,9 @@ class Powercord extends Updatable {
 
       if (resp.statusCode === 401) {
         if (!resp.body.error && resp.body.error !== 'DISCORD_REVOKED') {
-          powercord.api.notices.sendAnnouncement('pc-account-discord-unlinked', {
+          powerCord.api.notices.sendAnnouncement('pc-account-discord-unlinked', {
             color: 'red',
-            message: 'Your Powercord account is no longer linked to your Discord account! Some integrations will be disabled.',
+            message: 'Your PowerCord account is no longer linked to your Discord account! Some integrations will be disabled.',
             button: {
               text: 'Link it back',
               onClick: () => openExternal(`${WEBSITE}/api/v2/oauth/discord`)
@@ -203,14 +203,14 @@ class Powercord extends Updatable {
           this.isLinking = false;
           return; // keep token stored
         }
-        this.settings.set('powercordToken', null);
+        this.settings.set('powerCordToken', null);
         this.account = null;
         this.isLinking = false;
-        return console.error('%c[Powercord]', 'color: #7289da', 'Unable to fetch your account (Invalid token). Removed token from config');
+        return console.error('%c[PowerCord]', 'color: #7289da', 'Unable to fetch your account (Invalid token). Removed token from config');
       } else if (resp.statusCode !== 200) {
         this.account = null;
         this.isLinking = false;
-        return console.error('%c[Powercord]', 'color: #7289da', `An error occurred while fetching your account: ${resp.statusCode} - ${resp.statusText}`, resp.body);
+        return console.error('%c[PowerCord]', 'color: #7289da', `An error occurred while fetching your account: ${resp.statusCode} - ${resp.statusText}`, resp.body);
       }
 
       this.account = resp.body;
@@ -218,7 +218,7 @@ class Powercord extends Updatable {
     } else {
       this.account = null;
     }
-    console.debug('%c[Powercord]', 'color: #7289da', 'Logged in!');
+    console.debug('%c[PowerCord]', 'color: #7289da', 'Logged in!');
     this.isLinking = false;
   }
 
@@ -227,10 +227,10 @@ class Powercord extends Updatable {
     if (success) {
       await exec('npm install --only=prod', { cwd: this.entityPath });
       const updater = this.pluginManager.get('pc-updater');
-      if (!document.querySelector('#powercord-updater, .powercord-updater')) {
-        powercord.api.notices.sendToast('powercord-updater', {
+      if (!document.querySelector('#powerCord-updater, .powerCord-updater')) {
+        powerCord.api.notices.sendToast('powerCord-updater', {
           header: 'Update complete!',
-          content: 'Please click "Reload" to complete the final stages of this Powercord update.',
+          content: 'Please click "Reload" to complete the final stages of this PowerCord update.',
           type: 'success',
           buttons: [ {
             text: 'Reload',
@@ -250,4 +250,4 @@ class Powercord extends Updatable {
   }
 }
 
-module.exports = Powercord;
+module.exports = PowerCord;

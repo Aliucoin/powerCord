@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule } = require('powercord/webpack');
-const { Button } = require('powercord/components');
+const { React, getModule } = require('powerCord/webpack');
+const { Button } = require('powerCord/components');
 
 module.exports = React.memo(
   ({ renderer, onClick }) => {
@@ -15,7 +15,7 @@ module.exports = React.memo(
       <>
         {renderer()}
         <h2 className={`${size32} ${marginBottom20}`}>I meet all the requirements!</h2>
-        {powercord.account
+        {powerCord.account
           ? <>
             <div className={`${size16} ${marginBottom20}`}>
               You're ready for next step! Click the button below to start filling out the form.
@@ -24,7 +24,7 @@ module.exports = React.memo(
           </>
           : <>
             <div className={`${size16} ${marginBottom20}`}>
-              You're almost ready for next step. Before you can continue, you'll need to link your Powercord account to Discord.
+              You're almost ready for next step. Before you can continue, you'll need to link your PowerCord account to Discord.
             </div>
             <Button onClick={() => getModule([ 'open', 'saveAccountChanges' ], false).open('pc-general')}>Go to settings</Button>
           </>}

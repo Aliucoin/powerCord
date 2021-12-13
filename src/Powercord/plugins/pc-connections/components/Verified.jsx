@@ -1,5 +1,5 @@
-const { React, Flux, getModule, getModuleByDisplayName, i18n: { Messages }, constants: { Colors } } = require('powercord/webpack');
-const { AsyncComponent } = require('powercord/components');
+const { React, Flux, getModule, getModuleByDisplayName, i18n: { Messages }, constants: { Colors } } = require('powerCord/webpack');
+const { AsyncComponent } = require('powerCord/components');
 const { TooltipContainer } = getModule(m => m.TooltipContainer, false);
 
 const FlowerStarIcon = AsyncComponent.from(getModuleByDisplayName('FlowerStarIcon'));

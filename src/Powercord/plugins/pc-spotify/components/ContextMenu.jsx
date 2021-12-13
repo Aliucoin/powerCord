@@ -1,8 +1,8 @@
 const { clipboard, shell } = require('electron');
-const { React, Flux, getModule, messages, channels, contextMenu: { closeContextMenu }, i18n: { Messages } } = require('powercord/webpack');
-const { open: openModal } = require('powercord/modal');
-const { Menu } = require('powercord/components');
-const { formatTime } = require('powercord/util');
+const { React, Flux, getModule, messages, channels, contextMenu: { closeContextMenu }, i18n: { Messages } } = require('powerCord/webpack');
+const { open: openModal } = require('powerCord/modal');
+const { Menu } = require('powerCord/components');
+const { formatTime } = require('powerCord/util');
 
 const songsStore = require('../songsStore/store');
 const songsStoreActions = require('../songsStore/actions');
@@ -21,7 +21,7 @@ class ContextMenu extends React.PureComponent {
   }
 
   componentDidMount () {
-    if (powercord.account && powercord.account.accounts.spotify) {
+    if (powerCord.account && powerCord.account.accounts.spotify) {
       if (!this.props.songsLoaded) {
         songsStoreActions.loadSongs();
       }
@@ -41,7 +41,7 @@ class ContextMenu extends React.PureComponent {
     const isPremium = getModule([ 'isSpotifyPremium' ], false).isSpotifyPremium();
 
     return (
-      <Menu.Menu navId='powercord-spotify-menu' onClose={closeContextMenu}>
+      <Menu.Menu navId='powerCord-spotify-menu' onClose={closeContextMenu}>
         {isPremium && this.renderDevices()}
         {isPremium && this.renderSongs()}
         {isPremium && this.renderPlaybackSettings()}
@@ -73,7 +73,7 @@ class ContextMenu extends React.PureComponent {
   }
 
   renderSongs () {
-    const hasCoolFeatures = powercord.account && powercord.account.accounts.spotify;
+    const hasCoolFeatures = powerCord.account && powerCord.account.accounts.spotify;
 
     return (
       <Menu.MenuGroup>
@@ -139,7 +139,7 @@ class ContextMenu extends React.PureComponent {
   }
 
   renderPlaybackSettings () {
-    if (!powercord.account || !powercord.account.accounts.spotify) {
+    if (!powerCord.account || !powerCord.account.accounts.spotify) {
       return null;
     }
 
@@ -203,7 +203,7 @@ class ContextMenu extends React.PureComponent {
   }
 
   renderSave () {
-    if (!powercord.account || !powercord.account.accounts.spotify) {
+    if (!powerCord.account || !powerCord.account.accounts.spotify) {
       return null;
     }
 
@@ -276,10 +276,10 @@ class ContextMenu extends React.PureComponent {
 }
 
 module.exports = Flux.connectStores(
-  [ songsStore, playerStore, powercord.api.settings.store ],
+  [ songsStore, playerStore, powerCord.api.settings.store ],
   (props) => ({
     ...songsStore.getStore(),
     ...playerStore.getStore(),
-    ...powercord.api.settings._fluxProps(props.entityID)
+    ...powerCord.api.settings._fluxProps(props.entityID)
   })
 )(ContextMenu);

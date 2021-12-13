@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { join } = require('path');
@@ -18,7 +18,7 @@ const KnownLinuxPaths = Object.freeze([
   '/usr/lib64/discord-canary',
   '/opt/discord-canary',
   '/opt/DiscordCanary',
-  `${homedir}/.local/bin/DiscordCanary` // https://github.com/powercord-org/powercord/pull/370
+  `${homedir}/.local/bin/DiscordCanary` // https://github.com/powerCord-org/powerCord/pull/370
 ]);
 
 

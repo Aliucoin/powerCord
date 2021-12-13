@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { forceUpdateElement } = require('powercord/util');
-const { React, getModule } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
+const { forceUpdateElement } = require('powerCord/util');
+const { React, getModule } = require('powerCord/webpack');
+const { inject, uninject } = require('powerCord/injector');
 
 module.exports = async () => {
   const Avatar = await getModule([ 'AnimatedAvatar' ]);

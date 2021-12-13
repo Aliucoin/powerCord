@@ -1,4 +1,4 @@
-const getPrefix = () => powercord.api.commands.prefix;
+const getPrefix = () => powerCord.api.commands.prefix;
 
 module.exports = {
   command: 'add',
@@ -18,7 +18,7 @@ module.exports = {
     const name = args.shift().toLowerCase();
     const value = args.join(' ').replace(/\\n/g, '\n');
 
-    if (powercord.api.commands.find(c => c.command === name)) {
+    if (powerCord.api.commands.find(c => c.command === name)) {
       return {
         send: false,
         result: {

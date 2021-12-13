@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule, getModuleByDisplayName } = require('powercord/webpack');
-const { Icons: { badges: { Staff } } } = require('powercord/components');
+const { React, getModule, getModuleByDisplayName } = require('powerCord/webpack');
+const { Icons: { badges: { Staff } } } = require('powerCord/components');
 
 module.exports = React.memo(
   () => {
@@ -14,10 +14,10 @@ module.exports = React.memo(
 
     return (
       <GatedContent
-        imageClassName='powercord-store-success'
+        imageClassName='powerCord-store-success'
         title={'Success! We received your form.'}
-        description={<>We'll give it the attention it deserved and reach out once this process is complete. You can identify Powercord Staff members thanks to the <Staff width={16} height={16}/> badge on their profile.</>}
-        onDisagree={() => transitionTo('/_powercord/store/plugins')}
+        description={<>We'll give it the attention it deserved and reach out once this process is complete. You can identify PowerCord Staff members thanks to the <Staff width={16} height={16}/> badge on their profile.</>}
+        onDisagree={() => transitionTo('/_powerCord/store/plugins')}
         disagreement='Go back to store'
       />
     );

@@ -1,4 +1,4 @@
-const { React } = require('powercord/webpack');
+const { React } = require('powerCord/webpack');
 
 const ConnectedAccount = require('./ConnectedAccount');
 const accountStore = {};
@@ -11,7 +11,7 @@ module.exports = class ConnectedAccounts extends React.PureComponent {
   }
 
   componentDidMount () {
-    powercord.api.connections.fetchAccounts(this.props.id).then(accounts => {
+    powerCord.api.connections.fetchAccounts(this.props.id).then(accounts => {
       this.setState({ accounts });
       accountStore[this.props.id] = accounts;
     });

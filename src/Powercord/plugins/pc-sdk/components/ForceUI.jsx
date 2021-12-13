@@ -1,5 +1,5 @@
-const { React, getModule } = require('powercord/webpack');
-const { ButtonItem } = require('powercord/components/settings');
+const { React, getModule } = require('powerCord/webpack');
+const { ButtonItem } = require('powerCord/components/settings');
 
 class ForceUI extends React.PureComponent {
   render () {

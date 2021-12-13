@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { join } = require('path');
@@ -60,14 +60,14 @@ class PatchedBrowserWindow extends BrowserWindow {
     // win.on('maximize', () => win.webContents.send('POWERCORD_WINDOW_MAXIMIZE'));
     // win.on('unmaximize', () => win.webContents.send('POWERCORD_WINDOW_UNMAXIMIZE'));
 
-    win.webContents._powercordPreload = originalPreload;
+    win.webContents._powerCordPreload = originalPreload;
     return win;
   }
 
   static loadUrl (ogLoadUrl, url, opts) {
     console.log(url);
-    if (url.match(/^https:\/\/canary\.discord(app)?\.com\/_powercord\//)) {
-      this.webContents._powercordOgUrl = url;
+    if (url.match(/^https:\/\/canary\.discord(app)?\.com\/_powerCord\//)) {
+      this.webContents._powerCordOgUrl = url;
       return ogLoadUrl('https://canary.discord.com/app', opts);
     }
     return ogLoadUrl(url, opts);

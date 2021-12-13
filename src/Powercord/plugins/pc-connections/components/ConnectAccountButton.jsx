@@ -1,6 +1,6 @@
 const { shell: { openExternal } } = require('electron');
-const { React, getModule } = require('powercord/webpack');
-const { WEBSITE } = require('powercord/constants');
+const { React, getModule } = require('powerCord/webpack');
+const { WEBSITE } = require('powerCord/constants');
 
 let classes;
 setImmediate(async () => {
@@ -11,11 +11,11 @@ module.exports = class ConnectAccountButton extends React.Component {
   constructor (props) {
     super();
 
-    this.connection = powercord.api.connections.get(props.type);
+    this.connection = powerCord.api.connections.get(props.type);
   }
 
   handleClick () {
-    const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+    const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
     openExternal(`${baseUrl}/api/v2/oauth/${this.props.type}`);
   }
 

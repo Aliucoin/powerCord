@@ -1,4 +1,4 @@
-const { FluxDispatcher } = require('powercord/webpack');
+const { FluxDispatcher } = require('powerCord/webpack');
 const { FluxActions } = require('../constants');
 const SpotifyAPI = require('../SpotifyAPI');
 

@@ -1,8 +1,8 @@
-const { React, Flux, getModule } = require('powercord/webpack');
-const { PopoutWindow, Spinner } = require('powercord/components');
-const { getOwnerInstance } = require('powercord/util');
-const { WEBSITE } = require('powercord/constants');
-const { get } = require('powercord/http');
+const { React, Flux, getModule } = require('powerCord/webpack');
+const { PopoutWindow, Spinner } = require('powerCord/components');
+const { getOwnerInstance } = require('powerCord/util');
+const { WEBSITE } = require('powerCord/constants');
+const { get } = require('powerCord/http');
 const DocPage = require('./DocPage');
 const SettingsView = require('./SettingsView');
 
@@ -24,7 +24,7 @@ class DocsLayer extends React.PureComponent {
   }
 
   async componentDidMount () {
-    const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+    const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
     const sections = await get(`${baseUrl}/api/v2/docs/categories`).then(res => res.body).then(s => s.sort((a, b) => a.metadata.pos > b.metadata.pos ? 1 : -1));
     sectionsCache = [];
     sections.forEach(section => {
@@ -89,7 +89,7 @@ class DocsLayer extends React.PureComponent {
   }
 
   scrollTo (part) {
-    const element = document.querySelector('.powercord-documentation div + div > div > div');
+    const element = document.querySelector('.powerCord-documentation div + div > div > div');
     const scroller = getOwnerInstance(element);
     if (part) {
       const partElement = document.getElementById(part);

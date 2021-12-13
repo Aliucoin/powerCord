@@ -1,5 +1,5 @@
-const { Flux, React, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powercord/webpack');
-const { AsyncComponent, Tooltip, HeaderBar, Clickable, Icons } = require('powercord/components');
+const { Flux, React, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powerCord/webpack');
+const { AsyncComponent, Tooltip, HeaderBar, Clickable, Icons } = require('powerCord/components');
 const ForceUI = require('./ForceUI');
 const SplashScreen = require('./SplashScreen');
 const Settings = require('./Settings');
@@ -18,9 +18,9 @@ class SdkWindow extends React.PureComponent {
       <>
         <TitleBar type='WINDOWS' windowKey={'DISCORD_POWERCORD_SANDBOX'} themeOverride={this.props.theme}/>
         {this.renderHeaderBar()}
-        <div className='powercord-text powercord-sdk'>
+        <div className='powerCord-text powerCord-sdk'>
           <VerticalScroller _pass={{ ref: this.scrollerRef }}>
-            <div className='powercord-sdk-container'>
+            <div className='powerCord-sdk-container'>
               <ForceUI/>
               <SplashScreen/>
               <Settings/>
@@ -34,7 +34,7 @@ class SdkWindow extends React.PureComponent {
   renderHeaderBar () {
     const { title } = getModule([ 'title', 'chatContent' ], false);
     return (
-      <HeaderBar transparent={false} className={[ title, 'powercord-sdk-header' ].join(' ')}>
+      <HeaderBar transparent={false} className={[ title, 'powerCord-sdk-header' ].join(' ')}>
         {this.renderIcon('Force UI', 'Arch', 'force-ui', 'right')}
         {this.renderIcon('Discord Splash Screen', 'Arch', 'splash-screen')}
         {this.renderIcon('SDK Settings', 'Gear', 'sdk-settings')}

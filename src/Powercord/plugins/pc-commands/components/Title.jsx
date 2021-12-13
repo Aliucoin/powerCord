@@ -1,4 +1,4 @@
-const { React } = require('powercord/webpack');
+const { React } = require('powerCord/webpack');
 
 module.exports = class Title extends React.Component {
   render () {

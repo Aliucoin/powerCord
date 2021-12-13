@@ -1,8 +1,8 @@
-const { React } = require('powercord/webpack');
-const { Tooltip, Clickable, FormTitle, Icons: { ThumbsUp, ThumbsDown } } = require('powercord/components');
+const { React } = require('powerCord/webpack');
+const { Tooltip, Clickable, FormTitle, Icons: { ThumbsUp, ThumbsDown } } = require('powerCord/components');
 
 module.exports = ({ up, down, self, onVote }) =>
-  <div className='powercord-product-rating'>
+  <div className='powerCord-product-rating'>
     <FormTitle>Rating</FormTitle>
     <div className='voting'>
       <Tooltip delay={1000} text='Upvote' position='top'>

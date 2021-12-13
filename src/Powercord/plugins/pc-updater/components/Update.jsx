@@ -1,12 +1,12 @@
-const { React, i18n: { Messages } } = require('powercord/webpack');
-const { Button } = require('powercord/components');
+const { React, i18n: { Messages } } = require('powerCord/webpack');
+const { Button } = require('powerCord/components');
 
 const Icons = require('./Icons');
 
 module.exports = class Update extends React.PureComponent {
   constructor () {
     super();
-    this.plugin = powercord.pluginManager.get('pc-updater');
+    this.plugin = powerCord.pluginManager.get('pc-updater');
   }
 
   render () {

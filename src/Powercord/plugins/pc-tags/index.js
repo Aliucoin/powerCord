@@ -1,4 +1,4 @@
-const { Plugin } = require('powercord/entities');
+const { Plugin } = require('powerCord/entities');
 const commands = require('./commands');
 
 const TAG_ARGUMENT_REGEX = /\$\$(@|\d+)/g;
@@ -11,11 +11,11 @@ module.exports = class Tags extends Plugin {
 
   pluginWillUnload () {
     this.unregisterTags();
-    powercord.api.commands.unregisterCommand('tag');
+    powerCord.api.commands.unregisterCommand('tag');
   }
 
   registerMain () {
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'tag',
       description: 'Send, preview and manage your tags',
       usage: '{c} <view|list|add|update|delete> <tagName> [tagContent]',
@@ -57,7 +57,7 @@ module.exports = class Tags extends Plugin {
   registerTag (name) {
     const content = this.settings.get(name);
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: name,
       description: `Tag: ${content}`,
       usage: '{c}',
@@ -79,7 +79,7 @@ module.exports = class Tags extends Plugin {
   }
 
   unregisterTag (name) {
-    powercord.api.commands.unregisterCommand(name);
+    powerCord.api.commands.unregisterCommand(name);
   }
 
   reloadTag (name) {

@@ -1,15 +1,15 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const { join } = require('path');
-const { React, getModule, getModuleByDisplayName } = require('powercord/webpack');
-const { forceUpdateElement, getOwnerInstance } = require('powercord/util');
-const { inject, uninject } = require('powercord/injector');
-const { WEBSITE } = require('powercord/constants');
-const { get } = require('powercord/http');
+const { React, getModule, getModuleByDisplayName } = require('powerCord/webpack');
+const { forceUpdateElement, getOwnerInstance } = require('powerCord/util');
+const { inject, uninject } = require('powerCord/injector');
+const { WEBSITE } = require('powerCord/constants');
+const { get } = require('powerCord/http');
 
 const { loadStyle, unloadStyle } = require('../util');
 const Badges = require('./Badges');
@@ -22,7 +22,7 @@ async function injectUsers () {
     const [ badges, setBadges ] = React.useState(null);
     React.useEffect(() => {
       if (!cache[props.user.id]) {
-        const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+        const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
         cache[props.user.id] = get(`${baseUrl}/api/v2/users/${props.user.id}`)
           .catch((e) => e)
           .then((res) => {
@@ -115,7 +115,7 @@ async function injectGuilds () {
     return res;
   });
 
-  const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+  const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
   get(`${baseUrl}/api/v2/guilds/badges`).then(async res => {
     cache._guilds = res.body;
     const { container } = await getModule([ 'subscribeTooltipText' ]);

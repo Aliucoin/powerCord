@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule, getModuleByDisplayName } = require('powercord/webpack');
-const { AdvancedScrollerAuto, Icons, AsyncComponent } = require('powercord/components');
+const { React, getModule, getModuleByDisplayName } = require('powerCord/webpack');
+const { AdvancedScrollerAuto, Icons, AsyncComponent } = require('powerCord/components');
 
 const Closed = require('./Closed');
 const Intro = require('./Intro');
@@ -32,7 +32,7 @@ module.exports = React.memo(
     }
 
     return (
-      <div className={`powercord-store ${pageWrapper}`}>
+      <div className={`powerCord-store ${pageWrapper}`}>
         <AdvancedScrollerAuto className={scroller}>
           <h2 className={`${size32} ${base} ${layout} ${wrappedLayout}`}>
             <div className={avatar}>
@@ -43,7 +43,7 @@ module.exports = React.memo(
             </div>
             <div className={content}>{title}</div>
           </h2>
-          <Sequencer step={step} steps={[ 0, 1, 2 ]} className='powercord-store-form'>
+          <Sequencer step={step} steps={[ 0, 1, 2 ]} className='powerCord-store-form'>
             {step === 0
               ? <Intro renderer={renderIntro} onClick={() => setStep(1)}/>
               : step === 1

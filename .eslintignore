@@ -1,8 +1,8 @@
 *.template.js
-/src/Powercord/plugins/*
-!/src/Powercord/plugins/pc-*
+/src/PowerCord/plugins/*
+!/src/PowerCord/plugins/pc-*
 
 # tmp
 /src/core.old/*
-/.v2/src/Powercord/plugins/*
-!/.v2/src/Powercord/plugins/pc-*
+/.v2/src/PowerCord/plugins/*
+!/.v2/src/PowerCord/plugins/pc-*

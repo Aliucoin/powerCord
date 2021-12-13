@@ -1,7 +1,7 @@
-const { API } = require('powercord/entities');
+const { API } = require('powerCord/entities');
 
 /**
- * @typedef PowercordChatCommand
+ * @typedef PowerCordChatCommand
  * @property {String} command Command name
  * @property {String[]} aliases Command aliases
  * @property {String} description Command description
@@ -12,8 +12,8 @@ const { API } = require('powercord/entities');
  */
 
 /**
- * Powercord chat commands API
- * @property {Object.<String, PowercordChatCommand>} commands Registered commands
+ * PowerCord chat commands API
+ * @property {Object.<String, PowerCordChatCommand>} commands Registered commands
  */
 class CommandsAPI extends API {
   constructor () {
@@ -23,7 +23,7 @@ class CommandsAPI extends API {
   }
 
   get prefix () {
-    return powercord.settings.get('prefix', '.');
+    return powerCord.settings.get('prefix', '.');
   }
 
   get find () {
@@ -48,12 +48,12 @@ class CommandsAPI extends API {
 
   /**
    * Registers a command
-   * @param {PowercordChatCommand} command Command to register
+   * @param {PowerCordChatCommand} command Command to register
    */
   registerCommand (command) {
     // @todo: remove this once there's a proper implemention (if any) for fetching the command origin.
     const stackTrace = (new Error()).stack;
-    const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powercord.pluginManager.pluginDir)}.([-\\w]+)`));
+    const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powerCord.pluginManager.pluginDir)}.([-\\w]+)`));
 
     if (typeof command === 'string') {
       console.error('no');

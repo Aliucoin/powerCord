@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const AnsiEscapes = Object.freeze({
@@ -13,10 +13,10 @@ const AnsiEscapes = Object.freeze({
 });
 
 const BasicMessages = Object.freeze({
-  PLUG_FAILED: `${AnsiEscapes.BOLD}${AnsiEscapes.RED}Failed to plug Powercord :(${AnsiEscapes.RESET}`,
-  PLUG_SUCCESS: `${AnsiEscapes.BOLD}${AnsiEscapes.GREEN}Powercord has been successfully plugged :D${AnsiEscapes.RESET}`,
-  UNPLUG_FAILED: `${AnsiEscapes.BOLD}${AnsiEscapes.RED}Failed to unplug Powercord :(${AnsiEscapes.RESET}`,
-  UNPLUG_SUCCESS: `${AnsiEscapes.BOLD}${AnsiEscapes.GREEN}Powercord has been successfully unplugged${AnsiEscapes.RESET}`
+  PLUG_FAILED: `${AnsiEscapes.BOLD}${AnsiEscapes.RED}Failed to plug PowerCord :(${AnsiEscapes.RESET}`,
+  PLUG_SUCCESS: `${AnsiEscapes.BOLD}${AnsiEscapes.GREEN}PowerCord has been successfully plugged :D${AnsiEscapes.RESET}`,
+  UNPLUG_FAILED: `${AnsiEscapes.BOLD}${AnsiEscapes.RED}Failed to unplug PowerCord :(${AnsiEscapes.RESET}`,
+  UNPLUG_SUCCESS: `${AnsiEscapes.BOLD}${AnsiEscapes.GREEN}PowerCord has been successfully unplugged${AnsiEscapes.RESET}`
 });
 
 module.exports = {

@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule } = require('powercord/webpack');
-const { Flex, Button } = require('powercord/components');
+const { React, getModule } = require('powerCord/webpack');
+const { Flex, Button } = require('powerCord/components');
 
 module.exports = React.memo(
   ({ renderer, doneCallback, cancelCallback }) => {

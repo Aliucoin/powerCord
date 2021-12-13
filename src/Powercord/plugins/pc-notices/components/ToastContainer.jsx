@@ -1,4 +1,4 @@
-const { React } = require('powercord/webpack');
+const { React } = require('powerCord/webpack');
 const Toast = require('./Toast');
 
 class ToastContainer extends React.PureComponent {
@@ -14,21 +14,21 @@ class ToastContainer extends React.PureComponent {
   }
 
   componentDidMount () {
-    powercord.api.notices.on('toastAdded', this._addedHandler);
-    powercord.api.notices.on('toastLeaving', this._leavingHandler);
+    powerCord.api.notices.on('toastAdded', this._addedHandler);
+    powerCord.api.notices.on('toastLeaving', this._leavingHandler);
   }
 
   componentWillUnmount () {
-    powercord.api.notices.off('toastAdded', this._addedHandler);
-    powercord.api.notices.off('toastLeaving', this._leavingHandler);
+    powerCord.api.notices.off('toastAdded', this._addedHandler);
+    powerCord.api.notices.off('toastLeaving', this._leavingHandler);
   }
 
   render () {
-    const toast = Object.keys(powercord.api.notices.toasts).pop();
-    return <div className='powercord-toast-container'>
+    const toast = Object.keys(powerCord.api.notices.toasts).pop();
+    return <div className='powerCord-toast-container'>
       {toast && <Toast
         leaving={this.state.leaving === toast} id={toast}
-        {...powercord.api.notices.toasts[toast]}
+        {...powerCord.api.notices.toasts[toast]}
       />}
     </div>;
   }

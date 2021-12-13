@@ -1,6 +1,6 @@
-const { React, Flux, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { SwitchItem, SliderInput } = require('powercord/components/settings');
-const { AsyncComponent, Clickable, FormTitle, Tooltip, AdvancedScrollerThin, Icons: { Pin, Unpin, Gear, Close, ExternalLink } } = require('powercord/components');
+const { React, Flux, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { SwitchItem, SliderInput } = require('powerCord/components/settings');
+const { AsyncComponent, Clickable, FormTitle, Tooltip, AdvancedScrollerThin, Icons: { Pin, Unpin, Gear, Close, ExternalLink } } = require('powerCord/components');
 const CodeMirror = require('./CodeMirror');
 
 class QuickCSS extends React.PureComponent {
@@ -27,14 +27,14 @@ class QuickCSS extends React.PureComponent {
     return (
       <>
         <div
-          className={[ 'powercord-quickcss', this.props.popout && 'popout', !this.props.popout && this.props.guestWindow && 'popped-out' ].filter(Boolean).join(' ')}
+          className={[ 'powerCord-quickcss', this.props.popout && 'popout', !this.props.popout && this.props.guestWindow && 'popped-out' ].filter(Boolean).join(' ')}
           style={{ '--editor-height': `${this.props.getSetting('cm-height', 350)}px` }}
           ref={this.ref}
         >
           {!this.props.popout && this.props.guestWindow
-            ? <div className='powercord-quickcss-popped'>{Messages.POWERCORD_QUICKCSS_POPPED_OUT}</div>
+            ? <div className='powerCord-quickcss-popped'>{Messages.POWERCORD_QUICKCSS_POPPED_OUT}</div>
             : <>
-              <div className='powercord-quickcss-header'>
+              <div className='powerCord-quickcss-header'>
                 <Tooltip text={Messages.SETTINGS} position='right'>
                   <Clickable onClick={() => this.setState({ cmSettings: true })} className='button'>
                     <Gear/>
@@ -68,7 +68,7 @@ class QuickCSS extends React.PureComponent {
                   </Tooltip>
                 </div>
               </div>
-              <div className='powercord-quickcss-editor'>
+              <div className='powerCord-quickcss-editor'>
                 {this.state.cmSettings && this.renderSettings()}
                 <CodeMirror
                   popout={this.props.popout}
@@ -76,14 +76,14 @@ class QuickCSS extends React.PureComponent {
                   getSetting={this.props.getSetting}
                 />
               </div>
-              <div className='powercord-quickcss-footer'>
+              <div className='powerCord-quickcss-footer'>
                 <span>{Messages.POWERCORD_QUICKCSS_AUTOCOMPLETE}</span>
                 <span>CodeMirror v{require('codemirror').version}</span>
               </div>
-              {!this.props.popout && <div className='powercord-quickcss-resizer' onMouseDown={this._handleResizeBegin}/>}
+              {!this.props.popout && <div className='powerCord-quickcss-resizer' onMouseDown={this._handleResizeBegin}/>}
             </>}
         </div>
-        {!this.props.popout && <p className='powercord-text'>Psst! you can resize the QuickCSS editor if you want! Grab, the bottom of the editor and resize it however you like.</p>}
+        {!this.props.popout && <p className='powerCord-text'>Psst! you can resize the QuickCSS editor if you want! Grab, the bottom of the editor and resize it however you like.</p>}
       </>
     );
   }
@@ -92,7 +92,7 @@ class QuickCSS extends React.PureComponent {
     const { getSetting, updateSetting, toggleSetting } = this.props;
 
     return (
-      <AdvancedScrollerThin className='powercord-quickcss-editor-settings' theme='themeGhostHairline-DBD-2d' fade>
+      <AdvancedScrollerThin className='powerCord-quickcss-editor-settings' theme='themeGhostHairline-DBD-2d' fade>
         <FormTitle tag='h2'>{Messages.POWERCORD_QUICKCSS_SETTINGS}</FormTitle>
         <div className='close-wrapper'>
           <Tooltip text={Messages.CLOSE} position='left'>
@@ -184,7 +184,7 @@ class QuickCSS extends React.PureComponent {
 
   setupCodeMirror (cm) {
     cm.on('change', () => this._handleCodeMirrorUpdate(cm.getValue()));
-    cm.setValue(powercord.pluginManager.get('pc-moduleManager')._quickCSS);
+    cm.setValue(powerCord.pluginManager.get('pc-moduleManager')._quickCSS);
     if (this.props.popout) {
       setTimeout(() => cm.refresh(), 100);
     }
@@ -193,7 +193,7 @@ class QuickCSS extends React.PureComponent {
   }
 
   _handleCodeMirrorUpdate (newValue) {
-    powercord.pluginManager.get('pc-moduleManager')._saveQuickCSS(newValue);
+    powerCord.pluginManager.get('pc-moduleManager')._saveQuickCSS(newValue);
   }
 
   _handleResizeBegin () {
@@ -219,9 +219,9 @@ class QuickCSS extends React.PureComponent {
 
 module.exports = AsyncComponent.from((async () => {
   const windowStore = await getModule([ 'getWindow' ]);
-  return Flux.connectStores([ windowStore, powercord.api.settings.store ], () => ({
+  return Flux.connectStores([ windowStore, powerCord.api.settings.store ], () => ({
     guestWindow: windowStore.getWindow('DISCORD_POWERCORD_QUICKCSS'),
     windowOnTop: windowStore.getIsAlwaysOnTop('DISCORD_POWERCORD_QUICKCSS'),
-    ...powercord.api.settings._fluxProps('pc-moduleManager')
+    ...powerCord.api.settings._fluxProps('pc-moduleManager')
   }))(QuickCSS);
 })());

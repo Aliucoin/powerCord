@@ -1,7 +1,7 @@
-const { Plugin } = require('powercord/entities');
-const { getModule, messages } = require('powercord/webpack');
-const { forceUpdateElement } = require('powercord/util');
-const { inject, uninject } = require('powercord/injector');
+const { Plugin } = require('powerCord/entities');
+const { getModule, messages } = require('powerCord/webpack');
+const { forceUpdateElement } = require('powerCord/util');
+const { inject, uninject } = require('powerCord/injector');
 
 const Settings = require('./Settings');
 
@@ -26,7 +26,7 @@ module.exports = class ClickableEdits extends Plugin {
   }
 
   async startPlugin () {
-    powercord.api.settings.registerSettings('pc-clickableEdits', {
+    powerCord.api.settings.registerSettings('pc-clickableEdits', {
       category: this.entityID,
       label: 'Clickable Edits',
       render: Settings
@@ -36,7 +36,7 @@ module.exports = class ClickableEdits extends Plugin {
   }
 
   pluginWillUnload () {
-    powercord.api.settings.unregisterSettings('pc-clickableEdits');
+    powerCord.api.settings.unregisterSettings('pc-clickableEdits');
     uninject('clickableEdits-message');
     forceUpdateElement(this.classes.messages);
   }
@@ -51,7 +51,7 @@ module.exports = class ClickableEdits extends Plugin {
       return res;
     };
 
-    const Message = await getModule(m => (m.__powercordOriginal_default || m.default)?.toString().includes('childrenRepliedMessage'));
+    const Message = await getModule(m => (m.__powerCordOriginal_default || m.default)?.toString().includes('childrenRepliedMessage'));
     inject('clickableEdits-message', Message, 'default', renderMessage);
     Message.default.displayName = 'Message';
 

@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, Router } = require('powercord/webpack');
-const { WEBSITE } = require('powercord/constants');
+const { React, Router } = require('powerCord/webpack');
+const { WEBSITE } = require('powerCord/constants');
 // eslint-disable-next-line no-unused-vars
-const { get } = require('powercord/http');
+const { get } = require('powerCord/http');
 
 const StoreListing = require('./StoreListing');
 const Suggestions = require('./Suggestions');
@@ -50,22 +50,22 @@ module.exports = function () {
   /* eslint-disable */
   const [ eligibility, setEligibility ] = React.useState(null)
   React.useEffect(() => {
-    const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+    const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
     // get(`${baseUrl}/api/v2/store/forms/eligibility`).then(res => res.ok && setEligibility(res.body))
   }, [])
 
   return (
     <Router.Switch>
-      <Router.Route path='/_powercord/store/plugins' exact>
+      <Router.Route path='/_powerCord/store/plugins' exact>
         <StoreListing type='plugins'/>
       </Router.Route>
-      <Router.Route path='/_powercord/store/themes' exact>
+      <Router.Route path='/_powerCord/store/themes' exact>
         <StoreListing type='themes'/>
       </Router.Route>
-      <Router.Route path='/_powercord/store/suggestions' exact>
+      <Router.Route path='/_powerCord/store/suggestions' exact>
         <Suggestions/>
       </Router.Route>
-      <Router.Route path='/_powercord/store/forms/publish' exact>
+      <Router.Route path='/_powerCord/store/forms/publish' exact>
         <Form
           key='publish'
           icon='CloudUpload'
@@ -75,7 +75,7 @@ module.exports = function () {
           renderForm={() => <PublishForm/>}
         />
       </Router.Route>
-      <Router.Route path='/_powercord/store/forms/verificaton' exact>
+      <Router.Route path='/_powerCord/store/forms/verificaton' exact>
         <Form
           key='verificaton'
           icon='Verified'
@@ -85,7 +85,7 @@ module.exports = function () {
           renderForm={() => <VerificationForm/>}
         />
       </Router.Route>
-      <Router.Route path='/_powercord/store/forms/hosting' exact>
+      <Router.Route path='/_powerCord/store/forms/hosting' exact>
         <Form
           key='hosting'
           icon='Server'
@@ -95,8 +95,8 @@ module.exports = function () {
           renderForm={() => <HostingForm/>}
         />
       </Router.Route>
-      <Router.Route path='/_powercord/store' exact>
-        <Router.Redirect path='/_powercord/store/plugins'/>
+      <Router.Route path='/_powerCord/store' exact>
+        <Router.Redirect path='/_powerCord/store/plugins'/>
       </Router.Route>
     </Router.Switch>
   );

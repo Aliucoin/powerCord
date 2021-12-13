@@ -1,5 +1,5 @@
-const { React, getModuleByDisplayName } = require('powercord/webpack');
-const { AsyncComponent } = require('powercord/components');
+const { React, getModuleByDisplayName } = require('powerCord/webpack');
+const { AsyncComponent } = require('powerCord/components');
 
 const Mask = AsyncComponent.from(getModuleByDisplayName('Mask'));
 const CarouselWithSlide = AsyncComponent.from((async () => {
@@ -31,7 +31,7 @@ const CarouselWithSlide = AsyncComponent.from((async () => {
 module.exports = class Preview extends React.Component {
   render () {
     return <>
-      <div className='powercord-product-preview'>
+      <div className='powerCord-product-preview'>
         <CarouselWithSlide
           paused
           items={this.props.previews}

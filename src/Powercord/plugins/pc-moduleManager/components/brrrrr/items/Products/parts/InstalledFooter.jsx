@@ -1,9 +1,9 @@
-const { React, i18n: { Messages } } = require('powercord/webpack');
-const { Button, Spinner } = require('powercord/components');
+const { React, i18n: { Messages } } = require('powerCord/webpack');
+const { Button, Spinner } = require('powerCord/components');
 
 // @todo: merge with Product/
 module.exports = ({ id, installing, onUninstall }) =>
-  <div className='powercord-plugin-footer'>
+  <div className='powerCord-plugin-footer'>
     {/* <Button
       onClick={() => openExternal(`https://github.com/${REPO_URL}`)}
       look={Button.Looks.LINK}

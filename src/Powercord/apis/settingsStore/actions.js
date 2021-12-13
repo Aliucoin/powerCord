@@ -1,4 +1,4 @@
-const { FluxDispatcher } = require('powercord/webpack');
+const { FluxDispatcher } = require('powerCord/webpack');
 const ActionTypes = require('./constants');
 
 module.exports = {

@@ -1,6 +1,6 @@
 @use 'keybinds';
 
-.powercord-account {
+.powerCord-account {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@
   }
 }
 
-.powercord-passphrase {
+.powerCord-passphrase {
   &-modal div[class^='divider-'] {
     display: none;
   }
@@ -77,7 +77,7 @@
 
 
 // Icon in user settings
-.powercord-pc-icon {
+.powerCord-pc-icon {
   position: relative;
 
   &::before {
@@ -106,7 +106,7 @@
   }
 }
 
-.powercord-settings{
+.powerCord-settings{
   &-item {
     &-title {
       display: flex;
@@ -137,7 +137,7 @@
       margin-top: 20px;
     }
 
-    &.powercord-category &-inner {
+    &.powerCord-category &-inner {
       margin-left: 12px;
       border-left: 1px var(--background-modifier-accent) solid;
       padding-left: 33px;
@@ -176,13 +176,13 @@
 
 // Colors
 .theme-light {
-  .powercord-account {
+  .powerCord-account {
     img {
       filter: brightness(0);
     }
   }
 
-  .powercord-pc-icon {
+  .powerCord-pc-icon {
     filter: brightness(0.6);
   }
 }

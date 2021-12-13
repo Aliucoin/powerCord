@@ -1,8 +1,8 @@
-const { React } = require('powercord/webpack');
-const { FormTitle } = require('powercord/components');
+const { React } = require('powerCord/webpack');
+const { FormTitle } = require('powerCord/components');
 
 module.exports = ({ tags }) =>
-  <div className='powercord-product-tags'>
+  <div className='powerCord-product-tags'>
     <FormTitle>Tags</FormTitle>
     <div className='items'>
       {tags.map(tag => <div className='tag'>{tag}</div>)}

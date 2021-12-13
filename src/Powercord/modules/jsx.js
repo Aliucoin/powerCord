@@ -1,4 +1,4 @@
-const JsxCompiler = require('powercord/compilers/jsx');
+const JsxCompiler = require('powerCord/compilers/jsx');
 
 module.exports = () => {
   // noinspection JSDeprecatedSymbols

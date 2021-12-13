@@ -1,4 +1,4 @@
-.powercord-keybind {
+.powerCord-keybind {
   background-color: rgba(0, 0, 0, .1);
   transition: border .15s ease;
   border: 1px solid rgba(0, 0, 0, .3);
@@ -119,7 +119,7 @@
       transform: translate3d(-200%, 0, 0);
     }
 
-    .powercord-keybind-button {
+    .powerCord-keybind-button {
       width: 128px;
     }
   }
@@ -130,11 +130,11 @@
      box-shadow: 0 0 6px rgba(240, 71, 71, .3);
      color: #f04747;
 
-     .powercord-keybind-input {
+     .powerCord-keybind-input {
        color: #f04747;
      }
 
-     .powercord-keybind-button {
+     .powerCord-keybind-button {
        background-color: rgba(240, 71, 71, .1);
        color: #f04747;
        width: 128px;

@@ -1,8 +1,8 @@
-const { React, getModuleByDisplayName, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { AsyncComponent, Menu } = require('powercord/components');
-const { inject, uninject } = require('powercord/injector');
-const { WEBSITE } = require('powercord/constants');
-const { Plugin } = require('powercord/entities');
+const { React, getModuleByDisplayName, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { AsyncComponent, Menu } = require('powerCord/components');
+const { inject, uninject } = require('powerCord/injector');
+const { WEBSITE } = require('powerCord/constants');
+const { Plugin } = require('powerCord/entities');
 
 const ErrorBoundary = require('./components/ErrorBoundary');
 const GeneralSettings = require('./components/GeneralSettings');
@@ -15,7 +15,7 @@ module.exports = class Settings extends Plugin {
   startPlugin () {
     this.loadStylesheet('scss/style.scss');
 
-    powercord.api.settings.registerSettings('pc-general', {
+    powerCord.api.settings.registerSettings('pc-general', {
       category: 'pc-general',
       label: () => Messages.POWERCORD_GENERAL_SETTINGS,
       render: GeneralSettings
@@ -27,7 +27,7 @@ module.exports = class Settings extends Plugin {
   }
 
   async pluginWillUnload () {
-    powercord.api.settings.unregisterSettings('pc-general');
+    powerCord.api.settings.unregisterSettings('pc-general');
     uninject('pc-settings-items');
     uninject('pc-settings-actions');
     uninject('pc-settings-errorHandler');
@@ -37,7 +37,7 @@ module.exports = class Settings extends Plugin {
     try {
       const experimentsModule = await getModule(r => r.isDeveloper !== void 0);
       Object.defineProperty(experimentsModule, 'isDeveloper', {
-        get: () => powercord.settings.get('experiments', false)
+        get: () => powerCord.settings.get('experiments', false)
       });
 
       // Ensure components do get the update
@@ -52,12 +52,12 @@ module.exports = class Settings extends Plugin {
     inject('pc-settings-items', SettingsView.prototype, 'getPredicateSections', (_, sections) => {
       const changelog = sections.find(c => c.section === 'changelog');
       if (changelog) {
-        const settingsSections = Object.keys(powercord.api.settings.tabs).map(s => this._makeSection(s));
+        const settingsSections = Object.keys(powerCord.api.settings.tabs).map(s => this._makeSection(s));
         sections.splice(
           sections.indexOf(changelog), 0,
           {
             section: 'HEADER',
-            label: 'Powercord'
+            label: 'PowerCord'
           },
           ...settingsSections,
           { section: 'DIVIDER' }
@@ -72,8 +72,8 @@ module.exports = class Settings extends Plugin {
               Object.assign({}, res.props.children[0], {
                 props: Object.assign({}, res.props.children[0].props, {
                   href: WEBSITE,
-                  title: 'Powercord',
-                  className: `${res.props.children[0].props.className} powercord-pc-icon`
+                  title: 'PowerCord',
+                  className: `${res.props.children[0].props.className} powerCord-pc-icon`
                 })
               })
             );
@@ -82,7 +82,7 @@ module.exports = class Settings extends Plugin {
         })(sections.find(c => c.section === 'CUSTOM').element);
       }
 
-      const latestCommitHash = powercord.gitInfos.revision.substring(0, 7);
+      const latestCommitHash = powerCord.gitInfos.revision.substring(0, 7);
       const debugInfo = sections[sections.findIndex(c => c.section === 'CUSTOM') + 1];
       if (debugInfo) {
         debugInfo.element = ((_element) => function () {
@@ -91,9 +91,9 @@ module.exports = class Settings extends Plugin {
             res.props.children.push(
               Object.assign({}, res.props.children[0], {
                 props: Object.assign({}, res.props.children[0].props, {
-                  children: [ 'Powercord', ' ', React.createElement('span', {
+                  children: [ 'PowerCord', ' ', React.createElement('span', {
                     className: res.props.children[0].props.children[4].props.className,
-                    children: [ powercord.gitInfos.branch, ' (', latestCommitHash, ')' ]
+                    children: [ powerCord.gitInfos.branch, ' (', latestCommitHash, ')' ]
                   }) ]
                 })
               })
@@ -108,7 +108,7 @@ module.exports = class Settings extends Plugin {
   }
 
   _makeSection (tabId) {
-    const props = powercord.api.settings.tabs[tabId];
+    const props = powerCord.api.settings.tabs[tabId];
     const label = typeof props.label === 'function' ? props.label() : props.label;
     return {
       label,
@@ -130,10 +130,10 @@ module.exports = class Settings extends Plugin {
     const SettingsContextMenu = await getModule(m => m.default?.displayName === 'UserSettingsCogContextMenu');
     inject('pc-settings-actions', SettingsContextMenu, 'default', (_, res) => {
       const parent = React.createElement(Menu.MenuItem, {
-        id: 'powercord-actions',
-        label: 'Powercord'
-      }, Object.keys(powercord.api.settings.tabs).map(tabId => {
-        const props = powercord.api.settings.tabs[tabId];
+        id: 'powerCord-actions',
+        label: 'PowerCord'
+      }, Object.keys(powerCord.api.settings.tabs).map(tabId => {
+        const props = powerCord.api.settings.tabs[tabId];
         const label = typeof props.label === 'function' ? props.label() : props.label;
 
         return React.createElement(Menu.MenuItem, {
@@ -146,7 +146,7 @@ module.exports = class Settings extends Plugin {
         });
       }));
 
-      parent.key = 'Powercord';
+      parent.key = 'PowerCord';
 
       const items = res.props.children.find(child => Array.isArray(child));
       const changelog = items.find(item => item?.props?.id === 'changelog');

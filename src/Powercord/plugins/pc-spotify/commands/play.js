@@ -1,4 +1,4 @@
-const { getModule } = require('powercord/webpack');
+const { getModule } = require('powerCord/webpack');
 const SpotifyAPI = require('../SpotifyAPI');
 const urlRegex = /\/track\/([A-z0-9]*)/;
 

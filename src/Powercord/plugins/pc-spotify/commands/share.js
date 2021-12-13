@@ -1,5 +1,5 @@
-const { open: openModal } = require('powercord/modal');
-const { React } = require('powercord/webpack');
+const { open: openModal } = require('powerCord/modal');
+const { React } = require('powerCord/webpack');
 const SpotifyAPI = require('../SpotifyAPI');
 const playerStore = require('../playerStore/store');
 const ShareModal = require('../components/ShareModal');

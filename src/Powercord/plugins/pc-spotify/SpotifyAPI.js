@@ -1,13 +1,13 @@
-const { WEBSITE } = require('powercord/constants');
+const { WEBSITE } = require('powerCord/constants');
 const { shell: { openExternal } } = require('electron');
-const { get, put, post, del } = require('powercord/http');
-const { getModule, http, spotify, constants: { Endpoints } } = require('powercord/webpack');
+const { get, put, post, del } = require('powerCord/http');
+const { getModule, http, spotify, constants: { Endpoints } } = require('powerCord/webpack');
 const { SPOTIFY_BASE_URL, SPOTIFY_PLAYER_URL } = require('./constants');
 const playerStore = require('./playerStore/store');
 
 const revokedMessages = {
-  SCOPES_UPDATED: 'Your Spotify account needs to be relinked to your Powercord account due to new authorizations required.',
-  ACCESS_DENIED: 'Powercord is no longer able to connect to your Spotify account. Therefore, it has been automatically unlinked.'
+  SCOPES_UPDATED: 'Your Spotify account needs to be relinked to your PowerCord account due to new authorizations required.',
+  ACCESS_DENIED: 'PowerCord is no longer able to connect to your Spotify account. Therefore, it has been automatically unlinked.'
 };
 
 let usedCached = false;
@@ -16,18 +16,18 @@ module.exports = {
   accessToken: null,
 
   async getAccessToken () {
-    if (!powercord.account) {
-      await powercord.fetchAccount();
+    if (!powerCord.account) {
+      await powerCord.fetchAccount();
     }
 
-    if (powercord.account && powercord.account.accounts.spotify) {
-      const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+    if (powerCord.account && powerCord.account.accounts.spotify) {
+      const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
       const resp = await get(`${baseUrl}/api/v2/users/@me/spotify`)
-        .set('Authorization', powercord.account.token)
+        .set('Authorization', powerCord.account.token)
         .then(r => r.body);
 
       if (resp.revoked) {
-        powercord.api.notices.sendAnnouncement('spotify-revoked', {
+        powerCord.api.notices.sendAnnouncement('spotify-revoked', {
           color: 'orange',
           message: revokedMessages[resp.revoked],
           button: {
@@ -40,7 +40,7 @@ module.exports = {
       }
     }
 
-    console.debug('%c[SpotifyAPI]', 'color: #1ed860', 'No Spotify account linked to Powercord; Falling back to Discord\'s token');
+    console.debug('%c[SpotifyAPI]', 'color: #1ed860', 'No Spotify account linked to PowerCord; Falling back to Discord\'s token');
     if (!usedCached) {
       const spotifyMdl = await getModule([ 'getActiveSocketAndDevice' ]);
       const active = spotifyMdl.getActiveSocketAndDevice();

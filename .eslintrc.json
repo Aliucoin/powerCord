@@ -1,9 +1,9 @@
 {
   "globals": {
-    "powercord": true,
+    "powerCord": true,
     "webpackChunkdiscord_app": true,
     "DiscordNative": false,
-    "PowercordNative": false,
+    "PowerCordNative": false,
     "GLOBAL_ENV": true,
     "BigInt": false
   },

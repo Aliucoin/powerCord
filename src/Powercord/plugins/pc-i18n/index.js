@@ -1,8 +1,8 @@
-const { React, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powercord/webpack');
-const { Card } = require('powercord/components');
-const { inject, uninject } = require('powercord/injector');
-const { Plugin } = require('powercord/entities');
-const { I18N_WEBSITE } = require('powercord/constants');
+const { React, getModule, getModuleByDisplayName, i18n: { Messages } } = require('powerCord/webpack');
+const { Card } = require('powerCord/components');
+const { inject, uninject } = require('powerCord/injector');
+const { Plugin } = require('powerCord/entities');
+const { I18N_WEBSITE } = require('powerCord/constants');
 
 const strings = require('../../../../i18n');
 const strOverrides = require('../../../../i18n/overrides');
@@ -51,7 +51,7 @@ module.exports = class I18n extends Plugin {
                 return React.createElement('div', { className }, res, React.createElement(
                   'div', {
                     onClick: res.props.onClick,
-                    className: 'powercord-text',
+                    className: 'powerCord-text',
                     style: {
                       display: 'flex',
                       justifyContent: 'space-between',

@@ -1,5 +1,5 @@
-const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
-const { TabBar, Button } = require('powercord/components');
+const { React, getModule, i18n: { Messages } } = require('powerCord/webpack');
+const { TabBar, Button } = require('powerCord/components');
 const ThemeSettings = require('./ThemeSettings');
 const QuickCSS = require('./QuickCSS');
 const Base = require('./Base');
@@ -35,7 +35,7 @@ class Themes extends Base {
     const { topPill, item } = getModule([ 'topPill' ], false);
     return (
       <>
-        <div className='powercord-entities-manage-tabs'>
+        <div className='powerCord-entities-manage-tabs'>
           <TabBar
             selectedItem={this.state.tab}
             onItemSelect={tab => this.setState({ tab })}
@@ -59,7 +59,7 @@ class Themes extends Base {
   renderBody () {
     if (this.state.tryBeta) {
       return (
-        <div className='powercord-text beta-container'>
+        <div className='powerCord-text beta-container'>
           <div className='very-big'>welcome to the theme manager beta</div>
           <div className='iframe-wrapper'>
             <iframe
@@ -98,11 +98,11 @@ class Themes extends Base {
 
   fetchMissing () { // @todo: better impl + i18n
     // noinspection JSIgnoredPromiseFromCall
-    powercord.pluginManager.get('pc-moduleManager')._fetchEntities('themes');
+    powerCord.pluginManager.get('pc-moduleManager')._fetchEntities('themes');
   }
 
   getItems () {
-    return this._sortItems([ ...powercord.styleManager.themes.values() ].filter(t => t.isTheme));
+    return this._sortItems([ ...powerCord.styleManager.themes.values() ].filter(t => t.isTheme));
   }
 }
 

@@ -1,8 +1,8 @@
 /* eslint-disable no-case-declarations */
-const { React, getModule, getModuleByDisplayName } = require('powercord/webpack');
-const { Spinner, FormNotice, AsyncComponent } = require('powercord/components');
-const { WEBSITE } = require('powercord/constants');
-const { get } = require('powercord/http');
+const { React, getModule, getModuleByDisplayName } = require('powerCord/webpack');
+const { Spinner, FormNotice, AsyncComponent } = require('powerCord/components');
+const { WEBSITE } = require('powerCord/constants');
+const { get } = require('powerCord/http');
 
 const FormTitle = AsyncComponent.from(getModuleByDisplayName('FormTitle'));
 
@@ -22,7 +22,7 @@ class DocPage extends React.PureComponent {
   }
 
   async componentDidMount () {
-    const baseUrl = powercord.settings.get('backendURL', WEBSITE);
+    const baseUrl = powerCord.settings.get('backendURL', WEBSITE);
     const document = await get(`${baseUrl}/api/v2/docs/${this.props.category}/${this.props.doc}`).then(res => res.body);
     documentCache[this.key] = document;
     this.setState({ document });
@@ -74,9 +74,9 @@ class DocPage extends React.PureComponent {
           render.push(<pre className={markup}>
             <code className={className}>
               <Code/>
-              {element.lang && <div className='powercord-codeblock-lang'>{element.lang}</div>}
-              <div className='powercord-lines'/>
-              <button className='powercord-codeblock-copy-btn' onClick={this._handleCodeCopy}>copy</button>
+              {element.lang && <div className='powerCord-codeblock-lang'>{element.lang}</div>}
+              <div className='powerCord-lines'/>
+              <button className='powerCord-codeblock-copy-btn' onClick={this._handleCodeCopy}>copy</button>
             </code>
           </pre>);
           break;
@@ -98,8 +98,8 @@ class DocPage extends React.PureComponent {
 
     // render
     return <div>
-      <FormTitle tag='h2' className='powercord-docs-title'>{document.name}</FormTitle>
-      <div className='powercord-docs'>{render}</div>
+      <FormTitle tag='h2' className='powerCord-docs-title'>{document.name}</FormTitle>
+      <div className='powerCord-docs'>{render}</div>
     </div>;
   }
 
@@ -142,7 +142,7 @@ class DocPage extends React.PureComponent {
   }
 
   _handleCodeCopy (e) {
-    powercord.pluginManager.get('pc-codeblocks')._onClickHandler(e);
+    powerCord.pluginManager.get('pc-codeblocks')._onClickHandler(e);
   }
 }
 

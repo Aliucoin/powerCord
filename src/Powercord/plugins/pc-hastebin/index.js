@@ -1,20 +1,20 @@
-const { Plugin } = require('powercord/entities');
-const { get, post } = require('powercord/http');
+const { Plugin } = require('powerCord/entities');
+const { get, post } = require('powerCord/http');
 const { clipboard } = require('electron');
 
 const Settings = require('./Settings.jsx');
 
 module.exports = class Hastebin extends Plugin {
   startPlugin () {
-    const domain = this.settings.get('domain', 'https://haste.powercord.dev');
+    const domain = this.settings.get('domain', 'https://haste.powerCord.dev');
 
-    powercord.api.settings.registerSettings('pc-hastebin', {
+    powerCord.api.settings.registerSettings('pc-hastebin', {
       category: this.entityID,
       label: 'Hastebin',
       render: Settings
     });
 
-    powercord.api.commands.registerCommand({
+    powerCord.api.commands.registerCommand({
       command: 'hastebin',
       description: 'Lets you paste content to Hastebin',
       usage: '{c} [--send] <--clipboard | FILE_URL>',
@@ -30,7 +30,7 @@ module.exports = class Hastebin extends Plugin {
         if (!data) {
           return {
             send: false,
-            result: `Invalid arguments. Run \`${powercord.api.commands.prefix}help hastebin\` for more information.`
+            result: `Invalid arguments. Run \`${powerCord.api.commands.prefix}help hastebin\` for more information.`
           };
         }
 
@@ -52,8 +52,8 @@ module.exports = class Hastebin extends Plugin {
   }
 
   pluginWillUnload () {
-    powercord.api.settings.unregisterSettings('pc-hastebin');
-    powercord.api.commands.unregisterCommand('hastebin');
+    powerCord.api.settings.unregisterSettings('pc-hastebin');
+    powerCord.api.commands.unregisterCommand('hastebin');
   }
 
   parseArguments (args) {

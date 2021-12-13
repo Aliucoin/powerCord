@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
 const Module = require('module');
@@ -18,7 +18,7 @@ const PatchedBrowserWindow = require('./browserWindow');
 
 require('./ipc/main');
 
-console.log('Hello from Powercord!');
+console.log('Hello from PowerCord!');
 
 let _patched = false;
 const appSetAppUserModelId = electron.app.setAppUserModelId;
@@ -26,8 +26,8 @@ function setAppUserModelId (...args) {
   /*
    * once this has been called, we can assume squirrelUpdate is safe to require
    * as everything that needs to be initialized has been initialized
-   * see: https://github.com/powercord-org/powercord/issues/405
-   * see: https://github.com/powercord-org/powercord/issues/382
+   * see: https://github.com/powerCord-org/powerCord/issues/405
+   * see: https://github.com/powerCord-org/powerCord/issues/382
    */
 
   appSetAppUserModelId.apply(this, args);
@@ -63,11 +63,11 @@ electron.app.once('ready', () => {
 
   // @todo: make this be not shit
   electron.session.defaultSession.webRequest.onBeforeRequest((details, done) => {
-    if (details.url.startsWith('https://canary.discordapp.com/_powercord')) {
-      // It should get restored to _powercord url later
+    if (details.url.startsWith('https://canary.discordapp.com/_powerCord')) {
+      // It should get restored to _powerCord url later
       done({ redirectURL: 'https://canary.discordapp.com/app' });
-    } else if (details.url.startsWith('https://canary.discord.com/_powercord')) {
-      // It should get restored to _powercord url later
+    } else if (details.url.startsWith('https://canary.discord.com/_powerCord')) {
+      // It should get restored to _powerCord url later
       done({ redirectURL: 'https://canary.discord.com/app' });
     } else {
       done({});

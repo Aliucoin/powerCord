@@ -7,12 +7,12 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-src/Powercord/plugins/*
-!src/Powercord/plugins/pc-*
+src/PowerCord/plugins/*
+!src/PowerCord/plugins/pc-*
 
-src/Powercord/coremods/react-devtools/ext
-src/Powercord/themes/*
-!src/Powercord/themes/.exists
+src/PowerCord/coremods/react-devtools/ext
+src/PowerCord/themes/*
+!src/PowerCord/themes/.exists
 
 settings/*.json
 

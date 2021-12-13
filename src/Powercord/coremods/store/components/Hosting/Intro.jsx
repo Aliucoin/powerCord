@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2018-2020 aetheryx & Bowser65
  * All Rights Reserved. Licensed under the Porkord License
- * https://powercord.dev/porkord-license
+ * https://powerCord.dev/porkord-license
  */
 
-const { React, getModule } = require('powercord/webpack');
+const { React, getModule } = require('powerCord/webpack');
 
 module.exports = React.memo(
   () => {
@@ -16,7 +16,7 @@ module.exports = React.memo(
         <p className={size16}>
           You want to make an amazing plugin, but this plugins requires a server and a backend? We got you covered. If
           you need a backend for any reason for your plugin, we are willing to host it for you and hook you up with
-          an *.powercord.dev address, provided your backend meets some requirements.
+          an *.powerCord.dev address, provided your backend meets some requirements.
         </p>
         <h2 className={size32}>Requirements</h2>
         <p className={`${size16} ${marginBottom20}`}>
